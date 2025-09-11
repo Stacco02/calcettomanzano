@@ -98,6 +98,20 @@ function extractArticleContent(html) {
     if (dateMatch) date = dateMatch[1];
   }
   
+  // If no date found in breadcrumb, try to extract from content
+  if (!date && content) {
+    const contentDateMatch = content.match(/([A-Za-z]+ \(UD\) \d+ [A-Za-z]+ \d+)/);
+    if (contentDateMatch) {
+      date = contentDateMatch[1].replace('(UD) ', '');
+    } else {
+      // Try other date patterns in content
+      const altDateMatch = content.match(/(\d+ [A-Za-z]+ \d+)/);
+      if (altDateMatch) {
+        date = altDateMatch[1];
+      }
+    }
+  }
+  
   return { title, content, author, category, date };
 }
 
@@ -125,7 +139,7 @@ ${header2025}
 	<main class="article-container">
 		<h1 class="article-title">${title}</h1>
 		<div class="article-meta">
-			Pubblicato da <strong>${author}</strong> in ${category} · ${date}
+			Pubblicato da <strong>${author}</strong> in ${category} · ${date || 'Data non disponibile'}
 		</div>
 		<div class="article-content">
 			${content.split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('')}
