@@ -1,0 +1,32 @@
+#separator_pluginAppObj_1265 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  height: 60px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+#pluginAppObj_1265 {
+  width: 100%;
+}
+#separator_pluginAppObj_1265 .separator-line {
+  width: 100%;
+  border-top: 3px double rgba(17, 85, 204, 1);
+}
+#separator_pluginAppObj_1265 .separator-line.left-line {
+  margin-right: 10px;
+}
+#separator_pluginAppObj_1265 .separator-line.right-line {
+  margin-left: 10px;
+}
+#separator_pluginAppObj_1265 .separator-image {
+  flex-basis: 82.22222222222223px;
+  flex-shrink: 0;
+  max-width: 100%;
+}
+#separator_pluginAppObj_1265 .separator-image img {
+  width: 82.22222222222223px;
+  max-width: 100%;
+  max-height: 60px;
+}

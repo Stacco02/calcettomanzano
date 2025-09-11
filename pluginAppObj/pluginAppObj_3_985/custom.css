@@ -1,0 +1,93 @@
+
+
+#pluginAppObj_3_985 {
+    width: 100%;
+    
+}
+
+#pluginAppObj_3_985_container .owl-carousel {
+    position: relative;
+    max-width: 100%;
+}
+
+#pluginAppObj_3_985_container .owl-carousel .owl-stage {
+    display: flex;
+    align-items: center;
+}
+
+#pluginAppObj_3_985_container .owl-carousel .owl-stage .owl-item {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border-image-width: 0;
+}
+
+#pluginAppObj_3_985_container .owl-carousel .owl-stage .owl-item .item {
+    flex: 1;
+}
+
+#pluginAppObj_3_985_container .owl-carousel .item .logo-slide-img {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    overflow: hidden;
+    
+}
+
+#pluginAppObj_3_985_container .owl-carousel .item.link .logo-slide-img {
+    cursor: pointer;
+}
+
+#pluginAppObj_3_985_container .owl-carousel .owl-dots button.owl-dot.active span {
+    background-color: rgba(0,122,255, 1);
+}
+
+#pluginAppObj_3_985_container .owl-carousel .owl-dots button.owl-dot:hover span  {
+    background-color: rgba(0,122,255, 1);
+}
+
+#pluginAppObj_3_985_container .owl-carousel .owl-dots button.owl-dot:focus {
+    outline: none;
+}
+
+/* ######################
+##### IMAGE EFFECTS #####
+###################### */
+
+#pluginAppObj_3_985_container .owl-carousel .item.zoom .logo-slide-img {
+    transition: transform 300ms;
+}
+
+#pluginAppObj_3_985_container .owl-carousel .item.zoom:hover .logo-slide-img {
+    transform: scale(1.1);
+}
+
+
+#pluginAppObj_3_985_container .owl-carousel .item.blur .logo-slide-img {
+    transition: all 300ms ease;
+    filter: blur(0);
+}
+
+#pluginAppObj_3_985_container .owl-carousel .item.blur:hover .logo-slide-img {
+    filter: blur(3px);
+}
+
+#pluginAppObj_3_985_container .owl-carousel .item.gray .logo-slide-img {
+    transition: all 300ms ease;
+	filter: grayscale(0);
+}
+
+#pluginAppObj_3_985_container .owl-carousel .item.gray:hover .logo-slide-img {
+	filter: grayscale(100%);
+}
+
+#pluginAppObj_3_985_container .owl-carousel .item.color .logo-slide-img {
+    transition: all 300ms ease;
+    filter: grayscale(100%);
+}
+
+#pluginAppObj_3_985_container .owl-carousel .item.color:hover .logo-slide-img {
+	filter: grayscale(0);
+}
+

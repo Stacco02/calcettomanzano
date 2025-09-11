@@ -1,0 +1,796 @@
+.meteo-message{
+	display: none;
+	color: red;
+	font-size: 16px;
+	line-height: 50px;
+	text-align: center;
+	font-family: Arial;
+}
+.meteo-map{
+	width: 100%;
+}
+.meteo-map img{
+	width: 100%;
+	max-width: 315px;
+	margin: 0 auto;
+}
+.meteo-wrapper{
+	width: 100%;
+	overflow: auto;
+}
+
+/* ===== UI/UX overrides (non-destructive) ===== */
+
+/* Base typography and background */
+html, body {
+	background: #f6f7fb;
+	color: #1f2937;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Main content as a centered card */
+#imPageIntContainer {
+	max-width: 1140px;
+	margin: 0 auto;
+	padding: 0 16px;
+}
+#imPage {
+	background: #ffffff;
+	border-radius: 12px;
+	box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+	padding-bottom: 16px;
+}
+
+/* Headings cleanup */
+#imPage h1, #imPage h2, #imPage h3, #imPage h4, #imPage h5, #imPage h6,
+#imHeader h1, #imHeader h2 {
+	color: #0b2069;
+	letter-spacing: 0.2px;
+}
+
+/* Brand links */
+#imPage a,
+#imHeader a,
+#imFooter a {
+	color: #1155cc;
+	text-decoration: none;
+}
+#imPage a:hover,
+#imHeader a:hover,
+#imFooter a:hover {
+	color: #0d3ea5;
+	text-decoration: underline;
+}
+
+/* Buttons (avoid pure blue, use brand tint) */
+#imPage input[type=button], #imPage input[type=submit], #imPage input[type=reset], #imPage button.imButton {
+	background-color: #1155cc;
+	border-color: #0d3ea5;
+	border-radius: 10px;
+}
+#imPage input[type=button]:hover, #imPage input[type=submit]:hover, #imPage input[type=reset]:hover, #imPage button.imButton:hover {
+	filter: brightness(1.05);
+}
+
+/* Reduce visual noise: soften horizontal rules */
+#imPage hr {
+	border-color: rgba(0,0,0,0.08) !important;
+}
+
+/* Kill distracting animations from generators */
+.animable.shake,
+.animable.pulse {
+	animation: none !important;
+}
+
+/* Galleries spacing and centering */
+[id^="imObjectGallery_"] {
+	margin: 12px auto;
+}
+#imContent .text-inner table {
+	width: 100% !important;
+}
+
+/* Header title styling */
+#imHeader_imObjectTitle_03_text a {
+	font-weight: 800;
+	letter-spacing: 0.4px;
+	color: #0b2069 !important;
+}
+
+/* Hide duplicated or noisy NEWS titles */
+#imObjectTitle_861,
+#imObjectTitle_1260,
+#imObjectTitle_1259,
+#imObjectTitle_1268 {
+	display: none !important;
+}
+
+/* Footer polish */
+#imFooter {
+	background: transparent;
+}
+#imFooterObjects {
+	border-top: 1px solid rgba(0,0,0,0.08);
+	padding-top: 12px;
+}
+
+/* Sidebar sponsors: give breathing room */
+#imSideBar .text-inner img {
+	filter: grayscale(10%);
+	transition: filter 200ms ease;
+}
+#imSideBar .text-inner img:hover {
+	filter: none;
+}
+
+/* Cookie bar: softer look */
+#cookie-law-message {
+	background-color: #0b2069 !important;
+}
+#cookie-law-message .imCloseInn {
+	background: #ffffff;
+	color: #0b2069;
+}
+
+/* Mobile spacing */
+@media (max-width: 720px) {
+	#imPage {
+		border-radius: 0;
+		box-shadow: none;
+	}
+	#imPageIntContainer { padding: 0 10px; }
+}
+
+/* ===== Header & Menu ===== */
+#imHeaderBg {
+	background: linear-gradient(180deg, #0b2069 0%, #0e2a8f 100%) !important;
+}
+#imHeader {
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+}
+#imHeaderObjects {
+	padding: 10px 16px;
+}
+/* Brand title */
+#imHeader_imObjectTitle_03_wrapper {
+	margin: 0;
+}
+#imHeader_imObjectTitle_03_text a {
+	color: #ffffff !important;
+}
+/* Menu container */
+#imHeader_imMenuObject_05_container {
+	background: transparent !important;
+}
+#imHeader_imMenuObject_05_container > ul,
+#imHeader_imMenuObject_05_container .menu-mobile-animated {
+	background: rgba(255,255,255,0.08);
+	backdrop-filter: blur(6px);
+	border-radius: 12px;
+	padding: 6px 8px;
+}
+#imHeader_imMenuObject_05_container ul li .label {
+	color: #ffffff !important;
+	font-weight: 600;
+	padding: 10px 12px;
+	border-radius: 8px;
+}
+#imHeader_imMenuObject_05_container ul li .label:hover {
+	background: rgba(255,255,255,0.12);
+}
+/* Hamburger button */
+#imHeader_imMenuObject_05_container .hamburger-button .hamburger-bar {
+	background: #ffffff !important;
+}
+
+/* ===== NEWS cards (blog widgets) ===== */
+#pluginAppObj_1214 .post_container,
+#pluginAppObj_1264 .post_container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	gap: 16px;
+}
+#pluginAppObj_1214 .post,
+#pluginAppObj_1264 .post {
+	background: #ffffff;
+	border: 1px solid rgba(0,0,0,0.06);
+	border-radius: 12px;
+	box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+	padding: 14px 16px;
+	transition: transform 150ms ease, box-shadow 150ms ease;
+}
+#pluginAppObj_1214 .post:hover,
+#pluginAppObj_1264 .post:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+#pluginAppObj_1214 .post_title,
+#pluginAppObj_1264 .post_title {
+	display: block;
+	color: #0b2069 !important;
+	font-weight: 700;
+	margin-bottom: 6px;
+	text-decoration: none !important;
+}
+#pluginAppObj_1214 .post_data,
+#pluginAppObj_1264 .post_data {
+	color: #6b7280;
+	font-size: 12px;
+	margin-top: 8px;
+}
+
+/* ===== Sponsor & galleries uniform look ===== */
+[id^="imObjectGallery_"] .x5engine-gallery,
+[id^="imObjectGallery_"] .imGlContent,
+[id^="imObjectGallery_"] #imObjectGalleryContainer {
+	border-radius: 12px;
+	background: #ffffff;
+	border: 1px solid rgba(0,0,0,0.06);
+	box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+	padding: 6px;
+}
+[id^="imObjectGallery_"] img {
+	object-fit: contain;
+}
+
+/* ===== Widget / iframe embed polish ===== */
+.imHTMLObject iframe {
+	width: 100% !important;
+	max-width: 100%;
+	border: 0;
+	border-radius: 12px;
+	box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+.imHTMLObject {
+	text-align: center;
+	padding: 8px 0;
+}
+
+/* ===== Header social icons contrast ===== */
+#imHeader_pluginAppObj_06 .social-icon svg rect,
+#imFooter_pluginAppObj_14 .social-icon svg rect {
+	/* ensure icons visible on dark header */
+	filter: brightness(1.05);
+}
+
+/* ===== Web Fonts ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Poppins:wght@500;700;800&display=swap');
+
+/* Apply modern fonts */
+html, body {
+	font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+#imHeader h1, #imHeader h2, #imPage h1, #imPage h2, #imPage h3,
+#imPage h4, #imPage h5, #imPage h6 {
+	font-family: Poppins, Inter, Arial, sans-serif;
+}
+
+/* ===== Modern Animations ===== */
+@keyframes fadeInUp {
+	0% { opacity: 0; transform: translate3d(0, 12px, 0); }
+	100% { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@keyframes scaleIn {
+	0% { opacity: 0; transform: scale(0.96); }
+	100% { opacity: 1; transform: scale(1); }
+}
+@keyframes floatY {
+	0% { transform: translateY(0); }
+	50% { transform: translateY(-4px); }
+	100% { transform: translateY(0); }
+}
+@keyframes gentlePulse {
+	0%, 100% { transform: scale(1); }
+	50% { transform: scale(1.02); }
+}
+
+/* Map legacy classes to new animations (subtle) */
+.animable {
+	animation-duration: 600ms;
+	animation-timing-function: cubic-bezier(.2,.8,.2,1);
+	animation-fill-mode: both;
+}
+.animable.zoomIn { animation-name: scaleIn !important; }
+.animable.pulse { animation-name: gentlePulse !important; animation-duration: 1600ms; animation-iteration-count: infinite; }
+.animable.shake { animation-name: floatY !important; animation-duration: 2400ms; animation-iteration-count: infinite; }
+
+/* Titles enter effect */
+[id^="imObjectTitle_"] { animation: fadeInUp 700ms cubic-bezier(.2,.8,.2,1) both; }
+
+/* Card hover micro-interactions */
+.card, #imPage .post, [id^="imObjectGallery_"] .x5engine-gallery {
+	transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.card:hover, #imPage .post:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 12px 28px rgba(0,0,0,0.10);
+}
+
+/* Link and button transitions */
+#imPage a, #imHeader a, #imFooter a, button, .imButton {
+	transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease, filter 150ms ease;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	* { animation: none !important; transition: none !important; }
+}
+
+/* ===== Design Tokens ===== */
+:root {
+	--brand-900: #0b2069;
+	--brand-800: #0e2a8f;
+	--brand-600: #1155cc;
+	--text-900: #0f172a;
+	--text-700: #334155;
+	--text-500: #6b7280;
+	--surface: #ffffff;
+	--muted: #f6f7fb;
+	--border: rgba(15, 23, 42, 0.06);
+	--shadow: 0 8px 24px rgba(15,23,42,0.08);
+}
+
+/* Background subtle gradient */
+html, body { 
+	background: radial-gradient(1200px 600px at 70% -10%, rgba(17,85,204,0.08), transparent) no-repeat, var(--muted);
+	color: var(--text-900);
+}
+
+/* Header: flat, compact, sticky */
+#imHeaderBg { background: var(--brand-900) !important; }
+#imHeader { position: sticky; top: 0; z-index: 1000; }
+#imHeaderObjects { padding: 8px 16px; }
+#imHeader_imObjectTitle_03 { margin: 0; }
+#imHeader_imObjectTitle_03_text a { color: #fff !important; font-weight: 800; letter-spacing: .3px; }
+
+/* Menu: modern underline */
+#imHeader_imMenuObject_05_container > ul { 
+	background: transparent !important; 
+	padding: 0; 
+	border-radius: 10px;
+}
+#imHeader_imMenuObject_05_container ul li .label { 
+	color: #fff !important; 
+	font-weight: 600; 
+	padding: 10px 14px; 
+	border-radius: 8px; 
+	position: relative; 
+}
+#imHeader_imMenuObject_05_container ul li .label::after{
+	content: ""; position: absolute; left: 12px; right: 12px; bottom: 6px; height: 2px; background: transparent; transition: background-color .2s, transform .2s; transform: scaleX(0);
+}
+#imHeader_imMenuObject_05_container ul li .label:hover::after{ background: #fff; transform: scaleX(1); }
+#imHeader_imMenuObject_05_container .hamburger-button .hamburger-bar{ background:#fff !important; }
+
+/* Main card container */
+#imPageIntContainer { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+#imPage { background: var(--surface); border-radius: 14px; box-shadow: var(--shadow); padding-bottom: 10px; }
+
+/* Section spacing */
+.imPageRow { margin: 8px 0; }
+#imContent [id^="imCell_"] { padding: 4px 6px; }
+
+/* Titles */
+#imPage h1, #imPage h2, #imPage h3 { color: var(--brand-900); }
+#imObjectTitle_1261_text, #imObjectTitle_1262_text, #imObjectTitle_1159_text, #imObjectTitle_1184_text {
+	letter-spacing: .2px; 
+}
+
+/* HR and separators cleanup */
+#imPage hr { border-color: var(--border) !important; }
+[id^="pluginAppObj_"] .separator-line { background: var(--border) !important; }
+#pluginAppObj_1253 > div, #pluginAppObj_1255 > div, #pluginAppObj_1266 > div, #pluginAppObj_1267 > div, #pluginAppObj_107 > div, #pluginAppObj_229 > div, #pluginAppObj_230 > div, #pluginAppObj_937 > div { height: 8px !important; }
+
+/* Sidebar sponsors as grid */
+#imSideBar .text-inner { display: grid; grid-template-columns: 1fr; gap: 12px; }
+#imSideBar .text-inner hr { display: none; }
+#imSideBar .text-inner .lh1 { line-height: 0; }
+#imSideBar .text-inner img { width: 100%; max-width: 180px; margin: 0 auto; filter: grayscale(8%); transition: filter .2s ease; }
+#imSideBar .text-inner img:hover { filter: none; }
+
+/* Tables in text blocks behave like responsive cards */
+#imContent .text-inner table { width: 100% !important; border-collapse: collapse; }
+#imContent .text-inner td { padding: 6px; }
+
+/* Gallery shells */
+[id^="imObjectGallery_"] .x5engine-gallery, [id^="imObjectGallery_"] .imGlContent, [id^="imObjectGallery_"] #imObjectGalleryContainer { border-radius: 12px; background: #fff; border: 1px solid var(--border); box-shadow: 0 4px 14px rgba(15,23,42,.05); padding: 6px; }
+[id^="imObjectGallery_"] img { object-fit: contain; }
+
+/* Cards and blog posts */
+#pluginAppObj_1214 .post, #pluginAppObj_1264 .post { border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 6px 16px rgba(15,23,42,.06); }
+#pluginAppObj_1214 .post_title, #pluginAppObj_1264 .post_title { color: var(--brand-900) !important; }
+#pluginAppObj_1214 .post_data, #pluginAppObj_1264 .post_data { color: var(--text-500); }
+
+/* Buttons */
+#imPage input[type=button], #imPage input[type=submit], #imPage input[type=reset], #imPage button.imButton { background: var(--brand-600); border-color: #0d3ea5; }
+#imPage input[type=button]:hover, #imPage input[type=submit]:hover, #imPage input[type=reset]:hover, #imPage button.imButton:hover { filter: brightness(1.05); }
+
+/* Footer */
+#imFooterObjects { border-top: 1px solid var(--border); padding-top: 12px; }
+
+/* Hero big title scaling */
+#imHeader_imObjectTitle_03_text a { font-size: clamp(28px, 5vw, 56px); }
+
+/* Mobile tweaks */
+@media (max-width: 720px) {
+	#imPage { border-radius: 0; box-shadow: none; }
+	#imHeaderObjects { padding: 10px; }
+	#imSideBar .text-inner { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== L84-like Hero/Menu, Headings, CTA ===== */
+
+/* Hero: titolo compatto e centrato */
+#imHeader_imObjectTitle_03 {
+	text-align: center;
+}
+#imHeader_imObjectTitle_03_text a {
+	font-family: Poppins, Inter, Arial, sans-serif;
+	font-weight: 800;
+	letter-spacing: 0.2px;
+	font-size: clamp(28px, 4.2vw, 54px);
+}
+
+/* Menu: pill flat + underline on hover/active */
+#imHeader_imMenuObject_05_container > ul {
+	background: rgba(255,255,255,0.08) !important;
+	border-radius: 12px;
+	padding: 4px 6px;
+}
+#imHeader_imMenuObject_05_container ul li .label {
+	padding: 8px 12px;
+	border-radius: 10px;
+	font-weight: 600;
+}
+#imHeader_imMenuObject_05_container ul li .label:hover {
+	background: rgba(255,255,255,0.12);
+}
+
+/* Section headings: stile editoriale con underline accent */
+[id^="imObjectTitle_"] span {
+	position: relative;
+	display: inline-block;
+	padding-bottom: 6px;
+}
+[id^="imObjectTitle_"] span::after {
+	content: "";
+	position: absolute;
+	left: 0; right: 0; bottom: 0;
+	height: 3px;
+	background: linear-gradient(90deg, var(--brand-600), transparent 70%);
+	border-radius: 2px;
+}
+
+/* NEWS heading special */
+#imObjectTitle_1261_text, #imObjectTitle_1262_text, #imObjectTitle_1184_text, #imObjectTitle_1159_text {
+	text-transform: uppercase;
+	letter-spacing: 0.8px;
+}
+
+/* CTA / Buttons */
+.button, .imButton, #imPage input[type=button], #imPage input[type=submit] {
+	border-radius: 999px !important;
+	padding: 10px 18px !important;
+	background: var(--brand-600) !important;
+	border-color: transparent !important;
+	box-shadow: 0 6px 18px rgba(17,85,204,0.25);
+}
+.button:hover, .imButton:hover, #imPage input[type=button]:hover, #imPage input[type=submit]:hover {
+	filter: none;
+	transform: translateY(-1px);
+	box-shadow: 0 10px 26px rgba(17,85,204,0.30);
+}
+
+/* Links as subtle buttons */
+#imPage a.label, #imHeader a.label {
+	transition: background-color 160ms ease, color 160ms ease;
+}
+
+/* Card spacing to look more editorial */
+#pluginAppObj_1214 .post_container, #pluginAppObj_1264 .post_container {
+	gap: 20px;
+}
+#pluginAppObj_1214 .post, #pluginAppObj_1264 .post {
+	padding: 18px 18px;
+}
+
+/* ===== Remove outer double frame / borders ===== */
+/* Hide or neutralize template frames/background strips */
+#imPageExtContainer::before,
+#imPageExtContainer::after,
+#imPageRowGraphics_4,
+#imHeaderBg + #imPage::before {
+	display: none !important;
+	content: none !important;
+}
+/* Flatten page ext container background */
+#imPageExtContainer {
+	background: transparent !important;
+}
+/* Remove any thick side paddings that suggest frames */
+#imPageIntContainer { box-shadow: none !important; }
+
+/* ===== Global Font: Inter everywhere (override template) ===== */
+html, body, #imPage, #imHeader, #imFooter, #imSideBar, .text-inner, .imHeading1, .imHeading2, .imHeading3, .imHeading4, .imHeading5, .imHeading6, table, td, th, button, input, textarea, select {
+	font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+/* Make default text size slightly more modern */
+#imPage { font-size: 16px; }
+/* Headings weight tweaks */
+.imHeading1, .imHeading2, .imHeading3, .imHeading4, .imHeading5, .imHeading6 { font-weight: 800; }
+
+/* Reduce giant white gap below hero/title */
+#imHeader + #imPage { margin-top: 0 !important; }
+#imPageRow_1 { min-height: 0 !important; }
+
+/* ===== Hero compaction: title size and whitespace ===== */
+#imHeaderObjects { padding-top: 6px; padding-bottom: 6px; }
+#imHeader_imObjectTitle_03_text a { font-size: clamp(24px, 3.5vw, 44px); }
+/* Remove empty row gaps at top of page */
+.imPageRow { min-height: 0 !important; margin: 6px 0 !important; }
+#imPageRow_1, #imPageRow_2 { margin: 0 !important; min-height: 0 !important; }
+/* Tighten first cells spacing */
+#imCell_79, #imCell_80 { margin-top: 6px !important; }
+#imContent .text-inner table { margin: 0 !important; }
+
+/* ===== Fonts: Montserrat for headings, Inter for body ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Montserrat:wght@600;700;800&display=swap');
+
+html, body, #imPage, #imHeader, #imFooter, #imSideBar, .text-inner, table, td, th, button, input, textarea, select {
+	font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+
+/* Headings use Montserrat, uppercase, slight tracking */
+#imPage h1, #imPage h2, #imPage h3, #imPage h4, #imPage h5, #imPage h6,
+#imHeader h1, #imHeader h2 {
+	font-family: Montserrat, Inter, Arial, sans-serif !important;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	font-weight: 800;
+}
+
+/* ===== Navbar: sticky, solid background, white text ===== */
+#imHeader { position: sticky; top: 0; z-index: 1000; }
+#imHeaderBg { background: var(--brand-900) !important; }
+#imHeader_imMenuObject_05_container .label, #imHeader_imObjectTitle_03_text a { color: #ffffff !important; }
+#imHeader_imMenuObject_05_container > ul { background: transparent !important; }
+#imHeaderObjects { padding-top: 6px; padding-bottom: 6px; }
+
+/* ===== Headings style refresh ===== */
+[id^="imObjectTitle_"] span { position: relative; display: inline-block; padding-bottom: 4px; }
+[id^="imObjectTitle_"] span::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: linear-gradient(90deg, var(--brand-600), transparent 70%); border-radius: 2px; }
+
+/* ===== Paragraph readability ===== */
+#imPage p, .text-inner { line-height: 1.6; }
+#imPage .text-inner > * + * { margin-top: 0.5rem; }
+#imPage .text-inner { max-width: 75ch; }
+
+/* ===== Responsive grid and rounded cards ===== */
+/* Blog/news widgets */
+#pluginAppObj_1214 .post_container, #pluginAppObj_1264 .post_container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	gap: 20px;
+}
+#pluginAppObj_1214 .post, #pluginAppObj_1264 .post {
+	background: #ffffff;
+	border: 1px solid var(--border);
+	border-radius: 14px;
+	box-shadow: 0 8px 22px rgba(15,23,42,.06);
+	padding: 16px 18px;
+	transition: transform 160ms ease, box-shadow 160ms ease;
+}
+#pluginAppObj_1214 .post:hover, #pluginAppObj_1264 .post:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(15,23,42,.10); }
+#pluginAppObj_1214 .post_title, #pluginAppObj_1264 .post_title { font-family: Montserrat, Inter, sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: .03em; color: var(--brand-900) !important; }
+#pluginAppObj_1214 .post_data, #pluginAppObj_1264 .post_data { color: var(--text-500); }
+
+/* Generic card utility for future blocks */
+.card { background:#fff; border:1px solid var(--border); border-radius:14px; box-shadow:0 8px 22px rgba(15,23,42,.06); padding:16px; }
+
+/* Galleries/frame containers rounded */
+[id^="imObjectGallery_"] .x5engine-gallery, [id^="imObjectGallery_"] .imGlContent, [id^="imObjectGallery_"] #imObjectGalleryContainer { border-radius: 14px; }
+
+/* ===== Modern buttons with hover ===== */
+#imPage input[type=button], #imPage input[type=submit], #imPage input[type=reset], #imPage button.imButton, .imButton, .button {
+	border-radius: 999px !important;
+	padding: 10px 18px !important;
+	background: var(--brand-600) !important; /* usa colori esistenti */
+	color: #ffffff !important;
+	border: none !important;
+	box-shadow: 0 8px 22px rgba(17,85,204,0.25);
+	transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+}
+#imPage input[type=button]:hover, #imPage input[type=submit]:hover, #imPage input[type=reset]:hover, #imPage button.imButton:hover, .imButton:hover, .button:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 14px 32px rgba(17,85,204,0.32);
+	filter: brightness(1.02);
+}
+
+/* ===== Responsive tweaks ===== */
+@media (max-width: 720px) {
+	#imPage .text-inner { max-width: 100%; }
+	#imHeader_imObjectTitle_03_text a { font-size: clamp(22px, 4vw, 38px); }
+}
+
+/* ===== Remove dated text-shadow on titles; enforce modern heading look ===== */
+#imPage h1, #imPage h2, #imPage h3, #imPage h4, #imPage h5, #imPage h6,
+#imHeader h1, #imHeader h2,
+.imHeading1, .imHeading2, .imHeading3, .imHeading4, .imHeading5, .imHeading6,
+[id^="imObjectTitle_"] span, [id^="imObjectTitle_"] {
+	text-shadow: none !important;
+	filter: none !important;
+	font-family: Montserrat, Inter, Arial, sans-serif !important;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+/* Sometimes titles are inside strong/b tags within text blocks */
+#imPage .text-inner b, #imPage .text-inner strong {
+	text-shadow: none !important;
+	filter: none !important;
+	font-family: Montserrat, Inter, Arial, sans-serif !important;
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+}
+
+/* ===== Project palette update: Blue/Yellow sports theme ===== */
+:root {
+	--brand-900: #0b3f91; /* deep sport blue */
+	--brand-800: #104da8;
+	--brand-600: #1862d6; /* buttons/links */
+	--accent-yellow: #ffd21f; /* highlight */
+}
+
+/* Global brushed background (place image at root as bg_brush.jpeg or /images/bg_brush.jpg) */
+html::before {
+	content: "";
+	position: fixed;
+	z-index: -2;
+	inset: 0;
+	background: url('/bg_brush.jpeg') center/cover no-repeat;
+	opacity: 0.35; /* keep content readable */
+}
+/* Subtle brand gradient overlay to tie colors together */
+html::after {
+	content: "";
+	position: fixed;
+	z-index: -1;
+	inset: 0;
+	background: radial-gradient(1200px 600px at 70% -10%, rgba(24,98,214,0.18), transparent 60%),
+		linear-gradient(180deg, rgba(11,63,145,0.08), rgba(11,63,145,0.00));
+}
+
+/* Header/nav uses solid brand color for contrast */
+#imHeaderBg { background: var(--brand-900) !important; }
+#imHeader_imMenuObject_05_container .label:hover { background: rgba(255,255,255,0.14); }
+
+/* Section underline uses brand blue to yellow gradient */
+[id^="imObjectTitle_"] span::after {
+	background: linear-gradient(90deg, var(--brand-600), var(--accent-yellow) 70%);
+}
+
+/* Buttons keep blue; add yellow focus ring */
+#imPage input[type=button], #imPage input[type=submit], #imPage input[type=reset], #imPage button.imButton, .imButton, .button {
+	outline: 0;
+}
+#imPage input[type=button]:focus-visible, #imPage input[type=submit]:focus-visible, #imPage input[type=reset]:focus-visible, #imPage button.imButton:focus-visible, .imButton:focus-visible, .button:focus-visible {
+	box-shadow: 0 0 0 3px rgba(255,210,31,0.5), 0 8px 22px rgba(17,85,204,0.25);
+}
+
+/* Cards on textured background: stronger surface */
+.card, #pluginAppObj_1214 .post, #pluginAppObj_1264 .post, [id^="imObjectGallery_"] .x5engine-gallery, [id^="imObjectGallery_"] .imGlContent, [id^="imObjectGallery_"] #imObjectGalleryContainer, #imPage {
+	background-color: rgba(255,255,255,0.92);
+	backdrop-filter: blur(2px);
+}
+
+/* Links accent on hover uses yellow */
+#imPage a:hover, #imHeader a:hover, #imFooter a:hover { color: #0d3ea5; }
+#imPage a:active { color: var(--accent-yellow); }
+
+/* Mobile: disable fixed background to avoid jank */
+@media (max-width: 720px) {
+	html::before { background-attachment: scroll; }
+}
+
+/* ===== Background visibility tweaks ===== */
+/* Make the global background more visible */
+html::before { opacity: 0.55; }
+
+/* Show a faint brush texture inside the header too */
+#imHeaderBg { position: relative; }
+#imHeaderBg::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: url('/bg_brush.jpeg') center/cover no-repeat;
+	opacity: 0.18; /* keep navbar readable */
+	pointer-events: none;
+}
+
+/* Slightly reduce page surface opacity so the background peeks through */
+#imPage { background-color: rgba(255,255,255,0.88); }
+
+/* ===== Header top fixes: remove stray lines/borders ===== */
+#imHeader, #imHeaderBg {
+	border: 0 !important;
+	box-shadow: none !important;
+}
+#imHeader_imMenuObject_05_container,
+#imHeader_imMenuObject_05_container > ul,
+#imHeader_imMenuObject_05_container nav,
+#imHeader_imMenuObject_05_container .hamburger-menu-background-container {
+	border: 0 !important;
+	box-shadow: none !important;
+	background-image: none !important;
+}
+/* Remove any 1px separators created by template rows under header */
+#imContentGraphics { display: none !important; }
+/* Tighten spacing just below the menu */
+#imHeaderObjects { margin-bottom: 0 !important; }
+
+/* ===== Header top hard cleanup ===== */
+#imHeader, #imHeaderBg, #imHeaderObjects,
+#imHeader_imMenuObject_05_container, #imHeader_imMenuObject_05_container > ul,
+#imHeader_imMenuObject_05_container nav, #imHeader_imMenuObject_05_container .menu-mobile-animated,
+#imHeader_imMenuObject_05_container .hamburger-menu-background {
+	border-top: 0 !important;
+	border-bottom: 0 !important;
+	outline: none !important;
+	box-shadow: none !important;
+	background-image: none !important;
+}
+/* Remove any template rule that injects a 1px top line below header */
+#imStickyBarContainer, #imStickyBarGraphics, #imStickyBar { border: 0 !important; box-shadow: none !important; }
+/* Ensure header overlays fully cover to avoid sub-pixel seams */
+#imHeaderBg, #imHeaderBg::before { transform: translateZ(0); backface-visibility: hidden; }
+
+/* ===== Full-bleed layout: remove side gutters and top separator ===== */
+/* Eliminate the thin line below the hero/header */
+#imHeaderBg { border-bottom: 0 !important; }
+
+/* Make the page container span 100% width */
+#imPageExtContainer, #imPageIntContainer, #imPage {
+	max-width: none !important;
+	width: 100% !important;
+	margin: 0 !important;
+	border-radius: 0 !important;
+	box-shadow: none !important;
+}
+/* Remove inner container paddings that created lateral gutters */
+#imPageIntContainer { padding-left: 0 !important; padding-right: 0 !important; }
+
+/* Keep content readable but without side margins enforced by template */
+#imContent { padding-left: 0 !important; padding-right: 0 !important; }
+
+/* ===== Final header seam fix (adjusted) ===== */
+/* Restore solid navbar background */
+#imHeaderBg { background: var(--brand-900) !important; position: relative; z-index: 10; border-bottom: 0 !important; }
+
+/* Remove borders/shadows without forcing transparent backgrounds on children */
+#imHeader, #imHeaderObjects,
+#imHeader_imMenuObject_05_container, #imHeader_imMenuObject_05_container > ul,
+#imHeader_imMenuObject_05_container nav, #imHeader_imMenuObject_05_container .menu-mobile-animated {
+	border: 0 !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+#imHeader::before, #imHeader::after,
+#imHeaderBg::after,
+#imHeader_imMenuObject_05_container::before,
+#imHeader_imMenuObject_05_container::after { display: none !important; content: none !important; }
+
+/* Remove border on the first content element after the header */
+#imHeader + #imPage { border-top: 0 !important; }
+
+/* ===== Collapse extra blue area above navbar ===== */
+#imHeader, #imHeaderBg {
+	margin-top: 0 !important;
+	padding-top: 0 !important;
+	height: auto !important;
+	min-height: 0 !important;
+}
+#imHeaderObjects { padding-top: 4px !important; }
+/* Avoid any top spacer element inside header */
+#imHeaderBg > .imTopSpacer, #imHeader > .imTopSpacer { display: none !important; height: 0 !important; }

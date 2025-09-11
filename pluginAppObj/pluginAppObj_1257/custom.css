@@ -1,0 +1,32 @@
+#separator_pluginAppObj_1257 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  height: 45px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+#pluginAppObj_1257 {
+  width: 100%;
+}
+#separator_pluginAppObj_1257 .separator-line {
+  width: 100%;
+  border-top: 3px solid rgba(11, 83, 148, 1);
+}
+#separator_pluginAppObj_1257 .separator-line.left-line {
+  margin-right: 10px;
+}
+#separator_pluginAppObj_1257 .separator-line.right-line {
+  margin-left: 10px;
+}
+#separator_pluginAppObj_1257 .separator-image {
+  flex-basis: NaNpx;
+  flex-shrink: 0;
+  max-width: 100%;
+}
+#separator_pluginAppObj_1257 .separator-image img {
+  width: NaNpx;
+  max-width: 100%;
+  max-height: 45px;
+}
