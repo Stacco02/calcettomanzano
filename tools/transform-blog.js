@@ -1,75 +1,190 @@
-#!/usr/bin/env node
-/**
- * Batch transform for blog HTML pages to match 2025 site layout.
- * - Adds ../style-2025.css if missing
- * - Injects site header/footer 2025 if missing
- * - Adds ../scripts-2025.js before </body>
- * - Hides legacy X5 header/footer via inline style if present
- */
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = path.resolve(__dirname, '..');
-const BLOG_DIR = path.join(ROOT, 'blog');
+const blogDir = path.join(__dirname, '../blog');
 
-const header2025 = (
-  '\n\t\t<header class="header" id="top">\n\t\t\t<div class="container nav">\n\t\t\t\t<a class="brand" href="../index.html" aria-label="C5 Manzano 1988">\n\t\t\t\t\t<img src="../images/logo_manzano_altezza_80.png" alt="Logo C5 Manzano 1988" />\n\t\t\t\t\t<span>C5 Manzano 1988</span>\n\t\t\t\t</a>\n\t\t\t\t<nav class="menu" aria-label="Navigazione principale">\n\t\t\t\t\t<a href="../index.html">Home</a>\n\t\t\t\t\t<a href="index.html" class="active">News</a>\n\t\t\t\t\t<a href="../societa-2025.html">Società</a>\n\t\t\t\t\t<a href="../prima-squadra-2025.html">1a Squadra</a>\n\t\t\t\t\t<a href="../under-2025.html">Under 21/19</a>\n\t\t\t\t\t<a href="../sponsor-2025.html">Sponsor</a>\n\t\t\t\t\t<a href="../trasparenza-2025.html">Trasparenza</a>\n\t\t\t\t\t<a href="../safeguarding-2025.html">Safeguarding</a>\n\t\t\t\t</nav>\n\t\t\t\t<button class="burger" id="burger" aria-label="Apri menu" aria-controls="mobile-panel" aria-expanded="false"><span></span></button>\n\t\t\t</div>\n\t\t\t<div class="mobile-panel" id="mobile-panel" aria-hidden="true">\n\t\t\t\t<div class="mobile-drawer">\n\t\t\t\t\t<nav class="mobile-menu" aria-label="Menu mobile">\n\t\t\t\t\t\t<a href="../index.html">Home</a>\n\t\t\t\t\t\t<a href="index.html" class="active">News</a>\n\t\t\t\t\t\t<a href="../societa-2025.html">Società</a>\n\t\t\t\t\t\t<a href="../prima-squadra-2025.html">1a Squadra</a>\n\t\t\t\t\t\t<a href="../under-2025.html">Under 21/19</a>\n\t\t\t\t\t\t<a href="../sponsor-2025.html">Sponsor</a>\n\t\t\t\t\t\t<a href="../trasparenza-2025.html">Trasparenza</a>\n\t\t\t\t\t\t<a href="../safeguarding-2025.html">Safeguarding</a>\n\t\t\t\t\t</nav>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</header>\n'
-);
+// Header 2025
+const header2025 = `		<header class="header" id="top">
+			<div class="container nav">
+				<a class="brand" href="../index.html" aria-label="C5 Manzano 1988">
+					<img src="../images/logo_manzano_altezza_80.png" alt="Logo C5 Manzano 1988" />
+					<span>C5 Manzano 1988</span>
+				</a>
+				<nav class="menu" aria-label="Navigazione principale">
+					<a href="../index.html">Home</a>
+					<a href="index.html" class="active">News</a>
+					<a href="../societa-2025.html">Società</a>
+					<a href="../prima-squadra-2025.html">1a Squadra</a>
+					<a href="../under-2025.html">Under 21/19</a>
+					<a href="../sponsor-2025.html">Sponsor</a>
+					<a href="../trasparenza-2025.html">Trasparenza</a>
+					<a href="../safeguarding-2025.html">Safeguarding</a>
+				</nav>
+				<button class="burger" id="burger" aria-label="Apri menu" aria-controls="mobile-panel" aria-expanded="false"><span></span></button>
+			</div>
+			<div class="mobile-panel" id="mobile-panel" aria-hidden="true">
+				<div class="mobile-drawer">
+					<nav class="mobile-menu" aria-label="Menu mobile">
+						<a href="../index.html">Home</a>
+						<a href="index.html" class="active">News</a>
+						<a href="../societa-2025.html">Società</a>
+						<a href="../prima-squadra-2025.html">1a Squadra</a>
+						<a href="../under-2025.html">Under 21/19</a>
+						<a href="../sponsor-2025.html">Sponsor</a>
+						<a href="../trasparenza-2025.html">Trasparenza</a>
+						<a href="../safeguarding-2025.html">Safeguarding</a>
+					</nav>
+				</div>
+			</div>
+		</header>`;
 
-const footer2025 = (
-  '\n\t\t<footer class="footer">\n\t\t\t<div class="container">\n\t\t\t\t<div class="links">\n\t\t\t\t\t<a href="https://www.divisionecalcioa5.it/" target="_blank" rel="noopener">Divisione Calcio a 5</a>\n\t\t\t\t\t<a href="http://www.regione.fvg.it/rafvg/cms/RAFVG/" target="_blank" rel="noopener">Regione Friuli Venezia Giulia</a>\n\t\t\t\t\t<a href="https://friuliveneziagiulia.lnd.it/it/" target="_blank" rel="noopener">LND – Friuli Venezia Giulia</a>\n\t\t\t\t\t<a href="https://www.calcettomanzano.it/www.comune.manzano.ud.it/hh/index.php?jvs=0&amp;acc=1" target="_blank" rel="noopener">Comune di Manzano (UD)</a>\n\t\t\t\t</div>\n\t\t\t\t<div class="social" aria-label="Social">\n\t\t\t\t\t<a href="https://www.facebook.com/manzano.calcetto.fans/" aria-label="Facebook">Fb</a>\n\t\t\t\t\t<a href="https://www.instagram.com/c5manzano1988/" aria-label="Instagram">Ig</a>\n\t\t\t\t</div>\n\t\t\t\t<p class="copyright">© 2003–2025 A.D.S. C5 MANZANO 1988 – Tutti i diritti riservati • <a href="mailto:robertopit@inwind.it">Contatta webmaster</a></p>\n\t\t\t</div>\n\t\t</footer>\n'
-);
+// Footer 2025
+const footer2025 = `		<footer class="footer">
+			<div class="container">
+				<div class="links">
+					<a href="https://www.divisionecalcioa5.it/" target="_blank" rel="noopener">Divisione Calcio a 5</a>
+					<a href="http://www.regione.fvg.it/rafvg/cms/RAFVG/" target="_blank" rel="noopener">Regione Friuli Venezia Giulia</a>
+					<a href="https://friuliveneziagiulia.lnd.it/it/" target="_blank" rel="noopener">LND – Friuli Venezia Giulia</a>
+					<a href="https://www.calcettomanzano.it/www.comune.manzano.ud.it/hh/index.php?jvs=0&acc=1" target="_blank" rel="noopener">Comune di Manzano (UD)</a>
+				</div>
+				<div class="social" aria-label="Social">
+					<a href="https://www.facebook.com/manzano.calcetto.fans/" aria-label="Facebook">Fb</a>
+					<a href="https://www.instagram.com/c5manzano1988/" aria-label="Instagram">Ig</a>
+				</div>
+				<p class="copyright">© 2003–2025 A.D.S. C5 MANZANO 1988 – Tutti i diritti riservati • <a href="mailto:robertopit@inwind.it">Contatta webmaster</a></p>
+			</div>
+		</footer>`;
 
-function transformHtml(html) {
-  let out = html;
-
-  // 1) Add style-2025 if missing
-  if (!out.includes('style-2025.css')) {
-    out = out.replace(
-      /(<meta[^>]*viewport[^>]*>\s*)/i,
-      `$1\n\t\t<link rel="stylesheet" href="../style-2025.css" />\n\t\t<style>#imHeaderBg,#imHeader,#imFooterBg,#imFooter{display:none!important}</style>\n`
-    );
+function extractArticleContent(html) {
+  // Extract title from <title> tag
+  const titleMatch = html.match(/<title>([^<]+)/);
+  const title = titleMatch ? titleMatch[1].replace(' - Notizie Calcetto Manzano - www.calcettomanzano.it', '') : 'Articolo';
+  
+  // Extract content from imBlogPostBody
+  const contentMatch = html.match(/<div class="imBlogPostBody">(.*?)<\/div>/s);
+  let content = '';
+  if (contentMatch) {
+    content = contentMatch[1]
+      .replace(/<div[^>]*>/g, '')
+      .replace(/<\/div>/g, '')
+      .replace(/<br\s*\/?>/g, '\n')
+      .replace(/<span[^>]*>/g, '')
+      .replace(/<\/span>/g, '')
+      .replace(/<b>/g, '**')
+      .replace(/<\/b>/g, '**')
+      .replace(/&nbsp;/g, ' ')
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"')
+      .trim();
   }
-
-  // 2) Inject header 2025 after <body>
-  if (!out.includes('<header class="header"') && /<body[^>]*>/i.test(out)) {
-    out = out.replace(/<body[^>]*>/i, (m) => `${m}${header2025}`);
+  
+  // Extract breadcrumb info
+  const breadcrumbMatch = html.match(/<div class="imBreadcrumb"[^>]*>(.*?)<\/div>/s);
+  let author = '';
+  let category = '';
+  let date = '';
+  
+  if (breadcrumbMatch) {
+    const breadcrumb = breadcrumbMatch[1];
+    const authorMatch = breadcrumb.match(/<strong>([^<]+)<\/strong>/);
+    if (authorMatch) author = authorMatch[1];
+    
+    const categoryMatch = breadcrumb.match(/in <a[^>]*><span>([^<]+)<\/span><\/a>/);
+    if (categoryMatch) category = categoryMatch[1];
+    
+    const dateMatch = breadcrumb.match(/([A-Za-z]+ \d+ [A-Za-z]+ \d+)/);
+    if (dateMatch) date = dateMatch[1];
   }
-
-  // 3) Inject footer 2025 before </body>
-  if (!out.includes('<footer class="footer"')) {
-    out = out.replace(/\s*<\/body>/i, `${footer2025}\n\t\t<script src="../scripts-2025.js" defer></script>\n\t</body>`);
-  }
-
-  // 4) Ensure scripts-2025 present
-  if (!out.includes('scripts-2025.js')) {
-    out = out.replace(/<\/body>/i, `\t\t<script src="../scripts-2025.js" defer></script>\n\t</body>`);
-  }
-
-  return out;
+  
+  return { title, content, author, category, date };
 }
 
-function run() {
-  if (!fs.existsSync(BLOG_DIR)) {
-    console.error('Blog directory not found:', BLOG_DIR);
-    process.exit(1);
-  }
-  const files = fs.readdirSync(BLOG_DIR)
-    .filter((f) => f.toLowerCase().endsWith('.html'))
-    .map((f) => path.join(BLOG_DIR, f));
+function createCleanArticle(originalHtml, articleData) {
+  const { title, content, author, category, date } = articleData;
+  
+  return `<!DOCTYPE html>
+<html lang="it-IT" dir="ltr">
+<head>
+	<title>${title} - Notizie Calcetto Manzano</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="../style-2025.css" />
+	<style>
+		body { background: var(--c-bg); color: var(--c-text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+		.article-container { max-width: 800px; margin: 0 auto; padding: var(--sp-6); background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); }
+		.article-title { color: var(--c-primary); margin-bottom: var(--sp-4); }
+		.article-meta { color: var(--c-muted); margin-bottom: var(--sp-6); font-size: 0.9em; }
+		.article-content { line-height: 1.6; }
+		.article-content p { margin-bottom: var(--sp-4); }
+	</style>
+</head>
+<body>
+${header2025}
+	<main class="article-container">
+		<h1 class="article-title">${title}</h1>
+		<div class="article-meta">
+			Pubblicato da <strong>${author}</strong> in ${category} · ${date}
+		</div>
+		<div class="article-content">
+			${content.split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('')}
+		</div>
+	</main>
+${footer2025}
+	<script src="../scripts-2025.js" defer></script>
+</body>
+</html>`;
+}
 
-  let changed = 0;
-  files.forEach((fp) => {
-    const src = fs.readFileSync(fp, 'utf8');
-    const out = transformHtml(src);
-    if (out !== src) {
-      fs.writeFileSync(fp, out, 'utf8');
-      changed++;
+function processFile(filePath) {
+  try {
+    const html = fs.readFileSync(filePath, 'utf8');
+    
+    // Skip if it's the main index (list page)
+    if (filePath.endsWith('index.html') && !filePath.includes('?')) {
+      return;
     }
-  });
-  console.log(`Transformed ${changed} / ${files.length} blog files.`);
+    
+    // Extract article content
+    const articleData = extractArticleContent(html);
+    
+    // Skip if no content found
+    if (!articleData.content.trim()) {
+      return;
+    }
+    
+    // Create clean article
+    const cleanHtml = createCleanArticle(html, articleData);
+    
+    // Write back
+    fs.writeFileSync(filePath, cleanHtml, 'utf8');
+    console.log(`Processed: ${path.basename(filePath)}`);
+    
+  } catch (error) {
+    console.error(`Error processing ${filePath}:`, error.message);
+  }
 }
 
-run();
+function processDirectory(dir) {
+  const files = fs.readdirSync(dir);
+  let processed = 0;
+  
+  for (const file of files) {
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+    
+    if (stat.isDirectory()) {
+      processDirectory(filePath);
+    } else if (file.endsWith('.html')) {
+      processFile(filePath);
+      processed++;
+    }
+  }
+  
+  return processed;
+}
 
-
+console.log('Starting blog cleanup...');
+const processed = processDirectory(blogDir);
+console.log(`Processed ${processed} files.`);
