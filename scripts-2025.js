@@ -16,12 +16,14 @@
 			const isOpen = panel.classList.toggle('open');
 			burger.setAttribute('aria-expanded', String(isOpen));
 			panel.setAttribute('aria-hidden', String(!isOpen));
+			document.body.classList.toggle('menu-open', isOpen);
 		});
 		panel.addEventListener('click', (e) => {
 			if (e.target === panel) {
 				panel.classList.remove('open');
 				burger.setAttribute('aria-expanded', 'false');
 				panel.setAttribute('aria-hidden', 'true');
+				document.body.classList.remove('menu-open');
 			}
 		});
 	}
