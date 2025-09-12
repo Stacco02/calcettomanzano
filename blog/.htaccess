@@ -1,13 +1,8 @@
-# Gestisce i reindirizzamenti del blog
+# Configurazione per la cartella blog
 RewriteEngine On
 
-# Reindirizza solo index.html senza parametri alla pagina news
-RewriteCond %{QUERY_STRING} ^$
+# Reindirizza index.html alla pagina news
 RewriteRule ^index\.html$ ../news-2025.html [R=301,L]
-
-# Gestisce gli articoli specifici con parametri URL
-RewriteCond %{QUERY_STRING} ^(.+)$
-RewriteRule ^index\.html$ index.html?%1 [L]
 
 # Forza il server a servire i file HTML come file statici
 <Files "*.html">
