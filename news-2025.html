@@ -9,10 +9,10 @@
 		<meta property="og:description" content="Leggi tutte le notizie e gli articoli dal nostro blog." />
 		<link rel="stylesheet" href="style-2025.css" />
 		<style>
-			/* Stili minimi per la pagina news */
-			.news-frame-wrapper { position: relative; height: calc(100vh - 180px); background: #fff; border: 1px solid var(--c-border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
-			.news-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #fff; }
-			@media (max-width: 900px) { .news-frame-wrapper { height: calc(100vh - 160px); } }
+			/* Stili per la pagina news */
+			.news-card:hover { transform: translateY(-2px); }
+			.news-card h3 a:hover { color: var(--c-accent); }
+			.news-read-more:hover { background: var(--c-primary); color: #fff; }
 		</style>
 	</head>
 	<body>
@@ -53,10 +53,122 @@
 		<main id="main" class="main">
 			<section class="section">
 				<div class="container">
-					<h1>News</h1>
-					<p class="muted">Tutti gli articoli dal nostro blog.</p>
-					<div class="news-frame-wrapper" role="region" aria-label="Elenco articoli">
-						<iframe class="news-frame" title="Articoli del blog" src="blog/index.html"></iframe>
+					<div class="search-bar" style="margin-bottom: var(--sp-6); text-align: center;">
+						<input type="text" id="searchInput" class="search-input" placeholder="Cerca negli articoli..." style="padding: 12px 16px; border: 2px solid var(--c-border); border-radius: var(--radius); width: 100%; max-width: 400px; font-size: 16px;" />
+					</div>
+					
+					<div class="news-grid" id="newsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: var(--sp-6);">
+						<article class="news-card" style="background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: transform 0.2s;">
+							<div class="news-image" style="width: 100%; height: 200px; overflow: hidden; background: var(--c-bg); display: flex; align-items: center; justify-content: center;">
+								<div class="placeholder-image" style="width: 60px; height: 60px; background: var(--c-muted); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px;">📰</div>
+							</div>
+							<div class="news-card-content" style="padding: var(--sp-6);">
+								<h3 class="news-title" style="margin: 0 0 var(--sp-4) 0;">
+									<a href="blog/index.html?altro-addio.html" style="color: var(--c-primary); text-decoration: none;">Altro addio</a>
+								</h3>
+								<div class="news-meta" style="display: flex; gap: var(--sp-4); margin-bottom: var(--sp-4); font-size: 0.9em; color: var(--c-muted); flex-wrap: wrap;">
+									<span class="news-author">Ufficio Stampa Calcetto Manzano</span>
+									<span class="news-category">News Campionato 2025/26</span>
+									<span class="news-date">27 giugno 2025</span>
+								</div>
+								<p class="news-preview" style="line-height: 1.6; margin-bottom: var(--sp-4);">La società ASD C5 Manzano 1988 comunica che il calciatore Filippo Costantini non farà più parte della nostra rosa nella prossima stagione sportiva...</p>
+								<a href="blog/index.html?altro-addio.html" class="news-read-more" style="display: inline-block; background: var(--c-accent); color: var(--c-primary); padding: 8px 16px; border-radius: var(--radius); text-decoration: none; font-weight: 500;">Leggi articolo</a>
+							</div>
+						</article>
+						
+						<article class="news-card" style="background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: transform 0.2s;">
+							<div class="news-image" style="width: 100%; height: 200px; overflow: hidden; background: var(--c-bg); display: flex; align-items: center; justify-content: center;">
+								<div class="placeholder-image" style="width: 60px; height: 60px; background: var(--c-muted); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px;">📰</div>
+							</div>
+							<div class="news-card-content" style="padding: var(--sp-6);">
+								<h3 class="news-title" style="margin: 0 0 var(--sp-4) 0;">
+									<a href="blog/index.html?altro-rinnovo.html" style="color: var(--c-primary); text-decoration: none;">Altro rinnovo</a>
+								</h3>
+								<div class="news-meta" style="display: flex; gap: var(--sp-4); margin-bottom: var(--sp-4); font-size: 0.9em; color: var(--c-muted); flex-wrap: wrap;">
+									<span class="news-author">Ufficio Stampa Calcetto Manzano</span>
+									<span class="news-category">News Campionato 2025/26</span>
+									<span class="news-date">22 giugno 2025</span>
+								</div>
+								<p class="news-preview" style="line-height: 1.6; margin-bottom: var(--sp-4);">Manzano (UD) 21 giugno 2025...</p>
+								<a href="blog/index.html?altro-rinnovo.html" class="news-read-more" style="display: inline-block; background: var(--c-accent); color: var(--c-primary); padding: 8px 16px; border-radius: var(--radius); text-decoration: none; font-weight: 500;">Leggi articolo</a>
+							</div>
+						</article>
+						
+						<article class="news-card" style="background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: transform 0.2s;">
+							<div class="news-image" style="width: 100%; height: 200px; overflow: hidden; background: var(--c-bg); display: flex; align-items: center; justify-content: center;">
+								<div class="placeholder-image" style="width: 60px; height: 60px; background: var(--c-muted); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px;">📰</div>
+							</div>
+							<div class="news-card-content" style="padding: var(--sp-6);">
+								<h3 class="news-title" style="margin: 0 0 var(--sp-4) 0;">
+									<a href="blog/index.html?nuovo-allenatore-u21-alessandro-piani.html" style="color: var(--c-primary); text-decoration: none;">Nuovo Allenatore U21 Alessandro Piani</a>
+								</h3>
+								<div class="news-meta" style="display: flex; gap: var(--sp-4); margin-bottom: var(--sp-4); font-size: 0.9em; color: var(--c-muted); flex-wrap: wrap;">
+									<span class="news-author">Ufficio Stampa Calcetto Manzano</span>
+									<span class="news-category">News Campionato 2025/26</span>
+									<span class="news-date">15 agosto 2025</span>
+								</div>
+								<p class="news-preview" style="line-height: 1.6; margin-bottom: var(--sp-4);">Alessandro Piani è il nuovo allenatore della squadra Under 21...</p>
+								<a href="blog/index.html?nuovo-allenatore-u21-alessandro-piani.html" class="news-read-more" style="display: inline-block; background: var(--c-accent); color: var(--c-primary); padding: 8px 16px; border-radius: var(--radius); text-decoration: none; font-weight: 500;">Leggi articolo</a>
+							</div>
+						</article>
+						
+						<article class="news-card" style="background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: transform 0.2s;">
+							<div class="news-image" style="width: 100%; height: 200px; overflow: hidden; background: var(--c-bg); display: flex; align-items: center; justify-content: center;">
+								<div class="placeholder-image" style="width: 60px; height: 60px; background: var(--c-muted); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px;">📰</div>
+							</div>
+							<div class="news-card-content" style="padding: var(--sp-6);">
+								<h3 class="news-title" style="margin: 0 0 var(--sp-4) 0;">
+									<a href="blog/index.html?emanuele-iurlaro-rimane.html" style="color: var(--c-primary); text-decoration: none;">Emanuele Iurlaro rimane</a>
+								</h3>
+								<div class="news-meta" style="display: flex; gap: var(--sp-4); margin-bottom: var(--sp-4); font-size: 0.9em; color: var(--c-muted); flex-wrap: wrap;">
+									<span class="news-author">Ufficio Stampa Calcetto Manzano</span>
+									<span class="news-category">News Campionato 2025/26</span>
+									<span class="news-date">4 luglio 2025</span>
+								</div>
+								<p class="news-preview" style="line-height: 1.6; margin-bottom: var(--sp-4);">Emanuele Iurlaro confermato per la prossima stagione...</p>
+								<a href="blog/index.html?emanuele-iurlaro-rimane.html" class="news-read-more" style="display: inline-block; background: var(--c-accent); color: var(--c-primary); padding: 8px 16px; border-radius: var(--radius); text-decoration: none; font-weight: 500;">Leggi articolo</a>
+							</div>
+						</article>
+						
+						<article class="news-card" style="background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: transform 0.2s;">
+							<div class="news-image" style="width: 100%; height: 200px; overflow: hidden; background: var(--c-bg); display: flex; align-items: center; justify-content: center;">
+								<div class="placeholder-image" style="width: 60px; height: 60px; background: var(--c-muted); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px;">📰</div>
+							</div>
+							<div class="news-card-content" style="padding: var(--sp-6);">
+								<h3 class="news-title" style="margin: 0 0 var(--sp-4) 0;">
+									<a href="blog/index.html?nuovi-arrivi-----ma-in-casa-.html" style="color: var(--c-primary); text-decoration: none;">Nuovi arrivi ... ma in casa!</a>
+								</h3>
+								<div class="news-meta" style="display: flex; gap: var(--sp-4); margin-bottom: var(--sp-4); font-size: 0.9em; color: var(--c-muted); flex-wrap: wrap;">
+									<span class="news-author">Ufficio Stampa Calcetto Manzano</span>
+									<span class="news-category">News Campionato 2025/26</span>
+									<span class="news-date">25 giugno 2025</span>
+								</div>
+								<p class="news-preview" style="line-height: 1.6; margin-bottom: var(--sp-4);">Nuovi arrivi nella squadra per la prossima stagione...</p>
+								<a href="blog/index.html?nuovi-arrivi-----ma-in-casa-.html" class="news-read-more" style="display: inline-block; background: var(--c-accent); color: var(--c-primary); padding: 8px 16px; border-radius: var(--radius); text-decoration: none; font-weight: 500;">Leggi articolo</a>
+							</div>
+						</article>
+						
+						<article class="news-card" style="background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: transform 0.2s;">
+							<div class="news-image" style="width: 100%; height: 200px; overflow: hidden; background: var(--c-bg); display: flex; align-items: center; justify-content: center;">
+								<div class="placeholder-image" style="width: 60px; height: 60px; background: var(--c-muted); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px;">📰</div>
+							</div>
+							<div class="news-card-content" style="padding: var(--sp-6);">
+								<h3 class="news-title" style="margin: 0 0 var(--sp-4) 0;">
+									<a href="blog/index.html?-a-squadra---manzano-senza-problemi-a-martignacco--vittoria-per-9-4.html" style="color: var(--c-primary); text-decoration: none;">UNION MARTIGNACCO - C5 MANZANO 1988 4-9</a>
+								</h3>
+								<div class="news-meta" style="display: flex; gap: var(--sp-4); margin-bottom: var(--sp-4); font-size: 0.9em; color: var(--c-muted); flex-wrap: wrap;">
+									<span class="news-author">Patrick Lavaroni - Addetto stampa</span>
+									<span class="news-category">Campionato Serie C - 2024-2025</span>
+									<span class="news-date">24 novembre 2024</span>
+								</div>
+								<p class="news-preview" style="line-height: 1.6; margin-bottom: var(--sp-4);">Manzano (UD) 23 novembre 2024 - Vittoria per 9-4 contro Union Martignacco...</p>
+								<a href="blog/index.html?-a-squadra---manzano-senza-problemi-a-martignacco--vittoria-per-9-4.html" class="news-read-more" style="display: inline-block; background: var(--c-accent); color: var(--c-primary); padding: 8px 16px; border-radius: var(--radius); text-decoration: none; font-weight: 500;">Leggi articolo</a>
+							</div>
+						</article>
+					</div>
+					
+					<div class="no-results" id="noResults" style="display: none; text-align: center; padding: var(--sp-8); color: var(--c-muted);">
+						<p>Nessun articolo trovato per la ricerca effettuata.</p>
 					</div>
 				</div>
 			</section>
@@ -79,6 +191,36 @@
 		</footer>
 
 		<script src="scripts-2025.js" defer></script>
+		<script>
+			// Search functionality
+			document.getElementById('searchInput').addEventListener('input', function(e) {
+				const searchTerm = e.target.value.toLowerCase();
+				const articles = document.querySelectorAll('.news-card');
+				const noResults = document.getElementById('noResults');
+				let visibleCount = 0;
+				
+				articles.forEach(article => {
+					const title = article.querySelector('.news-title').textContent.toLowerCase();
+					const preview = article.querySelector('.news-preview').textContent.toLowerCase();
+					const author = article.querySelector('.news-author').textContent.toLowerCase();
+					const category = article.querySelector('.news-category').textContent.toLowerCase();
+					
+					const matches = title.includes(searchTerm) || 
+								  preview.includes(searchTerm) || 
+								  author.includes(searchTerm) || 
+								  category.includes(searchTerm);
+					
+					if (matches) {
+						article.style.display = 'block';
+						visibleCount++;
+					} else {
+						article.style.display = 'none';
+					}
+				});
+				
+				noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+			});
+		</script>
 	</body>
 </html>
 
