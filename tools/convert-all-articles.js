@@ -34,6 +34,9 @@ function extractArticleInfo(html) {
   // Pulisce il contenuto HTML e rimuove spazi extra
   content = content.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
   
+  // Gestisce il caso comune dove data e contenuto sono attaccati
+  content = content.replace(/\*\*([^*]+)\*\*([^*])/g, '**$1** $2');
+  
   // Crea un preview più significativo
   let preview = content;
   if (preview.length > 200) {
