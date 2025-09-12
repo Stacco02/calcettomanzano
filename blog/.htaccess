@@ -1,0 +1,17 @@
+# Forza il server a servire i file HTML come file statici
+# invece di processarli come PHP
+<Files "*.html">
+    SetHandler default-handler
+    ForceType text/html
+</Files>
+
+# Disabilita l'esecuzione di PHP nei file HTML
+<Files "index.html">
+    SetHandler default-handler
+    ForceType text/html
+</Files>
+
+# Reindirizza le richieste con parametri URL agli articoli specifici
+RewriteEngine On
+RewriteCond %{QUERY_STRING} ^(.+)$
+RewriteRule ^index\.html$ index.html?%1 [L]

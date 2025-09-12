@@ -1,0 +1,11 @@
+# Reindirizza le richieste del blog alla nuova pagina news
+RewriteEngine On
+
+# Reindirizza /blog/ alla pagina news
+RewriteRule ^blog/?$ news-2025.html [R=301,L]
+
+# Reindirizza /blog/index.html alla pagina news
+RewriteRule ^blog/index\.html$ news-2025.html [R=301,L]
+
+# Reindirizza gli articoli specifici del blog
+RewriteRule ^blog/index\.html\?(.+)$ blog/index.html?$1 [L]
