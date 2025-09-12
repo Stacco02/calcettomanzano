@@ -9,7 +9,7 @@
 		const queryString = window.location.search;
 		
 		if (queryString) {
-			// Se ci sono parametri, cerca il file corrispondente
+			// Se ci sono parametri, reindirizza direttamente al file dell'articolo
 			let articleName = queryString.substring(1);
 			if (!articleName.endsWith('.html')) {
 				articleName += '.html';
@@ -18,24 +18,8 @@
 			// Crea il nome del file con il punto interrogativo
 			const fileName = `index.html?${articleName}`;
 			
-			// Prova a caricare il file dell'articolo
-			fetch(fileName)
-				.then(response => {
-					if (response.ok) {
-						return response.text();
-					}
-					throw new Error('Articolo non trovato');
-				})
-				.then(html => {
-					document.open();
-					document.write(html);
-					document.close();
-				})
-				.catch(error => {
-					console.error('Errore:', error);
-					// Se non trova l'articolo, reindirizza alla pagina news
-					window.location.href = '../news-2025.html';
-				});
+			// Reindirizza direttamente al file dell'articolo
+			window.location.href = fileName;
 		} else {
 			// Se non ci sono parametri, reindirizza alla pagina news principale
 			window.location.href = '../news-2025.html';

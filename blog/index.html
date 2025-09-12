@@ -7,7 +7,13 @@
 	<script>
 		// Reindirizza al router con gli stessi parametri
 		const queryString = window.location.search;
-		window.location.href = `router.html${queryString}`;
+		if (queryString) {
+			// Se ci sono parametri, reindirizza al router
+			window.location.href = `router.html${queryString}`;
+		} else {
+			// Se non ci sono parametri, reindirizza alla pagina news
+			window.location.href = '../news-2025.html';
+		}
 	</script>
 </head>
 <body>
