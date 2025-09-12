@@ -6,8 +6,7 @@ RewriteCond %{QUERY_STRING} ^$
 RewriteRule ^index\.html$ ../news-2025.html [R=301,L]
 
 # Permette l'accesso agli articoli specifici (con parametri URL)
-RewriteCond %{QUERY_STRING} ^(.+)$
-RewriteRule ^index\.html$ index.html?%1 [L]
+# Non fare nulla - lascia che il server serva i file direttamente
 
 # Forza il server a servire i file HTML come file statici
 <Files "*.html">
