@@ -15,3 +15,7 @@
 RewriteEngine On
 RewriteCond %{QUERY_STRING} ^(.+)$
 RewriteRule ^index\.html$ index.html?%1 [L]
+
+# Reindirizza le richieste senza parametri alla pagina news
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^index\.html$ ../news-2025.html [R=301,L]
