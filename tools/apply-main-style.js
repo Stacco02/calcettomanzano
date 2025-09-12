@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="utf-8">
-  <title>Convocazioni FUTSAL UDINESE - C5 MANZANO 1988</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
+const fs = require('fs');
+const path = require('path');
+
+const blogDir = '/Users/andreastacco/Documents/GitHub/calcettomanzano/blog';
+const articlesListPath = '/Users/andreastacco/Documents/GitHub/calcettomanzano/articles-list.json';
+
+// Legge la lista degli articoli
+const articlesList = JSON.parse(fs.readFileSync(articlesListPath, 'utf8'));
+
+console.log(`Applicando lo stile principale a ${articlesList.length} articoli...`);
+
+// Stile principale basato sulla palette del sito
+const mainStyle = `
 /* Stile principale del sito C5 Manzano 1988 */
 :root {
     --c-primary: #0b3f91;
@@ -138,15 +144,47 @@ h1 {
     background: #0a3579;
     color: white;
 }
-</style>
-</head>
-<body>
-  <h1>Convocazioni FUTSAL UDINESE - C5 MANZANO 1988</h1>
-  <a href="../news-2025.html" class="back-to-news">← Torna alle News</a>
-  <p class="meta">Ufficio Stampa Calcetto Manzano — Giovedì 05 Dic 2024</p>
-  <div class="content">
-<div id="imBlogPost_00000009D"><div class="imTAJustify"><span class="fs12lh1-5"><b>Manzano (UD) 5 dicembre 2024</b></span></div><div class="imTAJustify">MIster Gianluca Asquini convoca :</div><div class="imTAJustify"><span class="fs12lh1-5"><b>CATTARIN Andrea - SARO Cristian - DE BERNARDO Roberto - PASCALE Antonio - VALENTINUZZI Matteo - DE GIORGIO Leonardo - DE GIORGIO Lorenzo - FUSCO Jacopo - TANCOS Tadej &nbsp;- IURLARO Emanuele - STACCO Andrea - COSTANTINI Filippo. </b></span></div><div style="clear: both;"><!-- clear floated images --></div></div><br /><br /></div>
-						
-  </div>
-</body>
-</html>
+`;
+
+let updatedCount = 0;
+
+articlesList.forEach(article => {
+    const filePath = path.join(blogDir, article.cleanName + '.html');
+    
+    if (fs.existsSync(filePath)) {
+        try {
+            let content = fs.readFileSync(filePath, 'utf8');
+            
+            // Sostituisce il vecchio stile inline con il nuovo stile principale
+            content = content.replace(
+                /<style>.*?<\/style>/s,
+                `<style>${mainStyle}</style>`
+            );
+            
+            // Aggiunge il link "Torna alle news" dopo il titolo
+            content = content.replace(
+                /(<h1>.*?<\/h1>)/,
+                `$1\n  <a href="../news-2025.html" class="back-to-news">← Torna alle News</a>`
+            );
+            
+            // Pulisce il contenuto rimuovendo tag HTML non necessari
+            content = content.replace(/<article>/g, '');
+            content = content.replace(/<\/article>/g, '');
+            
+            // Salva il file aggiornato
+            fs.writeFileSync(filePath, content);
+            updatedCount++;
+            console.log(`✅ Aggiornato: ${article.cleanName}.html`);
+            
+        } catch (error) {
+            console.error(`❌ Errore nell'aggiornare ${article.cleanName}.html:`, error.message);
+        }
+    } else {
+        console.log(`⚠️  File non trovato: ${article.cleanName}.html`);
+    }
+});
+
+console.log(`\n📊 Risultati:`);
+console.log(`- Articoli aggiornati: ${updatedCount}`);
+console.log(`- Articoli non trovati: ${articlesList.length - updatedCount}`);
+console.log(`\n🎨 Stile principale applicato a tutti gli articoli!`);

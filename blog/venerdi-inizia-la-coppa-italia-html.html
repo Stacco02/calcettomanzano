@@ -4,14 +4,149 @@
   <meta charset="utf-8">
   <title>Venerdì inizia la Coppa Italia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;max-width:820px;margin:2rem auto;padding:0 1rem;line-height:1.6}h1{line-height:1.25;margin:0 0 .25rem}p.meta{color:#555;margin:.25rem 0 1.25rem;font-size:.95rem}.content img{max-width:100%;height:auto}</style>
+  <style>
+/* Stile principale del sito C5 Manzano 1988 */
+:root {
+    --c-primary: #0b3f91;
+    --c-accent: #ffd21f;
+    --c-bg: #ffffff;
+    --c-text: #0e0e0e;
+    --c-muted: #6b7380;
+    --c-border: #e5e7eb;
+    --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px;
+    --radius: 12px; --radius-sm: 8px; --radius-lg: 18px;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    color: var(--c-text);
+    background: var(--c-bg);
+    line-height: 1.6;
+}
+
+body {
+    font-size: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--sp-6) var(--sp-4);
+}
+
+h1 {
+    font-family: Montserrat, Inter, sans-serif;
+    font-weight: 800;
+    font-size: clamp(28px, 4vw, 36px);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    margin: 0 0 var(--sp-4);
+    color: var(--c-primary);
+}
+
+.meta {
+    color: var(--c-muted);
+    margin: 0 0 var(--sp-5);
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: var(--sp-3) 0;
+    border-bottom: 2px solid var(--c-border);
+}
+
+.content {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--c-text);
+}
+
+.content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+    margin: var(--sp-4) 0;
+    box-shadow: var(--shadow);
+}
+
+.content p {
+    margin: var(--sp-4) 0;
+}
+
+.content strong {
+    color: var(--c-primary);
+    font-weight: 600;
+}
+
+.content a {
+    color: var(--c-primary);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.content a:hover {
+    border-bottom-color: var(--c-primary);
+}
+
+/* Stile per i div del contenuto del blog */
+.content div[id^="imBlogPost"] {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.content div[id^="imBlogPost"] span {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: var(--sp-4) var(--sp-3);
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    .content {
+        font-size: 15px;
+    }
+}
+
+/* Back to news link */
+.back-to-news {
+    display: inline-block;
+    margin-bottom: var(--sp-5);
+    padding: var(--sp-2) var(--sp-4);
+    background: var(--c-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.back-to-news:hover {
+    background: #0a3579;
+    color: white;
+}
+</style>
 </head>
 <body>
   <h1>Venerdì inizia la Coppa Italia</h1>
+  <a href="../news-2025.html" class="back-to-news">← Torna alle News</a>
   <p class="meta">Patrick Lavaroni - Addetto stampa — Domenica 22 Set 2024</p>
   <div class="content">
 <div id="imBlogPost_000000083"><b class="imTAJustify fs12lh1-5">Manzano (UD) 22 settembre 2024</b><div class="imTAJustify"><span class="fs12lh1-5">La stagione del Calcio a 5 regionale inizia con la <b>Coppa Italia</b>, il Trofeo Stelio Martini. Quest’anno assistiamo a un cambiamento rispetto alle ultime annate: la coppa non si intersecherà con il campionato e verrà giocata interamente tra fine settembre e inizio novembre, con le f<b>inale prevista per sabato 9 novembre</b>.<br></span></div> <div class="imTAJustify"> <span class="fs12lh1-5">Il campionato inizierà quindi solo dopo, con la prima giornata prevista per il 16 novembre.</span></div> <div class="imTAJustify"> </div> <div class="imTAJustify"> <span class="fs12lh1-5"><b>LA FORMULA</b> – Due gironi da <b>5 squadre</b> che equivalgono a 4 partite e una giornata di riposo. Passeranno al turno successivo le <b>prime 4 classificate di ciascun gruppo</b>.</span></div> <div class="imTAJustify"> <span class="fs12lh1-5">Dopo sarà la volta dei <b>quarti di finale</b> in gara secca, dove le prime classificate sfideranno le quarte dell’altro girone. Stesso meccanismo per le sfide tra seconde e terze. &nbsp;</span></div> <div class="imTAJustify"> <span class="fs12lh1-5">Dai quarti usciranno le <b>4 semifinaliste</b>, gli incroci (sempre in gara secca) saranno stabiliti dal tabellone, quindi quest’anno non ci sarà il sorteggio.</span></div> <div class="imTAJustify"> <span class="fs12lh1-5">Finale, come già detto, prevista per il 9 novembre su campo da determinarsi. &nbsp;</span></div> <div class="imTAJustify"> </div> <div class="imTAJustify"> <span class="fs12lh1-5"><b>IL GIRONE DEL MANZANO </b>– Gruppo estremamente competitivo per i gialloblù. La prima sfida è in programma <b>venerdì 27 settembre al PalaCus</b>, casa dell’<b>Udinese Futsal</b>. L’anno scorso i bianconeri di Lucio Scuor sono stati la squadra rivelazione del campionato. Hanno chiuso il campionato al terzo posto e sono stati gli unici a infliggere una sconfitta alla corazzata delle Eagles Cividale. Il loro gioco si fondava su &nbsp;</span></div> <div class="imTAJustify"> <span class="fs12lh1-5">grande intensità ed eccellente condizione atletica. &nbsp;</span></div> <div class="imTAJustify"> </div> <div class="imTAJustify"> <span class="fs12lh1-5">Seconda giornata sabato <b>5 ottobre a Manzano</b>, contro il <b>Naonis</b>. Come il Manzano, anche il Naonis è una neo-retrocessa dalla Serie B. I pordenonesi continuano il loro percorso con mister Criscuolo e puntano a un campionato di vertice. Dalla loro una rosa di livello che l’anno scorso aveva disputato un buon girone di ritorno in Serie B. &nbsp;</span></div> <div class="imTAJustify"> </div> <div class="imTAJustify"> <span class="fs12lh1-5">Terza giornata di riposo per il Manzano, con i ragazzi di mister Asquini che torneranno in campo <b>sabato 19 ottobre, sempre in casa, contro la Gradese</b>. Quella di Grado probabilmente è una delle squadre più esperte della C. Tra i numerosi volti noti figurano gli ex <b>Teixeira</b> e <b>Fevereiro</b>. Il gruppo guidato da <b>Giuseppe Tirelli</b>, arrivato dal Turriaco, sarà un avversario ostico per tutti. &nbsp;</span></div> <div class="imTAJustify"> </div> <div class="imTAJustify"> <span class="fs12lh1-5">Ultima giornata in <b>trasferta</b> contro il <b>Pasiano di Pordenone</b>, <b>sabato 26 ottobre</b>. Il Pasiano, al terzo anno di Serie C ha puntato su mister <b>Mauro Polo Grava</b>, reduce dall’avventura nelle giovanili del Maccan Prata. L’anno scorso i pordenonesi sfiorarono la finale, perdendo solo ai calci di rigore la semifinale contro il Tarcento.</span></div><div style="clear: both;"><!-- clear floated images --></div></div><br /><br /></div>
-						</article>
+						
   </div>
 </body>
 </html>

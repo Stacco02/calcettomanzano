@@ -4,14 +4,149 @@
   <meta charset="utf-8">
   <title>Convocazioni NEW TEAM LIGNANO - C5 MANZANO 1988</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;max-width:820px;margin:2rem auto;padding:0 1rem;line-height:1.6}h1{line-height:1.25;margin:0 0 .25rem}p.meta{color:#555;margin:.25rem 0 1.25rem;font-size:.95rem}.content img{max-width:100%;height:auto}</style>
+  <style>
+/* Stile principale del sito C5 Manzano 1988 */
+:root {
+    --c-primary: #0b3f91;
+    --c-accent: #ffd21f;
+    --c-bg: #ffffff;
+    --c-text: #0e0e0e;
+    --c-muted: #6b7380;
+    --c-border: #e5e7eb;
+    --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px;
+    --radius: 12px; --radius-sm: 8px; --radius-lg: 18px;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    color: var(--c-text);
+    background: var(--c-bg);
+    line-height: 1.6;
+}
+
+body {
+    font-size: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--sp-6) var(--sp-4);
+}
+
+h1 {
+    font-family: Montserrat, Inter, sans-serif;
+    font-weight: 800;
+    font-size: clamp(28px, 4vw, 36px);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    margin: 0 0 var(--sp-4);
+    color: var(--c-primary);
+}
+
+.meta {
+    color: var(--c-muted);
+    margin: 0 0 var(--sp-5);
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: var(--sp-3) 0;
+    border-bottom: 2px solid var(--c-border);
+}
+
+.content {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--c-text);
+}
+
+.content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+    margin: var(--sp-4) 0;
+    box-shadow: var(--shadow);
+}
+
+.content p {
+    margin: var(--sp-4) 0;
+}
+
+.content strong {
+    color: var(--c-primary);
+    font-weight: 600;
+}
+
+.content a {
+    color: var(--c-primary);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.content a:hover {
+    border-bottom-color: var(--c-primary);
+}
+
+/* Stile per i div del contenuto del blog */
+.content div[id^="imBlogPost"] {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.content div[id^="imBlogPost"] span {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: var(--sp-4) var(--sp-3);
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    .content {
+        font-size: 15px;
+    }
+}
+
+/* Back to news link */
+.back-to-news {
+    display: inline-block;
+    margin-bottom: var(--sp-5);
+    padding: var(--sp-2) var(--sp-4);
+    background: var(--c-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.back-to-news:hover {
+    background: #0a3579;
+    color: white;
+}
+</style>
 </head>
 <body>
   <h1>Convocazioni NEW TEAM LIGNANO - C5 MANZANO 1988</h1>
+  <a href="../news-2025.html" class="back-to-news">← Torna alle News</a>
   <p class="meta">Ufficio Stampa Calcetto Manzano — Venerdì 24 Gen 2025</p>
   <div class="content">
 <div id="imBlogPost_0000000AA"><div class="imTAJustify"><span class="fs12lh1-5"><b>Manzano (UD) 24 gennaio 2025</b></span></div><div><div class="imTAJustify">Mister <span class="fs12lh1-5"><b>Gianluca Asquini</b></span> ha convocato :</div><div class="imTAJustify"><span class="fs12lh1-5"><b>FEDELI Riccardo - CATTARIN Andrea - COSTANTINI Filippo - DE GIORGIO Lorenzo - DE GIORGIO Leonardo - STACCO Andrea - FABBRO Jacopo - GENNA Simone IURLARO Emanuele - TANCOS Tadej - FUSCO Jacopo - DE BERNARDO Roberto</b></span></div></div><div style="clear: both;"><!-- clear floated images --></div></div><br /><br /></div>
-						</article>
+						
   </div>
 </body>
 </html>
