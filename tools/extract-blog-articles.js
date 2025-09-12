@@ -16,20 +16,31 @@ function cleanFileName(filename) {
 
 // Funzione per estrarre informazioni dall'articolo
 function extractArticleInfo(html) {
-  const titleMatch = html.match(/<h1 class="article-title"[^>]*>([^<]+)<\/h1>/);
+  // Estrae il titolo da <h1> (senza classe)
+  const titleMatch = html.match(/<h1[^>]*>([^<]+)<\/h1>/);
   const title = titleMatch ? titleMatch[1].trim() : 'Articolo senza titolo';
   
-  // Estrae autore e categoria dalla meta
-  const metaMatch = html.match(/Pubblicato da <strong>([^<]+)<\/strong> in ([^·]+)/);
-  const author = metaMatch ? metaMatch[1].trim() : 'Ufficio Stampa Calcetto Manzano';
-  const category = metaMatch ? metaMatch[2].trim() : 'News';
+  // Estrae autore e categoria dalla meta (cerca pattern diverso)
+  const metaMatch = html.match(/<p class="meta"[^>]*>([^<]+)<\/p>/);
+  let author = 'Ufficio Stampa Calcetto Manzano';
+  let category = 'News';
+  let date = 'Data non disponibile';
   
-  // Estrae la data (se presente)
-  const dateMatch = html.match(/·\s*([^<]+)/);
-  const date = dateMatch ? dateMatch[1].trim() : 'Data non disponibile';
+  if (metaMatch) {
+    const metaText = metaMatch[1];
+    // Cerca pattern come "Pubblicato da X in Y · Data"
+    const authorMatch = metaText.match(/Pubblicato da\s+([^·]+)/);
+    if (authorMatch) author = authorMatch[1].trim();
+    
+    const categoryMatch = metaText.match(/in\s+([^·]+)/);
+    if (categoryMatch) category = categoryMatch[1].trim();
+    
+    const dateMatch = metaText.match(/·\s*([^<]+)/);
+    if (dateMatch) date = dateMatch[1].trim();
+  }
   
-  // Estrae il contenuto dal div article-content
-  const contentMatch = html.match(/<div class="article-content"[^>]*>(.*?)<\/div>/s);
+  // Estrae il contenuto dal div con id che contiene il testo
+  const contentMatch = html.match(/<div[^>]*id="imBlogPost_[^"]*"[^>]*>(.*?)<\/div>/s);
   let content = contentMatch ? contentMatch[1] : '';
   
   // Pulisce il contenuto HTML e rimuove spazi extra
@@ -75,19 +86,34 @@ files.forEach((file, index) => {
   }
 });
 
+// Filtra solo gli articoli reali (esclude pagine di navigazione)
+const realArticles = articles.filter(article => {
+  const filename = article.filename.toLowerCase();
+  return !filename.includes('start=') && 
+         !filename.includes('length=') && 
+         !filename.includes('author=') && 
+         !filename.includes('category=') && 
+         !filename.includes('month=') && 
+         !filename.includes('tag=') &&
+         !filename.includes('x5feed') &&
+         article.title !== 'Articolo senza titolo' &&
+         article.content.length > 10;
+});
+
 // Ordina gli articoli per data (più recenti prima)
-articles.sort((a, b) => {
+realArticles.sort((a, b) => {
   const dateA = new Date(a.date.split(' ').reverse().join(' '));
   const dateB = new Date(b.date.split(' ').reverse().join(' '));
   return dateB - dateA;
 });
 
-console.log(`\nArticoli processati: ${articles.length}`);
-console.log('Primi 10 articoli:');
-articles.slice(0, 10).forEach(article => {
+console.log(`\nArticoli totali: ${articles.length}`);
+console.log(`Articoli reali: ${realArticles.length}`);
+console.log('Primi 10 articoli reali:');
+realArticles.slice(0, 10).forEach(article => {
   console.log(`- ${article.filename}: ${article.title}`);
 });
 
 // Salva la lista degli articoli per la pagina news
-fs.writeFileSync('/Users/andreastacco/Documents/GitHub/calcettomanzano/articles-list.json', JSON.stringify(articles, null, 2));
+fs.writeFileSync('/Users/andreastacco/Documents/GitHub/calcettomanzano/articles-list.json', JSON.stringify(realArticles, null, 2));
 console.log('\nLista articoli salvata in articles-list.json');

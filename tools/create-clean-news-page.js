@@ -45,14 +45,14 @@ function generateArticleCard(article) {
 							</div>
 							<div class="news-card-content" style="padding: 1.5rem;">
 								<h3 class="news-title" style="margin: 0 0 1rem 0; font-size: 1.25rem; font-weight: 600;">
-									<a href="blog/${article.originalFile}" style="color: #1e40af; text-decoration: none;">${article.title}</a>
+									<a href="blog/${article.filename}" style="color: #1e40af; text-decoration: none;">${article.title}</a>
 								</h3>
 								<div class="news-meta" style="display: flex; gap: 1rem; margin-bottom: 1rem; font-size: 0.9em; color: #6b7280; flex-wrap: wrap;">
 									<span class="news-author">${article.author}</span>
 									<span class="news-category">${article.category}</span>
 									<span class="news-date">${article.date}</span>
 								</div>
-								<a href="blog/${article.originalFile}" class="news-read-more" style="display: inline-block; background: #f59e0b; color: #1e40af; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 14px;">Leggi articolo</a>
+								<a href="blog/${article.filename}" class="news-read-more" style="display: inline-block; background: #f59e0b; color: #1e40af; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 14px;">Leggi articolo</a>
 							</div>
 						</article>`;
 }
