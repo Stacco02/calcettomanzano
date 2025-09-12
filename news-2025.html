@@ -16,7 +16,45 @@
 			.news-card:hover { transform: translateY(-2px); }
 			.news-card h3 a:hover { color: #f59e0b; }
 			.news-read-more:hover { background: #1e40af; color: #fff; }
-		</style>
+		
+                        /* Stili per il filtro anno */
+                        .year-btn:hover {
+                                background: var(--c-primary) !important;
+                                color: white !important;
+                                border-color: var(--c-primary) !important;
+                        }
+                        
+                        .year-btn.active {
+                                background: var(--c-primary) !important;
+                                color: white !important;
+                                border-color: var(--c-primary) !important;
+                        }
+                        
+                        .year-filter-container {
+                                background: #f8fafc;
+                                padding: 1.5rem;
+                                border-radius: 12px;
+                                border: 1px solid var(--c-border);
+                        }
+                        
+                        @media (max-width: 768px) {
+                                .year-filter {
+                                        flex-direction: column;
+                                        align-items: stretch;
+                                }
+                                
+                                .year-filter span {
+                                        text-align: center;
+                                        margin-right: 0 !important;
+                                        margin-bottom: 1rem;
+                                }
+                                
+                                .year-btn {
+                                        text-align: center;
+                                }
+                        }
+
+			</style>
 	</head>
 	<body>
 		<header class="header" id="top">
@@ -1240,19 +1278,119 @@
                 <script src="search-index.js"></script>
                 
                 <script src="search-index.js"></script>
+                
+                <script src="search-index.js"></script>
                 <script>
                         document.addEventListener('DOMContentLoaded', function() {
                                 const searchInput = document.getElementById('searchInput');
                                 const newsGrid = document.querySelector('.news-grid');
                                 const loadMoreBtn = document.getElementById('loadMoreBtn');
+                                const yearButtons = document.querySelectorAll('.year-btn');
                                 
                                 // Carica TUTTI gli articoli all'inizio
                                 let allNewsItems = Array.from(newsGrid.querySelectorAll('.news-card'));
                                 let filteredItems = [...allNewsItems];
                                 let visibleItems = 6;
                                 let isSearching = false;
+                                let currentYearFilter = 'all';
 
                                 console.log('Articoli totali caricati:', allNewsItems.length);
+
+                                // Funzione per estrarre l'anno da un articolo
+                                function getArticleYear(item) {
+                                        const title = item.querySelector('.news-title').textContent;
+                                        const meta = item.querySelector('.news-author').textContent;
+                                        
+                                        // Cerca l'anno nel titolo o nei metadati
+                                        const yearMatch = title.match(/(d{4})/) || meta.match(/(d{4})/);
+                                        return yearMatch ? parseInt(yearMatch[1]) : null;
+                                }
+
+                                // Funzione per filtrare per anno
+                                function filterByYear(year) {
+                                        currentYearFilter = year;
+                                        
+                                        if (year === 'all') {
+                                                filteredItems = [...allNewsItems];
+                                        } else {
+                                                filteredItems = allNewsItems.filter(item => {
+                                                        const articleYear = getArticleYear(item);
+                                                        return articleYear === parseInt(year);
+                                                });
+                                        }
+                                        
+                                        console.log('Filtrati per anno', year + ':', filteredItems.length, 'articoli');
+                                        
+                                        // Se c'è una ricerca attiva, riapplica anche quella
+                                        if (isSearching && searchInput.value.trim().length >= 2) {
+                                                applySearch(searchInput.value.trim());
+                                        } else {
+                                                visibleItems = 6;
+                                                updateDisplay();
+                                        }
+                                        
+                                        updateYearButtons();
+                                }
+
+                                // Funzione per aggiornare i pulsanti anno
+                                function updateYearButtons() {
+                                        yearButtons.forEach(btn => {
+                                                btn.classList.remove('active');
+                                                if (btn.dataset.year === currentYearFilter) {
+                                                        btn.classList.add('active');
+                                                }
+                                        });
+                                }
+
+                                // Funzione per applicare la ricerca
+                                function applySearch(searchTerm) {
+                                        if (searchTerm.length < 2) {
+                                                filteredItems = currentYearFilter === 'all' ? 
+                                                        [...allNewsItems] : 
+                                                        allNewsItems.filter(item => {
+                                                                const articleYear = getArticleYear(item);
+                                                                return articleYear === parseInt(currentYearFilter);
+                                                        });
+                                                isSearching = false;
+                                        } else {
+                                                isSearching = true;
+                                                
+                                                // Usa l'indice di ricerca per trovare gli articoli
+                                                const searchResults = window.searchInArticles ? 
+                                                        window.searchInArticles(searchTerm) : 
+                                                        performFallbackSearch(searchTerm);
+                                                
+                                                // Filtra gli elementi DOM corrispondenti
+                                                let searchFiltered = allNewsItems.filter(item => {
+                                                        const articleLink = item.querySelector('a[href*="blog/"]');
+                                                        if (!articleLink) return false;
+                                                        
+                                                        const href = articleLink.getAttribute('href');
+                                                        const filename = href.split('/').pop().split('?')[0];
+                                                        
+                                                        return searchResults.some(result => result.filename === filename);
+                                                });
+                                                
+                                                // Applica anche il filtro anno
+                                                if (currentYearFilter !== 'all') {
+                                                        searchFiltered = searchFiltered.filter(item => {
+                                                                const articleYear = getArticleYear(item);
+                                                                return articleYear === parseInt(currentYearFilter);
+                                                        });
+                                                }
+                                                
+                                                filteredItems = searchFiltered;
+                                        }
+                                        
+                                        visibleItems = 6;
+                                        updateDisplay();
+                                        
+                                        if (isSearching) {
+                                                showSearchResultsCount(filteredItems.length, searchTerm);
+                                        } else {
+                                                hideSearchResultsCount();
+                                        }
+                                }
 
                                 // Funzione per aggiornare la visualizzazione
                                 function updateDisplay() {
@@ -1276,7 +1414,7 @@
                                         }
                                         
                                         // Mostra/nasconde il messaggio "Nessun risultato"
-                                        if (filteredItems.length === 0 && isSearching) {
+                                        if (filteredItems.length === 0 && (isSearching || currentYearFilter !== 'all')) {
                                                 showNoResultsMessage();
                                         } else {
                                                 hideNoResultsMessage();
@@ -1300,10 +1438,18 @@
                                                 border-radius: 12px;
                                                 margin: 2rem 0;
                                         `;
+                                        
+                                        let message = 'Nessun articolo trovato';
+                                        if (currentYearFilter !== 'all' && !isSearching) {
+                                                message = `Nessun articolo trovato per l'anno ${currentYearFilter}`;
+                                        } else if (isSearching) {
+                                                message = 'Nessun articolo trovato per la ricerca';
+                                        }
+                                        
                                         noResults.innerHTML = `
                                                 <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
-                                                <h3 style="margin: 0 0 0.5rem; color: #374151;">Nessun articolo trovato</h3>
-                                                <p style="margin: 0;">Prova con parole chiave diverse o controlla l'ortografia</p>
+                                                <h3 style="margin: 0 0 0.5rem; color: #374151;">${message}</h3>
+                                                <p style="margin: 0;">Prova con un anno diverso o parole chiave diverse</p>
                                         `;
                                         newsGrid.appendChild(noResults);
                                 }
@@ -1316,55 +1462,7 @@
                                         }
                                 }
 
-                                // Funzione di ricerca potenziata
-                                function searchNews() {
-                                        const searchTerm = searchInput.value.trim();
-                                        
-                                        if (searchTerm.length < 2) {
-                                                // Se la ricerca è troppo corta, mostra tutti gli articoli
-                                                filteredItems = [...allNewsItems];
-                                                isSearching = false;
-                                                visibleItems = 6;
-                                                updateDisplay();
-                                                hideSearchResultsCount();
-                                                return;
-                                        }
-                                        
-                                        isSearching = true;
-                                        console.log('Ricerca per:', searchTerm);
-                                        
-                                        // Usa l'indice di ricerca per trovare gli articoli
-                                        const searchResults = window.searchInArticles ? 
-                                                window.searchInArticles(searchTerm) : 
-                                                performFallbackSearch(searchTerm);
-                                        
-                                        console.log('Risultati dalla ricerca:', searchResults.length);
-                                        
-                                        // Filtra gli elementi DOM corrispondenti
-                                        filteredItems = allNewsItems.filter(item => {
-                                                const articleLink = item.querySelector('a[href*="blog/"]');
-                                                if (!articleLink) return false;
-                                                
-                                                const href = articleLink.getAttribute('href');
-                                                const filename = href.split('/').pop().split('?')[0];
-                                                
-                                                const isMatch = searchResults.some(result => result.filename === filename);
-                                                if (isMatch) {
-                                                        console.log('Trovato match:', filename);
-                                                }
-                                                return isMatch;
-                                        });
-                                        
-                                        console.log('Articoli filtrati:', filteredItems.length);
-                                        
-                                        visibleItems = 6;
-                                        updateDisplay();
-                                        
-                                        // Mostra il numero di risultati
-                                        showSearchResultsCount(searchResults.length, searchTerm);
-                                }
-
-                                // Funzione di ricerca di fallback (se l'indice non è disponibile)
+                                // Funzione di ricerca di fallback
                                 function performFallbackSearch(searchTerm) {
                                         const term = searchTerm.toLowerCase();
                                         return allNewsItems.filter(item => {
@@ -1394,7 +1492,9 @@
                                                         border-radius: 8px;
                                                         font-weight: 500;
                                                 `;
-                                                countDiv.textContent = `Trovati ${count} articoli per "${searchTerm}"`;
+                                                
+                                                let yearText = currentYearFilter !== 'all' ? ` per l'anno ${currentYearFilter}` : '';
+                                                countDiv.textContent = `Trovati ${count} articoli per "${searchTerm}"${yearText}`;
                                                 searchInput.parentNode.insertBefore(countDiv, searchInput.parentNode.firstChild);
                                         }
                                 }
@@ -1410,16 +1510,21 @@
                                 // Funzione per pulire la ricerca
                                 function clearSearch() {
                                         searchInput.value = '';
-                                        filteredItems = [...allNewsItems];
-                                        isSearching = false;
-                                        visibleItems = 6;
-                                        updateDisplay();
-                                        hideSearchResultsCount();
+                                        applySearch('');
                                         console.log('Ricerca pulita, mostrando tutti gli articoli');
                                 }
 
                                 // Event listeners
-                                searchInput.addEventListener('input', searchNews);
+                                searchInput.addEventListener('input', function() {
+                                        applySearch(this.value.trim());
+                                });
+                                
+                                // Event listeners per i pulsanti anno
+                                yearButtons.forEach(btn => {
+                                        btn.addEventListener('click', function() {
+                                                filterByYear(this.dataset.year);
+                                        });
+                                });
                                 
                                 // Pulsante per pulire la ricerca
                                 const clearBtn = document.createElement('button');
@@ -1463,6 +1568,7 @@
                                 }, 1000);
                         });
                 </script>
+
 
 
 	</body>
