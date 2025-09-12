@@ -1238,17 +1238,21 @@
 		<script src="scripts-2025.js" defer></script>
 		
                 <script src="search-index.js"></script>
+                
+                <script src="search-index.js"></script>
                 <script>
                         document.addEventListener('DOMContentLoaded', function() {
                                 const searchInput = document.getElementById('searchInput');
                                 const newsGrid = document.querySelector('.news-grid');
                                 const loadMoreBtn = document.getElementById('loadMoreBtn');
-                                const noResultsMsg = document.getElementById('noResultsMsg');
                                 
+                                // Carica TUTTI gli articoli all'inizio
                                 let allNewsItems = Array.from(newsGrid.querySelectorAll('.news-card'));
                                 let filteredItems = [...allNewsItems];
                                 let visibleItems = 6;
                                 let isSearching = false;
+
+                                console.log('Articoli totali caricati:', allNewsItems.length);
 
                                 // Funzione per aggiornare la visualizzazione
                                 function updateDisplay() {
@@ -1273,16 +1277,18 @@
                                         
                                         // Mostra/nasconde il messaggio "Nessun risultato"
                                         if (filteredItems.length === 0 && isSearching) {
-                                                if (!noResultsMsg) {
-                                                        showNoResultsMessage();
-                                                }
+                                                showNoResultsMessage();
                                         } else {
                                                 hideNoResultsMessage();
                                         }
+                                        
+                                        console.log('Articoli mostrati:', itemsToShow.length, 'di', filteredItems.length);
                                 }
 
                                 // Funzione per mostrare il messaggio "Nessun risultato"
                                 function showNoResultsMessage() {
+                                        if (document.getElementById('noResultsMsg')) return;
+                                        
                                         const noResults = document.createElement('div');
                                         noResults.id = 'noResultsMsg';
                                         noResults.style.cssText = `
@@ -1320,15 +1326,19 @@
                                                 isSearching = false;
                                                 visibleItems = 6;
                                                 updateDisplay();
+                                                hideSearchResultsCount();
                                                 return;
                                         }
                                         
                                         isSearching = true;
+                                        console.log('Ricerca per:', searchTerm);
                                         
                                         // Usa l'indice di ricerca per trovare gli articoli
                                         const searchResults = window.searchInArticles ? 
                                                 window.searchInArticles(searchTerm) : 
                                                 performFallbackSearch(searchTerm);
+                                        
+                                        console.log('Risultati dalla ricerca:', searchResults.length);
                                         
                                         // Filtra gli elementi DOM corrispondenti
                                         filteredItems = allNewsItems.filter(item => {
@@ -1338,8 +1348,14 @@
                                                 const href = articleLink.getAttribute('href');
                                                 const filename = href.split('/').pop().split('?')[0];
                                                 
-                                                return searchResults.some(result => result.filename === filename);
+                                                const isMatch = searchResults.some(result => result.filename === filename);
+                                                if (isMatch) {
+                                                        console.log('Trovato match:', filename);
+                                                }
+                                                return isMatch;
                                         });
+                                        
+                                        console.log('Articoli filtrati:', filteredItems.length);
                                         
                                         visibleItems = 6;
                                         updateDisplay();
@@ -1364,11 +1380,7 @@
 
                                 // Funzione per mostrare il conteggio dei risultati
                                 function showSearchResultsCount(count, searchTerm) {
-                                        // Rimuove il conteggio precedente se esiste
-                                        const existingCount = document.getElementById('searchResultsCount');
-                                        if (existingCount) {
-                                                existingCount.remove();
-                                        }
+                                        hideSearchResultsCount();
                                         
                                         if (count > 0) {
                                                 const countDiv = document.createElement('div');
@@ -1387,6 +1399,14 @@
                                         }
                                 }
 
+                                // Funzione per nascondere il conteggio dei risultati
+                                function hideSearchResultsCount() {
+                                        const existingCount = document.getElementById('searchResultsCount');
+                                        if (existingCount) {
+                                                existingCount.remove();
+                                        }
+                                }
+
                                 // Funzione per pulire la ricerca
                                 function clearSearch() {
                                         searchInput.value = '';
@@ -1394,12 +1414,8 @@
                                         isSearching = false;
                                         visibleItems = 6;
                                         updateDisplay();
-                                        
-                                        // Rimuove il conteggio dei risultati
-                                        const existingCount = document.getElementById('searchResultsCount');
-                                        if (existingCount) {
-                                                existingCount.remove();
-                                        }
+                                        hideSearchResultsCount();
+                                        console.log('Ricerca pulita, mostrando tutti gli articoli');
                                 }
 
                                 // Event listeners
@@ -1431,12 +1447,23 @@
                                 loadMoreBtn.addEventListener('click', function() {
                                         visibleItems += 6;
                                         updateDisplay();
+                                        console.log('Caricati altri articoli, totale visibili:', visibleItems);
                                 });
 
                                 // Inizializza la visualizzazione
                                 updateDisplay();
+                                
+                                // Debug: verifica che l'indice di ricerca sia caricato
+                                setTimeout(() => {
+                                        if (window.searchInArticles) {
+                                                console.log('Indice di ricerca caricato correttamente');
+                                        } else {
+                                                console.warn('Indice di ricerca non disponibile, usando ricerca di fallback');
+                                        }
+                                }, 1000);
                         });
                 </script>
+
 
 	</body>
 </html>
