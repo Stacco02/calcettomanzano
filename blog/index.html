@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="it-IT" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Articolo - Calcetto Manzano 1988</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        // Estrae il nome dell'articolo dall'URL
+        function getArticleName() {
+            const urlParams = new URLSearchParams(window.location.search);
+            // Cerca il primo parametro che non sia vuoto
+            for (const [key, value] of urlParams) {
+                if (value && value !== '') {
+                    return value;
+                }
+            }
+            return null;
+        }
+        
+        // Carica l'articolo specifico
+        function loadArticle() {
+            const articleName = getArticleName();
+            if (articleName) {
+                // Carica il contenuto dell'articolo specifico
+                fetch(`index.html?${articleName}`)
+                    .then(response => response.text())
+                    .then(html => {
+                        // Sostituisce il contenuto della pagina con l'articolo
+                        document.body.innerHTML = html;
+                    })
+                    .catch(error => {
+                        console.error('Errore nel caricamento dell\'articolo:', error);
+                        document.body.innerHTML = '<h1>Errore</h1><p>Articolo non trovato.</p><p><a href="../news-2025.html">Torna alle news</a></p>';
+                    });
+            } else {
+                // Se non c'è un articolo specifico, reindirizza alla pagina news
+                window.location.href = '../news-2025.html';
+            }
+        }
+        
+        // Esegue il caricamento quando la pagina si carica
+        window.onload = loadArticle;
+    </script>
+</head>
+<body>
+    <p>Caricamento articolo...</p>
+</body>
+</html>
