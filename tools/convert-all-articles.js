@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Directory del blog
-const blogDir = '/Users/andreastacco/Documents/GitHub/calcettomanzano/blog';
+const blogDir = '/Users/andreastacco/Documents/GitHub/calcettomanzano/Blog_new';
 
 // Funzione per pulire il nome del file
 function cleanFileName(filename) {
@@ -19,23 +19,20 @@ function extractArticleInfo(html) {
   const titleMatch = html.match(/<h1[^>]*>([^<]+)<\/h1>/);
   const title = titleMatch ? titleMatch[1].trim() : 'Articolo senza titolo';
   
-  const authorMatch = html.match(/<span class="news-author">([^<]+)<\/span>/);
-  const author = authorMatch ? authorMatch[1].trim() : 'Ufficio Stampa Calcetto Manzano';
+  // Estrae autore e data dalla meta
+  const metaMatch = html.match(/<p class="meta">([^—]+)—\s*([^<]+)<\/p>/);
+  const author = metaMatch ? metaMatch[1].trim() : 'Ufficio Stampa Calcetto Manzano';
+  const date = metaMatch ? metaMatch[2].trim() : 'Data non disponibile';
   
-  const categoryMatch = html.match(/<span class="news-category">([^<]+)<\/span>/);
-  const category = categoryMatch ? categoryMatch[1].trim() : 'News';
+  // Categoria di default
+  const category = 'News';
   
-  const dateMatch = html.match(/<span class="news-date">([^<]+)<\/span>/);
-  const date = dateMatch ? dateMatch[1].trim() : 'Data non disponibile';
-  
-  const contentMatch = html.match(/<div class="article-content"[^>]*>(.*?)<\/div>/s);
+  // Estrae il contenuto dal div content
+  const contentMatch = html.match(/<div class="content"[^>]*>(.*?)<\/div>/s);
   let content = contentMatch ? contentMatch[1] : '';
   
   // Pulisce il contenuto HTML e rimuove spazi extra
   content = content.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
-  
-  // Gestisce il caso comune dove data e contenuto sono attaccati
-  content = content.replace(/\*\*([^*]+)\*\*([^*])/g, '**$1** $2');
   
   // Crea un preview più significativo
   let preview = content;
@@ -70,8 +67,8 @@ files.forEach((file, index) => {
       ...articleInfo
     });
     
-    // Copia il file con il nome pulito
-    const newFilePath = path.join(blogDir, cleanName);
+    // Copia il file con il nome pulito nella cartella blog
+    const newFilePath = path.join('/Users/andreastacco/Documents/GitHub/calcettomanzano/blog', cleanName);
     if (!fs.existsSync(newFilePath)) {
       fs.copyFileSync(filePath, newFilePath);
       console.log(`Convertito: ${file} -> ${cleanName}`);
