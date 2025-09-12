@@ -8,7 +8,7 @@ const articlesData = JSON.parse(fs.readFileSync('/Users/andreastacco/Documents/G
 const realArticles = articlesData.filter(article => {
   const filename = article.filename;
   // Esclude pagine con parametri di navigazione
-  return !filename.includes('start-') && 
+  const isNotNavigation = !filename.includes('start-') && 
          !filename.includes('length-') && 
          !filename.includes('author-') && 
          !filename.includes('category-') && 
@@ -23,6 +23,11 @@ const realArticles = articlesData.filter(article => {
          article.title !== 'Coppa Italia 2024-2025' &&
          article.title !== 'News Campionato 2025/26' &&
          article.title !== 'All';
+  
+  // Filtra articoli con contenuto significativo (più di 50 caratteri)
+  const hasContent = article.content && article.content.length > 50;
+  
+  return isNotNavigation && hasContent;
 });
 
 console.log(`Trovati ${realArticles.length} articoli reali`);

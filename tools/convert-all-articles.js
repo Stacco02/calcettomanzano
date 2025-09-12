@@ -29,10 +29,21 @@ function extractArticleInfo(html) {
   const date = dateMatch ? dateMatch[1].trim() : 'Data non disponibile';
   
   const contentMatch = html.match(/<div class="article-content"[^>]*>(.*?)<\/div>/s);
-  const content = contentMatch ? contentMatch[1] : '';
-  const preview = content.replace(/<[^>]*>/g, '').substring(0, 150) + '...';
+  let content = contentMatch ? contentMatch[1] : '';
   
-  return { title, author, category, date, preview };
+  // Pulisce il contenuto HTML e rimuove spazi extra
+  content = content.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+  
+  // Crea un preview più significativo
+  let preview = content;
+  if (preview.length > 200) {
+    preview = preview.substring(0, 200) + '...';
+  } else if (preview.length < 50) {
+    // Se il contenuto è troppo corto, usa il titolo come preview
+    preview = title;
+  }
+  
+  return { title, author, category, date, preview, content };
 }
 
 // Legge tutti i file con nomi strani
