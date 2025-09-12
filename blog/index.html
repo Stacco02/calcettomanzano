@@ -5,11 +5,38 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<script>
-		// Reindirizza al router con gli stessi parametri
+		// Gestisce i reindirizzamenti basati sui parametri URL
 		const queryString = window.location.search;
+		
 		if (queryString) {
-			// Se ci sono parametri, reindirizza al router
-			window.location.href = `router.html${queryString}`;
+			// Se ci sono parametri, carica direttamente il contenuto dell'articolo
+			let articleName = queryString.substring(1);
+			if (!articleName.endsWith('.html')) {
+				articleName += '.html';
+			}
+			
+			// Crea il nome del file con il punto interrogativo
+			const fileName = `index.html?${articleName}`;
+			
+			// Carica il contenuto del file dell'articolo
+			fetch(fileName)
+				.then(response => {
+					if (response.ok) {
+						return response.text();
+					}
+					throw new Error('Articolo non trovato');
+				})
+				.then(html => {
+					// Sostituisce il contenuto della pagina con l'articolo
+					document.open();
+					document.write(html);
+					document.close();
+				})
+				.catch(error => {
+					console.error('Errore:', error);
+					// Se non trova l'articolo, reindirizza alla pagina news
+					window.location.href = '../news-2025.html';
+				});
 		} else {
 			// Se non ci sono parametri, reindirizza alla pagina news
 			window.location.href = '../news-2025.html';
