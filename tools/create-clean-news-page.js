@@ -52,9 +52,6 @@ function generateArticleCard(article) {
 									<span class="news-category">${article.category}</span>
 									<span class="news-date">${article.date}</span>
 								</div>
-								<p class="news-excerpt" style="margin: 0 0 1rem 0; color: #6b7280; line-height: 1.5;">
-									${article.preview}
-								</p>
 								<a href="blog/${article.filename}" class="news-read-more" style="display: inline-block; background: #f59e0b; color: #1e40af; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 14px;">Leggi articolo</a>
 							</div>
 						</article>`;
@@ -195,12 +192,10 @@ const newsPageContent = `<!DOCTYPE html>
 					const searchTerm = searchInput.value.toLowerCase();
 					filteredItems = allNewsItems.filter(item => {
 						const title = item.querySelector('.news-title').textContent.toLowerCase();
-						const excerpt = item.querySelector('.news-excerpt').textContent.toLowerCase();
 						const category = item.querySelector('.news-category').textContent.toLowerCase();
 						const author = item.querySelector('.news-author').textContent.toLowerCase();
 						
 						return title.includes(searchTerm) || 
-							   excerpt.includes(searchTerm) || 
 							   category.includes(searchTerm) || 
 							   author.includes(searchTerm);
 					});
