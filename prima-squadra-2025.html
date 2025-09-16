@@ -180,26 +180,30 @@
 				<article class="card">
 					<div class="content">
                         <h3>Calendario e Risultati</h3>
-                        <div style="border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff; position: relative;">
+                        <div class="embed-collapsible" data-collapsed-height="300" data-full-height="680" style="border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff; position: relative;">
                             <!-- Widget ufficiale TuttoCampo: Risultati (FVG C1 Girone Unico) -->
-                            <iframe title="Risultati – TuttoCampo" src="https://www.tuttocampo.it/WidgetV2/Risultati/PREVIEW?preview=FV.K.A.S1&y=2025-26" loading="lazy" scrolling="no" style="width:100%;height:680px;border:0;display:block" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"></iframe>
-                            <div style="display:none; padding:2rem; text-align:center; background:#f8fafc; height:680px; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                            <iframe title="Risultati – TuttoCampo" src="https://www.tuttocampo.it/WidgetV2/Risultati/PREVIEW?preview=FV.K.A.S1&y=2025-26" loading="lazy" scrolling="no" style="width:100%;height:300px;border:0;display:block" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></iframe>
+                            <div class="embed-fallback" style="display:none; padding:2rem; text-align:center; background:#f8fafc; height:300px; display:flex; flex-direction:column; justify-content:center; align-items:center;">
                                 <p style="margin-bottom:1rem; color:#6b7280;">Il calendario non può essere visualizzato in questa pagina.</p>
                                 <a href="https://www.tuttocampo.it/FriuliVeneziaGiulia/CalcioA5SerieC1/GironeUnicoSerieC1/Calendario" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-block; padding:0.75rem 1.5rem; background:#1e40af; color:white; text-decoration:none; border-radius:8px; font-weight:500;">Apri Calendario su TuttoCampo</a>
                             </div>
+                            <div class="embed-mask" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:80px;background:linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 70%); pointer-events:none;"></div>
+                            <button type="button" class="embed-toggle" style="position:absolute;left:50%;transform:translateX(-50%);bottom:10px;background:#1e40af;color:#fff;border:none;border-radius:999px;padding:6px 12px;font-weight:600;cursor:pointer;">Mostra tutto</button>
                         </div>
 					</div>
 				</article>
 				<article class="card">
 					<div class="content">
                         <h3>Classifica</h3>
-                        <div style="border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff; position: relative;">
+                        <div class="embed-collapsible" data-collapsed-height="520" data-full-height="860" style="border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff; position: relative;">
                             <!-- Widget ufficiale TuttoCampo: Classifica (FVG C1 Girone Unico) -->
-                            <iframe title="Classifica – TuttoCampo" src="https://www.tuttocampo.it/WidgetV2/Classifica/PREVIEW?preview=FV.K.A.S1&y=2025-26" loading="lazy" scrolling="no" style="width:100%;height:860px;border:0;display:block" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"></iframe>
-                            <div style="display:none; padding:2rem; text-align:center; background:#f8fafc; height:860px; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                            <iframe title="Classifica – TuttoCampo" src="https://www.tuttocampo.it/WidgetV2/Classifica/PREVIEW?preview=FV.K.A.S1&y=2025-26" loading="lazy" scrolling="no" style="width:100%;height:520px;border:0;display:block" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></iframe>
+                            <div class="embed-fallback" style="display:none; padding:2rem; text-align:center; background:#f8fafc; height:520px; display:flex; flex-direction:column; justify-content:center; align-items:center;">
                                 <p style="margin-bottom:1rem; color:#6b7280;">La classifica non può essere visualizzata in questa pagina.</p>
                                 <a href="https://www.tuttocampo.it/FriuliVeneziaGiulia/CalcioA5SerieC1/GironeUnicoSerieC1/Classifica" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-block; padding:0.75rem 1.5rem; background:#1e40af; color:white; text-decoration:none; border-radius:8px; font-weight:500;">Apri Classifica su TuttoCampo</a>
                             </div>
+                            <div class="embed-mask" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:80px;background:linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 70%); pointer-events:none;"></div>
+                            <button type="button" class="embed-toggle" style="position:absolute;left:50%;transform:translateX(-50%);bottom:10px;background:#1e40af;color:#fff;border:none;border-radius:999px;padding:6px 12px;font-weight:600;cursor:pointer;">Mostra tutto</button>
                         </div>
 					</div>
 				</article>
@@ -228,6 +232,25 @@
 					iframe.addEventListener('load', () => {
 						clearTimeout(timeout);
 					});
+				});
+
+				// Collassa/espandi i widget (non è possibile auto-altezza cross-domain)
+				const blocks = document.querySelectorAll('.embed-collapsible');
+				blocks.forEach(block => {
+					const iframe = block.querySelector('iframe');
+					const toggle = block.querySelector('.embed-toggle');
+					const mask = block.querySelector('.embed-mask');
+					if (!iframe || !toggle) return;
+					const collapsed = parseInt(block.getAttribute('data-collapsed-height') || '420', 10);
+					const full = parseInt(block.getAttribute('data-full-height') || iframe.style.height || '800', 10);
+					let expanded = false;
+					function applyState(){
+						iframe.style.height = (expanded ? full : collapsed) + 'px';
+						if (mask) mask.style.display = expanded ? 'none' : 'block';
+						toggle.textContent = expanded ? 'Riduci' : 'Mostra tutto';
+					}
+					applyState();
+					toggle.addEventListener('click', () => { expanded = !expanded; applyState(); });
 				});
 			});
 		</script>
