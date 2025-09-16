@@ -180,16 +180,24 @@
 				<article class="card">
 					<div class="content">
 						<h3>Calendario e Risultati</h3>
-						<div style="border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff">
-							<iframe title="Calendario TuttoCampo" src="https://www.tuttocampo.it/FriuliVeneziaGiulia/CalcioA5SerieC1/GironeUnicoSerieC1/Calendario" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:520px;border:0;display:block"></iframe>
+						<div style="border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff; position: relative;">
+							<iframe title="Calendario TuttoCampo" src="https://www.tuttocampo.it/FriuliVeneziaGiulia/CalcioA5SerieC1/GironeUnicoSerieC1/Calendario" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-forms" style="width:100%;height:520px;border:0;display:block" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"></iframe>
+							<div style="display:none; padding:2rem; text-align:center; background:#f8fafc; height:520px; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+								<p style="margin-bottom:1rem; color:#6b7280;">Il calendario non può essere visualizzato in questa pagina.</p>
+								<a href="https://www.tuttocampo.it/FriuliVeneziaGiulia/CalcioA5SerieC1/GironeUnicoSerieC1/Calendario" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-block; padding:0.75rem 1.5rem; background:#1e40af; color:white; text-decoration:none; border-radius:8px; font-weight:500;">Apri Calendario su TuttoCampo</a>
+							</div>
 						</div>
 					</div>
 				</article>
 				<article class="card">
 					<div class="content">
 						<h3>Classifica</h3>
-						<div style="border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff">
-							<iframe title="Classifica TuttoCampo" src="https://www.tuttocampo.it/FriuliVeneziaGiulia/CalcioA5SerieC1/GironeUnicoSerieC1/Classifica" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:520px;border:0;display:block"></iframe>
+						<div style="border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff; position: relative;">
+							<iframe title="Classifica TuttoCampo" src="https://www.tuttocampo.it/FriuliVeneziaGiulia/CalcioA5SerieC1/GironeUnicoSerieC1/Classifica" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-forms" style="width:100%;height:520px;border:0;display:block" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"></iframe>
+							<div style="display:none; padding:2rem; text-align:center; background:#f8fafc; height:520px; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+								<p style="margin-bottom:1rem; color:#6b7280;">La classifica non può essere visualizzata in questa pagina.</p>
+								<a href="https://www.tuttocampo.it/FriuliVeneziaGiulia/CalcioA5SerieC1/GironeUnicoSerieC1/Classifica" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-block; padding:0.75rem 1.5rem; background:#1e40af; color:white; text-decoration:none; border-radius:8px; font-weight:500;">Apri Classifica su TuttoCampo</a>
+							</div>
 						</div>
 					</div>
 				</article>
@@ -197,6 +205,30 @@
 		</div></main>
 		<footer class="footer"><div class="container"><div class="links"><a href="https://www.divisionecalcioa5.it/" target="_blank">Divisione Calcio a 5</a><a href="http://www.regione.fvg.it/rafvg/cms/RAFVG/" target="_blank">Regione FVG</a><a href="https://friuliveneziagiulia.lnd.it/it/" target="_blank">LND FVG</a><a href="https://www.calcettomanzano.it/www.comune.manzano.ud.it/hh/index.php?jvs=0&amp;acc=1" target="_blank">Comune di Manzano</a></div><p class="copyright">© 2003–2025 A.D.S. C5 MANZANO 1988</p></div></footer>
 		<script src="scripts-2025.js" defer></script>
+		<script>
+			// Gestione fallback per iframe TuttoCampo
+			document.addEventListener('DOMContentLoaded', function() {
+				const iframes = document.querySelectorAll('iframe[src*="tuttocampo.it"]');
+				
+				iframes.forEach(iframe => {
+					// Timeout per rilevare se l'iframe non si carica
+					const timeout = setTimeout(() => {
+						if (iframe.offsetHeight === 0 || iframe.contentDocument === null) {
+							iframe.style.display = 'none';
+							const fallback = iframe.nextElementSibling;
+							if (fallback) {
+								fallback.style.display = 'flex';
+							}
+						}
+					}, 5000);
+					
+					// Rimuovi timeout se l'iframe si carica correttamente
+					iframe.addEventListener('load', () => {
+						clearTimeout(timeout);
+					});
+				});
+			});
+		</script>
 		<style>
 			.news-grid .card:hover {
 				transform: translateY(-2px);
