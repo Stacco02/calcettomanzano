@@ -1373,14 +1373,12 @@
 
                                 console.log('Articoli totali caricati:', allNewsItems.length);
 
-                                // Funzione per estrarre l'anno da un articolo
+                                // Funzione per estrarre l'anno dalla data in preview
                                 function getArticleYear(item) {
-                                        const title = item.querySelector('.news-title').textContent;
-                                        const meta = item.querySelector('.news-author').textContent;
-                                        
-                                        // Cerca l'anno nel titolo o nei metadati
-                                        const yearMatch = title.match(/(d{4})/) || meta.match(/(d{4})/);
-                                        return yearMatch ? parseInt(yearMatch[1]) : null;
+                                        const dateEl = item.querySelector('.news-date');
+                                        const txt = dateEl ? dateEl.textContent : '';
+                                        const m = txt.match(/(\d{4})\b/);
+                                        return m ? parseInt(m[1], 10) : null;
                                 }
 
                                 // Funzione per filtrare per anno
