@@ -198,30 +198,16 @@
 						const author = (card.querySelector('.news-author')||{}).textContent || 'Ufficio Stampa';
 						const dateText = (card.querySelector('.news-date')||{}).textContent || '';
 						const date = parseItalianDate(dateText) || new Date(2000,0,1);
-						// Non abbiamo immagini specifiche: usa un placeholder coerente
-						const image = 'images/Manzanologo.png';
+						
+						// Estrai l'immagine direttamente dalla card della pagina news
+						const imgEl = card.querySelector('.news-image img');
+						const image = imgEl ? imgEl.getAttribute('src') : 'images/ArticoloNofoto.jpeg';
+						
 						return {title, href, author, dateText, date, image};
 					}).sort((a,b)=> b.date - a.date).slice(0,3);
 
-					// Prova a recuperare un'immagine di copertina dal singolo articolo
-					async function resolveCover(entry){
-						try{
-							const abs = new URL(entry.href, window.location.href).toString();
-							const r = await fetch(abs, {cache:'no-store'});
-							if(!r.ok) return entry;
-							const text = await r.text();
-							const doc = new DOMParser().parseFromString(text, 'text/html');
-							let imgEl = doc.querySelector('.content img');
-							if(!imgEl) imgEl = doc.querySelector('img');
-							if(imgEl && imgEl.getAttribute('src')){
-								const src = imgEl.getAttribute('src');
-								entry.image = new URL(src, abs).toString();
-							}
-						}catch(e){ /* ignore */ }
-						return entry;
-					}
-
-					const enriched = await Promise.all(entries.map(resolveCover));
+					// Le immagini sono già estratte dalle card della pagina news
+					const enriched = entries;
 
 					// Sostituisci i contenuti esistenti con i 3 più recenti
 					grid.innerHTML = '';
