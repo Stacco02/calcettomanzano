@@ -11,6 +11,7 @@
 		<meta property="og:title" content="C5 Manzano 1988" />
 		<meta property="og:description" content="Notizie, palmarès, sponsor e galleria del C5 Manzano 1988." />
 		<link rel="stylesheet" href="style-2025.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 	</head>
 	<body>
 		<header class="header" id="top">
@@ -67,9 +68,9 @@
 						<article class="card">
 							<div class="content">
 								<h3>Dove si gioca</h3>
-								<div class="media" aria-label="Mappa Palazzetto dello Sport Manzano">
-									<iframe title="Mappa Palazzetto dello Sport Manzano" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=13.379653%2C45.9748014%2C13.399653%2C45.9948014&layer=mapnik&marker=45.9848014%2C13.389653"></iframe>
-								</div>
+                                <div class="media" aria-label="Mappa Palazzetto dello Sport Manzano">
+                                    <div id="home-map"></div>
+                                </div>
 								<p class="muted" style="margin-top: var(--sp-3);">Palazzetto dello Sport – Via A. Olivo, 33044 Manzano (UD)</p>
 							</div>
 						</article>
@@ -196,7 +197,8 @@
 					</footer>
 		
 		<script src="scripts-2025.js" defer></script>
-		<script>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+        <script>
 		// Toggle per widget compattati (stessa logica della pagina 1a Squadra)
 		document.addEventListener('DOMContentLoaded', function(){
 			const blocks = document.querySelectorAll('.embed-collapsible');
@@ -216,8 +218,23 @@
 				applyState();
 				toggle.addEventListener('click', () => { expanded = !expanded; applyState(); });
 			});
-		});
-		</script>
+        });
+        </script>
+        <script>
+        // Inizializza mappa Leaflet con stile chiaro moderno
+        document.addEventListener('DOMContentLoaded', function(){
+            var mapEl = document.getElementById('home-map');
+            if(!mapEl || typeof L === 'undefined') return;
+            var lat = 45.9848014, lng = 13.389653; // Palazzetto Manzano
+            var map = L.map(mapEl, { scrollWheelZoom: false }).setView([lat, lng], 14);
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; OpenStreetMap &copy; CARTO',
+                maxZoom: 19
+            }).addTo(map);
+            var marker = L.circleMarker([lat, lng], { radius: 10, color: '#0b3f91', fillColor: '#0b3f91', fillOpacity: 0.95 }).addTo(map);
+            marker.bindPopup('<strong>Palazzetto dello Sport</strong><br>Via A. Olivo, 33044 Manzano (UD)<br><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=45.9848014,13.389653">Indicazioni</a>');
+        });
+        </script>
 		<script>
 		// Popola in home le ultime 3 news reali prese dalla pagina news
 		(function(){
