@@ -59,7 +59,7 @@
 			<section id="news" class="section">
 				<div class="container">
 					<h2>Ultime News</h2>
-					<div class="news-grid">
+					<div class="news-grid" id="homeNewsGrid">
 						<article class="card">
 							<div class="media"><img loading="lazy" src="gallery/cristian_saro_FB.png" alt="Cristian Saro" /></div>
 							<div class="content">
@@ -152,5 +152,66 @@
 					</footer>
 		
 		<script src="scripts-2025.js" defer></script>
+		<script>
+		// Popola in home le ultime 3 news reali prese dalla pagina news
+		(function(){
+			const monthMap = {
+				'gennaio':0,'febbraio':1,'marzo':2,'aprile':3,'maggio':4,'giugno':5,'luglio':6,'agosto':7,'settembre':8,'ottobre':9,'novembre':10,'dicembre':11
+			};
+			function parseItalianDate(text){
+				// es. "14 giugno 2025"
+				const m = (text||'').toLowerCase().match(/(\d{1,2})\s+([a-zàéìòù]+)\s+(\d{4})/i);
+				if(!m) return null;
+				const d = parseInt(m[1],10);
+				const mon = monthMap[m[2]];
+				const y = parseInt(m[3],10);
+				if(mon==null) return null;
+				return new Date(y, mon, d);
+			}
+
+			function createCard({title, href, author, dateText, image}){
+				const card = document.createElement('article');
+				card.className = 'card';
+				card.innerHTML = `
+					<div class="media"><img loading="lazy" src="${image}" alt="${title.replace(/"/g,'&quot;')}" /></div>
+					<div class="content">
+						<h3><a href="${href}" style="text-decoration:none;color:inherit">${title}</a></h3>
+						<p class="meta">${author} — ${dateText}</p>
+					</div>
+				`;
+				return card;
+			}
+
+			document.addEventListener('DOMContentLoaded', async () => {
+				const grid = document.getElementById('homeNewsGrid');
+				if(!grid) return;
+				try{
+					const res = await fetch('news-2025.html', {cache:'no-store'});
+					if(!res.ok) throw new Error('fetch news page failed');
+					const html = await res.text();
+					const doc = new DOMParser().parseFromString(html, 'text/html');
+					const cards = Array.from(doc.querySelectorAll('.news-grid .news-card'));
+					const entries = cards.map(card => {
+						const a = card.querySelector('.news-title a');
+						const href = a ? a.getAttribute('href') : '#';
+						const title = a ? a.textContent.trim() : 'Articolo';
+						const author = (card.querySelector('.news-author')||{}).textContent || 'Ufficio Stampa';
+						const dateText = (card.querySelector('.news-date')||{}).textContent || '';
+						const date = parseItalianDate(dateText) || new Date(2000,0,1);
+						// Non abbiamo immagini specifiche: usa un placeholder coerente
+						const image = 'images/logo_manzano_altezza_80.png';
+						return {title, href, author, dateText, date, image};
+					}).sort((a,b)=> b.date - a.date).slice(0,3);
+
+					// Sostituisci i contenuti esistenti con i 3 più recenti
+					grid.innerHTML = '';
+					entries.forEach(e=> grid.appendChild(createCard(e)));
+				}catch(err){
+					// In caso di errore mantieni i 3 statici già presenti
+					console.warn('Impossibile caricare le ultime news dinamiche:', err);
+				}
+			});
+		})();
+		</script>
 	</body>
 </html>
