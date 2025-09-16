@@ -1373,11 +1373,25 @@
 
                                 console.log('Articoli totali caricati:', allNewsItems.length);
 
-                                // Funzione per estrarre l'anno dalla data in preview
+                                // Pre-calcola e annota l'anno su ogni card per filtri veloci e affidabili
+                                function annotateYears() {
+                                        allNewsItems.forEach(item => {
+                                                const dateEl = item.querySelector('.news-date');
+                                                const txt = dateEl ? (dateEl.textContent || '') : '';
+                                                const m = txt.match(/(\d{4})/);
+                                                if (m) item.setAttribute('data-year', m[1]);
+                                        });
+                                }
+                                annotateYears();
+                                // In caso altri script aggiornino le date dopo il load, ricalcola
+                                setTimeout(annotateYears, 600);
+
+                                // Funzione per leggere l'anno da data-attribute (fallback: ricalcola dalla preview)
                                 function getArticleYear(item) {
+                                        const attr = item.getAttribute('data-year');
+                                        if (attr) return parseInt(attr, 10);
                                         const dateEl = item.querySelector('.news-date');
-                                        const txt = dateEl ? dateEl.textContent : '';
-                                        const m = txt.match(/(\d{4})\b/);
+                                        const m = dateEl && (dateEl.textContent || '').match(/(\d{4})/);
                                         return m ? parseInt(m[1], 10) : null;
                                 }
 
