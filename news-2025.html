@@ -1373,18 +1373,46 @@
 
                                 console.log('Articoli totali caricati:', allNewsItems.length);
 
-                                // Pre-calcola e annota l'anno su ogni card per filtri veloci e affidabili
-                                function annotateYears() {
-                                        allNewsItems.forEach(item => {
+                                // Parsing data ITA e annotazione (anno e timestamp) + ordinamento
+                                const months = {
+                                        'gennaio':0,'febbraio':1,'marzo':2,'aprile':3,'maggio':4,'giugno':5,'luglio':6,'agosto':7,'settembre':8,'ottobre':9,'novembre':10,'dicembre':11,
+                                        'gen':0,'feb':1,'mar':2,'apr':3,'mag':4,'giu':5,'lug':6,'ago':7,'set':8,'sett':8,'ott':9,'nov':10,'dic':11
+                                };
+                                function parseItalianDateToTime(text){
+                                        if (!text) return 0;
+                                        const t = text.toLowerCase().replace(/\./g,'').trim();
+                                        const m = t.match(/(\d{1,2})\s+([a-zàèéìòù]+)\s+(\d{4})/i);
+                                        if(!m) return 0;
+                                        const day = parseInt(m[1],10);
+                                        const mon = months[m[2]];
+                                        const year = parseInt(m[3],10);
+                                        if(mon==null||isNaN(day)||isNaN(year)) return 0;
+                                        return new Date(year, mon, day).getTime();
+                                }
+                                function annotateDates(items){
+                                        items.forEach(item => {
                                                 const dateEl = item.querySelector('.news-date');
                                                 const txt = dateEl ? (dateEl.textContent || '') : '';
-                                                const m = txt.match(/(\d{4})/);
-                                                if (m) item.setAttribute('data-year', m[1]);
+                                                const y = (txt.match(/(\d{4})/)||[])[1];
+                                                if (y) item.setAttribute('data-year', y);
+                                                const ts = parseItalianDateToTime(txt);
+                                                item.setAttribute('data-time', String(ts));
                                         });
                                 }
-                                annotateYears();
-                                // In caso altri script aggiornino le date dopo il load, ricalcola
-                                setTimeout(annotateYears, 600);
+                                function sortByDateDesc(items){
+                                        return [...items].sort((a,b)=>{
+                                                const ta = parseInt(a.getAttribute('data-time')||'0',10);
+                                                const tb = parseInt(b.getAttribute('data-time')||'0',10);
+                                                return tb - ta;
+                                        });
+                                }
+
+                                annotateDates(allNewsItems);
+                                allNewsItems = sortByDateDesc(allNewsItems);
+                                // Applica l'ordine al DOM
+                                newsGrid.innerHTML = '';
+                                allNewsItems.forEach(n => newsGrid.appendChild(n));
+                                filteredItems = [...allNewsItems];
 
                                 // Funzione per leggere l'anno da data-attribute (fallback: ricalcola dalla preview)
                                 function getArticleYear(item) {
