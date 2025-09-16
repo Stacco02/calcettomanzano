@@ -1,3 +1,7 @@
+/* Fonts (devono essere importati prima di ogni regola) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 /* 0) Reset leggero */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -26,8 +30,7 @@ button { font: inherit; border: 0; background: none; cursor: pointer; }
     --c-hero-gold: #FDBB30;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 
 html { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color: var(--c-text); background: var(--c-bg); }
 body { font-size: 16px; line-height: 1.5; }
