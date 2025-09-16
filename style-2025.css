@@ -42,11 +42,11 @@ small, .muted { color: var(--c-muted); }
 /* 3) Header/Nav */
 .header { position: sticky; top: 0; z-index: 100; background: var(--c-primary); color: #fff; backdrop-filter: saturate(120%) blur(0px); box-shadow: 0 2px 10px rgba(0,0,0,.1); }
 .header.scrolled { box-shadow: 0 6px 20px rgba(0,0,0,.15); }
-.nav { display: flex; align-items: center; justify-content: space-between; padding: var(--sp-4) 0; }
-.brand { display: flex; align-items: center; gap: var(--sp-3); font-weight: 800; letter-spacing: .04em; }
+.nav { display: flex; align-items: center; justify-content: space-between; padding: var(--sp-4) 0; flex-wrap: nowrap; }
+.brand { display: flex; align-items: center; gap: var(--sp-3); font-weight: 800; letter-spacing: .04em; white-space: nowrap; }
 .brand img { width: 40px; height: 40px; object-fit: contain; }
-.menu { display: flex; align-items: center; gap: var(--sp-5); }
-.menu a { color: #fff; padding: var(--sp-2) var(--sp-3); border-radius: var(--radius-sm); }
+.menu { display: flex; align-items: center; gap: var(--sp-5); flex-wrap: nowrap; }
+.menu a { color: #fff; padding: var(--sp-2) var(--sp-3); border-radius: var(--radius-sm); white-space: nowrap; }
 .menu a.active, .menu a:hover { background: rgba(255,255,255,.12); }
 .burger { display: none; width: 36px; height: 36px; position: relative; }
 .burger span, .burger::before, .burger::after { content: ""; position: absolute; left: 6px; right: 6px; height: 2px; background: #fff; transition: .2s; }
