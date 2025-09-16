@@ -82,7 +82,7 @@ const newsPageContent = `<!DOCTYPE html>
 		<header class="header" id="top">
 			<div class="container nav">
 				<a class="brand" href="index.html" aria-label="C5 Manzano 1988">
-					<img src="images/logo_manzano_altezza_80.png" alt="Logo C5 Manzano 1988" />
+					<img src="images/Manzanologo.png" alt="Logo C5 Manzano 1988" />
 					<span>C5 Manzano 1988</span>
 				</a>
 				<nav class="menu" aria-label="Navigazione principale">

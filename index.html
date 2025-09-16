@@ -13,7 +13,7 @@
 		<header class="header" id="top">
 			<div class="container nav">
 				<a class="brand" href="index.html" aria-label="C5 Manzano 1988">
-					<img src="images/logo_manzano_altezza_80.png" alt="Logo C5 Manzano 1988" />
+					<img src="images/Manzanologo.png" alt="Logo C5 Manzano 1988" />
 					<span>C5 Manzano 1988</span>
 				</a>
 				<nav class="menu" aria-label="Navigazione principale">
@@ -129,7 +129,7 @@
 					<div class="gallery-grid">
 						<div class="gallery-item"><div class="media"><img loading="lazy" src="gallery/cristian_saro_FB.png" alt="Cristian Saro" /></div></div>
 						<div class="gallery-item"><div class="media"><img loading="lazy" src="gallery/francesco_polidori_FB.png" alt="Francesco Polidori" /></div></div>
-						<div class="gallery-item"><div class="media"><img loading="lazy" src="images/logo_manzano_altezza_80.png" alt="Logo C5 Manzano" /></div></div>
+						<div class="gallery-item"><div class="media"><img loading="lazy" src="images/Manzanologo.png" alt="Logo C5 Manzano" /></div></div>
 		</div>
 	</div>
 			</section>
@@ -199,13 +199,33 @@
 						const dateText = (card.querySelector('.news-date')||{}).textContent || '';
 						const date = parseItalianDate(dateText) || new Date(2000,0,1);
 						// Non abbiamo immagini specifiche: usa un placeholder coerente
-						const image = 'images/logo_manzano_altezza_80.png';
+						const image = 'images/Manzanologo.png';
 						return {title, href, author, dateText, date, image};
 					}).sort((a,b)=> b.date - a.date).slice(0,3);
 
+					// Prova a recuperare un'immagine di copertina dal singolo articolo
+					async function resolveCover(entry){
+						try{
+							const abs = new URL(entry.href, window.location.href).toString();
+							const r = await fetch(abs, {cache:'no-store'});
+							if(!r.ok) return entry;
+							const text = await r.text();
+							const doc = new DOMParser().parseFromString(text, 'text/html');
+							let imgEl = doc.querySelector('.content img');
+							if(!imgEl) imgEl = doc.querySelector('img');
+							if(imgEl && imgEl.getAttribute('src')){
+								const src = imgEl.getAttribute('src');
+								entry.image = new URL(src, abs).toString();
+							}
+						}catch(e){ /* ignore */ }
+						return entry;
+					}
+
+					const enriched = await Promise.all(entries.map(resolveCover));
+
 					// Sostituisci i contenuti esistenti con i 3 più recenti
 					grid.innerHTML = '';
-					entries.forEach(e=> grid.appendChild(createCard(e)));
+					enriched.forEach(e=> grid.appendChild(createCard(e)));
 				}catch(err){
 					// In caso di errore mantieni i 3 statici già presenti
 					console.warn('Impossibile caricare le ultime news dinamiche:', err);
