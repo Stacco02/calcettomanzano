@@ -48,6 +48,7 @@ small, .muted { color: var(--c-muted); }
   grid-template-columns: auto 1fr auto; 
   align-items: center; 
   padding: var(--sp-4) 0; 
+  column-gap: var(--sp-5);
 }
 .brand { display: flex; align-items: center; gap: var(--sp-3); font-weight: 800; letter-spacing: .04em; white-space: nowrap; }
 .brand img { width: 40px; height: 40px; object-fit: contain; }
