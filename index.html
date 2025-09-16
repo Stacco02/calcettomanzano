@@ -59,6 +59,47 @@
 		</section>
 
 		<main id="main" class="main">
+			<section class="section">
+				<div class="container">
+					<h2>In Campo</h2>
+					<div class="home-widgets">
+						<!-- Dove si gioca (mappa) -->
+						<article class="card">
+							<div class="content">
+								<h3>Dove si gioca</h3>
+								<div class="media" aria-label="Mappa Palazzetto dello Sport Manzano">
+									<iframe title="Mappa Palazzetto dello Sport Manzano" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=13.379653%2C45.9748014%2C13.399653%2C45.9948014&layer=mapnik&marker=45.9848014%2C13.389653"></iframe>
+								</div>
+								<p class="muted" style="margin-top: var(--sp-3);">Palazzetto dello Sport – Via A. Olivo, 33044 Manzano (UD)</p>
+							</div>
+						</article>
+
+						<!-- Calendario/Risultati (widget, compattato con toggle) -->
+						<article class="card">
+							<div class="content">
+								<h3>Calendario e Risultati</h3>
+								<div class="embed-collapsible" data-collapsed-height="260" data-full-height="680" style="border:1px solid var(--c-border); border-radius:12px; overflow:hidden; background:#fff; position: relative;">
+									<iframe title="Risultati – TuttoCampo" src="https://www.tuttocampo.it/WidgetV2/Risultati/PREVIEW?preview=FV.K.A.S1&y=2025-26" loading="lazy" scrolling="no" style="width:100%;height:260px;border:0;display:block" onerror="this.closest('.embed-collapsible').style.display='none';"></iframe>
+									<div class="embed-mask" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:60px;background:linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 70%); pointer-events:none;"></div>
+									<button type="button" class="embed-toggle" style="position:absolute;left:50%;transform:translateX(-50%);bottom:10px;background:#1e40af;color:#fff;border:none;border-radius:999px;padding:6px 12px;font-weight:600;cursor:pointer;">Mostra tutto</button>
+								</div>
+							</div>
+						</article>
+
+						<!-- Classifica (widget, compattato con toggle) -->
+						<article class="card">
+							<div class="content">
+								<h3>Classifica</h3>
+								<div class="embed-collapsible" data-collapsed-height="380" data-full-height="860" style="border:1px solid var(--c-border); border-radius:12px; overflow:hidden; background:#fff; position: relative;">
+									<iframe title="Classifica – TuttoCampo" src="https://www.tuttocampo.it/WidgetV2/Classifica/PREVIEW?preview=FV.K.A.S1&y=2025-26" loading="lazy" scrolling="no" style="width:100%;height:380px;border:0;display:block" onerror="this.closest('.embed-collapsible').style.display='none';"></iframe>
+									<div class="embed-mask" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:60px;background:linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 70%); pointer-events:none;"></div>
+									<button type="button" class="embed-toggle" style="position:absolute;left:50%;transform:translateX(-50%);bottom:10px;background:#1e40af;color:#fff;border:none;border-radius:999px;padding:6px 12px;font-weight:600;cursor:pointer;">Mostra tutto</button>
+								</div>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
 			<section id="news" class="section">
 				<div class="container">
 					<h2>Ultime News</h2>
@@ -155,6 +196,28 @@
 					</footer>
 		
 		<script src="scripts-2025.js" defer></script>
+		<script>
+		// Toggle per widget compattati (stessa logica della pagina 1a Squadra)
+		document.addEventListener('DOMContentLoaded', function(){
+			const blocks = document.querySelectorAll('.embed-collapsible');
+			blocks.forEach(block => {
+				const iframe = block.querySelector('iframe');
+				const toggle = block.querySelector('.embed-toggle');
+				const mask = block.querySelector('.embed-mask');
+				if (!iframe || !toggle) return;
+				const collapsed = parseInt(block.getAttribute('data-collapsed-height') || '420', 10);
+				const full = parseInt(block.getAttribute('data-full-height') || iframe.style.height || '800', 10);
+				let expanded = false;
+				function applyState(){
+					iframe.style.height = (expanded ? full : collapsed) + 'px';
+					if (mask) mask.style.display = expanded ? 'none' : 'block';
+					toggle.textContent = expanded ? 'Riduci' : 'Mostra tutto';
+				}
+				applyState();
+				toggle.addEventListener('click', () => { expanded = !expanded; applyState(); });
+			});
+		});
+		</script>
 		<script>
 		// Popola in home le ultime 3 news reali prese dalla pagina news
 		(function(){
