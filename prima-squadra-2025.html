@@ -161,8 +161,18 @@
 
 			<h2 style="margin-top:var(--sp-6)">Comunicati</h2>
 			<div class="news-grid">
-				<article class="card"><div class="content"><h3>Ritiro precampionato</h3><p class="meta">Ufficio Stampa – Lug 2025</p></div></article>
-				<article class="card"><div class="content"><h3>Amichevoli Agosto</h3><p class="meta">Ufficio Stampa – Lug 2025</p></div></article>
+				<article class="card" style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onclick="window.location.href='news-2025.html'">
+					<div class="content">
+						<h3>Ritiro precampionato</h3>
+						<p class="meta">Ufficio Stampa – Lug 2025</p>
+					</div>
+				</article>
+				<article class="card" style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onclick="window.location.href='news-2025.html'">
+					<div class="content">
+						<h3>Amichevoli Agosto</h3>
+						<p class="meta">Ufficio Stampa – Lug 2025</p>
+					</div>
+				</article>
 			</div>
 
 			<h2 style="margin-top:var(--sp-6)">Risultati e Classifica</h2>
@@ -189,5 +199,11 @@
 		</div></main>
 		<footer class="footer"><div class="container"><div class="links"><a href="https://www.divisionecalcioa5.it/" target="_blank">Divisione Calcio a 5</a><a href="http://www.regione.fvg.it/rafvg/cms/RAFVG/" target="_blank">Regione FVG</a><a href="https://friuliveneziagiulia.lnd.it/it/" target="_blank">LND FVG</a><a href="https://www.calcettomanzano.it/www.comune.manzano.ud.it/hh/index.php?jvs=0&amp;acc=1" target="_blank">Comune di Manzano</a></div><p class="copyright">© 2003–2025 A.D.S. C5 MANZANO 1988</p></div></footer>
 		<script src="scripts-2025.js" defer></script>
+		<style>
+			.news-grid .card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.15);
+			}
+		</style>
 	</body>
 </html>
