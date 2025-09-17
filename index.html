@@ -100,21 +100,23 @@
 				</div>
 			</section>
 
-			<!-- Social: Dal campo -->
+			<!-- Social: I nostri social -->
 			<section id="social" class="section">
 				<div class="container">
-					<h2>Dal campo</h2>
+					<h2>I nostri social</h2>
 					<div class="social-grid">
 						<!-- Facebook Page Plugin -->
 						<article class="card">
 							<div class="content">
 								<h3>Facebook</h3>
-								<div class="media" style="border:1px solid var(--c-border); border-radius:12px; overflow:hidden; background:#fff;">
-									<div id="fb-root"></div>
-									<div class="fb-page" data-href="https://www.facebook.com/manzano.calcetto.fans/" data-tabs="timeline" data-width="500" data-height="360" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
-										<blockquote cite="https://www.facebook.com/manzano.calcetto.fans/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/manzano.calcetto.fans/">C5 Manzano 1988</a></blockquote>
-									</div>
-								</div>
+                            <div class="media fb-media" style="border:1px solid var(--c-border); border-radius:12px; overflow:hidden; background:#fff; position:relative;">
+                                <div id="fb-root"></div>
+                                <div class="fb-page" data-href="https://www.facebook.com/manzano.calcetto.fans/" data-tabs="timeline" data-height="360" data-adapt-container-width="true" data-hide-cover="true" data-small-header="true" data-show-facepile="false"></div>
+                                <div class="social-fallback" id="fb-fallback" style="display:none; position:absolute; inset:0; background:#fff; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:12px;">
+                                    <p class="muted" style="margin:0;">Anteprima non disponibile.</p>
+                                    <a class="btn btn-secondary" href="https://www.facebook.com/manzano.calcetto.fans/" target="_blank" rel="noopener">Apri Facebook</a>
+                                </div>
+                            </div>
 							</div>
 						</article>
 
@@ -122,13 +124,13 @@
 						<article class="card">
 							<div class="content">
 								<h3>Instagram</h3>
-								<div class="ig-embed">
-									<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/c5manzano1988/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:none; margin:0; padding:0; width:100%; min-width:100%;"></blockquote>
-									<div class="ig-fallback">
-										<p>Anteprima non disponibile. Apri il profilo per vedere i post.</p>
-										<a class="btn btn-secondary" href="https://www.instagram.com/c5manzano1988/" target="_blank" rel="noopener">Apri Instagram</a>
-									</div>
-								</div>
+                        <div class="ig-embed" style="overflow:hidden;">
+                            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C1NBaIEtfHw/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:none; margin:0; padding:0; width:100%; min-width:100%;"></blockquote>
+                            <div class="ig-fallback">
+                                <p>Anteprima non disponibile. Apri il profilo per vedere i post.</p>
+                                <a class="btn btn-secondary" href="https://www.instagram.com/c5manzano1988/" target="_blank" rel="noopener">Apri Instagram</a>
+                            </div>
+                        </div>
 							</div>
 						</article>
 					</div>
@@ -230,9 +232,37 @@
 					</footer>
 		
 		<script src="scripts-2025.js" defer></script>
-		<!-- Facebook SDK e Instagram embed -->
-		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v19.0" nonce="cm"></script>
-		<script async src="https://www.instagram.com/embed.js"></script>
+        <!-- Facebook SDK per Page Plugin adattivo -->
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v19.0" nonce="cm"></script>
+        <!-- Instagram embed per il permalink fornito -->
+        <script async src="https://www.instagram.com/embed.js"></script>
+        <script>
+        // Social: gestisci fallback se i widget non renderizzano
+        document.addEventListener('DOMContentLoaded', function(){
+            // FB fallback se non renderizza entro 6s
+            setTimeout(function(){
+                var fbContainer = document.querySelector('.fb-media');
+                if(fbContainer && !fbContainer.querySelector('iframe')){
+                    var fbFallback = document.getElementById('fb-fallback');
+                    if(fbFallback) fbFallback.style.display = 'flex';
+                }
+            }, 6000);
+
+            // Nasconde il fallback quando l'embed IG ha renderizzato l'iframe
+            function checkIG(){
+                var box = document.querySelector('.ig-embed');
+                if(!box) return;
+                var iframe = box.querySelector('iframe');
+                if(iframe){
+                    var fb = box.querySelector('.ig-fallback');
+                    if(fb) fb.style.display = 'none';
+                } else {
+                    setTimeout(checkIG, 1200);
+                }
+            }
+            checkIG();
+        });
+        </script>
         
 		<script>
 		// Popola in home le ultime 3 news reali prese dalla pagina news
