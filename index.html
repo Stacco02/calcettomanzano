@@ -99,6 +99,41 @@
 					</div>
 				</div>
 			</section>
+
+			<!-- Social: Dal campo -->
+			<section id="social" class="section">
+				<div class="container">
+					<h2>Dal campo</h2>
+					<div class="social-grid">
+						<!-- Facebook Page Plugin -->
+						<article class="card">
+							<div class="content">
+								<h3>Facebook</h3>
+								<div class="media" style="border:1px solid var(--c-border); border-radius:12px; overflow:hidden; background:#fff;">
+									<div id="fb-root"></div>
+									<div class="fb-page" data-href="https://www.facebook.com/manzano.calcetto.fans/" data-tabs="timeline" data-width="500" data-height="360" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+										<blockquote cite="https://www.facebook.com/manzano.calcetto.fans/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/manzano.calcetto.fans/">C5 Manzano 1988</a></blockquote>
+									</div>
+								</div>
+							</div>
+						</article>
+
+						<!-- Instagram singolo post (sostituire il permalink con un contenuto del profilo) -->
+						<article class="card">
+							<div class="content">
+								<h3>Instagram</h3>
+								<div class="ig-embed">
+									<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/c5manzano1988/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:none; margin:0; padding:0; width:100%; min-width:100%;"></blockquote>
+									<div class="ig-fallback">
+										<p>Anteprima non disponibile. Apri il profilo per vedere i post.</p>
+										<a class="btn btn-secondary" href="https://www.instagram.com/c5manzano1988/" target="_blank" rel="noopener">Apri Instagram</a>
+									</div>
+								</div>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
 			<section id="news" class="section">
 				<div class="container">
 					<h2>Ultime News</h2>
@@ -195,6 +230,9 @@
 					</footer>
 		
 		<script src="scripts-2025.js" defer></script>
+		<!-- Facebook SDK e Instagram embed -->
+		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v19.0" nonce="cm"></script>
+		<script async src="https://www.instagram.com/embed.js"></script>
         
 		<script>
 		// Popola in home le ultime 3 news reali prese dalla pagina news

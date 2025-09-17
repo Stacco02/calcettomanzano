@@ -204,3 +204,11 @@ body.menu-open { overflow: hidden; }
 @media (max-width: 680px) {
   .home-widgets { grid-template-columns: 1fr; --homeWidgetH: 260px; }
 }
+
+/* Home: sezione Social */
+.social-grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--sp-5); align-items: start; }
+.social-grid .card .media { height: var(--homeWidgetH); }
+.social-grid .card .media iframe { width: 100%; height: 100%; border: 0; display: block; }
+.ig-embed { display: grid; place-items: center; height: var(--homeWidgetH); background: #fff; border: 1px solid var(--c-border); border-radius: 12px; overflow: hidden; }
+.ig-fallback { text-align: center; color: var(--c-muted); padding: 1rem; }
+@media (max-width: 1000px) { .social-grid { grid-template-columns: 1fr; } }
