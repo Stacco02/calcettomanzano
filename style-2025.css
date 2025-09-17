@@ -131,7 +131,8 @@ small, .muted { color: var(--c-muted); }
 /* 6) Footer */
 .footer { background: var(--c-primary); color: #fff; padding: var(--sp-6) 0; margin-top: var(--sp-6); }
 .footer .links { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-5); align-items: center; }
-.footer .links a { color: #fff; opacity: .9; }
+.footer .links a { color: #fff; opacity: .9; display: inline-flex; align-items: center; gap: 8px; }
+.footer .links a img.link-logo { height: 18px; width: auto; display: inline-block; filter: none; opacity: .95; }
 .footer .links a:hover { text-decoration: underline; opacity: 1; }
 .footer .social { display: flex; gap: var(--sp-4); justify-content: flex-end; }
 .footer .copyright { margin-top: var(--sp-5); font-size: 14px; opacity: .9; }
