@@ -1,8 +1,7 @@
-name: Update Facebook latest post
+name: Update Facebook latest post (manual)
 
 on:
-  schedule:
-    - cron: '0 * * * *'
+  # Disabilitato il trigger orario per evitare notifiche
   workflow_dispatch: {}
 
 permissions:
@@ -10,6 +9,8 @@ permissions:
 
 jobs:
   update:
+    # Se i secret non sono presenti, non eseguire nulla
+    if: ${{ secrets.FB_PAGE_ID && secrets.FB_ACCESS_TOKEN }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,7 +20,8 @@ jobs:
         with:
           node-version: '18'
       - name: Fetch latest Facebook post
-        run: node calcettomanzano/tools/fetch-facebook-latest.mjs
+        working-directory: calcettomanzano
+        run: node tools/fetch-facebook-latest.mjs
         env:
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
           FB_ACCESS_TOKEN: ${{ secrets.FB_ACCESS_TOKEN }}
@@ -30,4 +32,3 @@ jobs:
           git add calcettomanzano/social/facebook.json calcettomanzano/social/facebook-latest.jpg || true
           git commit -m "chore(social): update Facebook latest post [skip ci]" || echo "No changes to commit"
           git push
-
