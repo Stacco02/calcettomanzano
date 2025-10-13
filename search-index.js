@@ -568,6 +568,15 @@ const searchIndex = [
     "fullText": "venerdì inizia la coppa italia patrick lavaroni - addetto stampa — domenica 22 set 2024 manzano (ud) 22 settembre 2024 la stagione del calcio a 5 regionale inizia con la coppa italia , il trofeo stelio martini. quest’anno assistiamo a un cambiamento rispetto alle ultime annate: la coppa non si intersecherà con il campionato e verrà giocata interamente tra fine settembre e inizio novembre, con le f inale prevista per sabato 9 novembre .",
     "filename": "venerdi-inizia-la-coppa-italia-html.html"
   }
+,
+{
+  "id": "test-20251013164216",
+  "title": "Test",
+  "meta": "Andrea Stacco — Lunedì 13 Ott 2025",
+  "content": "Prova uno due",
+  "fullText": "test andrea stacco prova uno due",
+  "filename": "test-20251013164216.html"
+}
 ];
 
 // Funzione per cercare negli articoli
