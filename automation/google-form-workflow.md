@@ -177,7 +177,7 @@ function buildBlogHtml({ title, author, dateIt, body, coverPath }) {
   <style>
     :root { --c-primary:#0b3f91; --c-bg:#fff; --c-text:#0e0e0e; --c-muted:#6b7380; --c-border:#e5e7eb; --shadow:0 8px 24px rgba(0,0,0,.08); }
     *{box-sizing:border-box}
-    body{margin:0;padding:32px 16px;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--c-text);background:var(--c-bg);line-height:1.6;max-width:800px}
+    body{margin:0 auto;padding:32px 16px;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--c-text);background:var(--c-bg);line-height:1.6;max-width:800px}
     h1{font-weight:800;font-size:clamp(28px,4vw,36px);text-transform:uppercase;letter-spacing:.03em;margin:0 0 16px;color:var(--c-primary)}
     .meta{color:var(--c-muted);margin:0 0 24px;font-size:.95rem;font-weight:500;padding:8px 0;border-bottom:2px solid var(--c-border)}
     .content img{max-width:100%;height:auto;border-radius:12px;margin:16px 0;box-shadow:var(--shadow)}
