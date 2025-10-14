@@ -569,14 +569,6 @@ const searchIndex = [
     "filename": "venerdi-inizia-la-coppa-italia-html.html"
   }
 ,
-{
-  "id": "test-20251013164216",
-  "title": "Test",
-  "meta": "Andrea Stacco — Lunedì 13 Ott 2025",
-  "content": "Prova uno due",
-  "fullText": "test andrea stacco prova uno due",
-  "filename": "test-20251013164216.html"
-}
 ];
 
 // Funzione per cercare negli articoli
