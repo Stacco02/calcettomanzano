@@ -49,6 +49,11 @@
 					<nav class="mobile-menu" aria-label="Menu mobile">${mobileNav}</nav>
 				</div>
 			</div>`;
+
+		const panel = header.querySelector('#mobile-panel');
+		if (panel) {
+			document.body.appendChild(panel);
+		}
 	}
 
 	function setupHeaderBehaviors(){
@@ -74,6 +79,14 @@
 					panel.setAttribute('aria-hidden', 'true');
 					document.body.classList.remove('menu-open');
 				}
+			});
+			panel.querySelectorAll('a').forEach(link => {
+				link.addEventListener('click', () => {
+					panel.classList.remove('open');
+					burger.setAttribute('aria-expanded', 'false');
+					panel.setAttribute('aria-hidden', 'true');
+					document.body.classList.remove('menu-open');
+				});
 			});
 		}
 	}
