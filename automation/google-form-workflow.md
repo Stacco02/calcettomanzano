@@ -64,6 +64,7 @@ function onFormSubmit(e) {
     const linkHref = `blog/${slug}.html?v=${bust}`;
 
     let coverPath = DEFAULT_COVER_PATH;
+    let hasCustomCover = false;
     if (coverValue) {
       const fileId = extractDriveFileId(coverValue);
       if (fileId) {
@@ -71,10 +72,11 @@ function onFormSubmit(e) {
         const ext = getSafeImageExt(file.getName());
         coverPath = `images/covers/${slug}.${ext}`;
         githubPutBinary(coverPath, file.getBlob(), `[bot] add cover for ${slug}`);
+        hasCustomCover = true;
       }
     }
 
-    const blogHtml = buildBlogHtml({ title, author, dateIt, body, coverPath });
+    const blogHtml = buildBlogHtml({ title, author, dateIt, body, coverPath, hasCustomCover });
     githubPutText(blogPath, blogHtml, `[bot] publish blog: ${title}`);
 
     const newsFile = githubGetFile('news-2025.html');
@@ -161,13 +163,13 @@ function applyInlineMarkup(text) {
     .replace(/_(.+?)_/g, '<em>$1</em>');
 }
 
-function buildBlogHtml({ title, author, dateIt, body, coverPath }) {
+function buildBlogHtml({ title, author, dateIt, body, coverPath, hasCustomCover }) {
   const esc = t => (t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const paragraphs = body
     .split(/\n\n+/)
     .map(p => `<p>${applyInlineMarkup(p).replace(/\n/g, '<br>')}</p>`)
     .join('\n    ');
-  const cover = coverPath ? `    <img src="../${coverPath}" alt="${esc(title)}" />\n` : '';
+  const cover = hasCustomCover ? `    <img src="../${coverPath}" alt="${esc(title)}" />\n` : '';
   return `<!DOCTYPE html>
 <html lang="it">
 <head>
