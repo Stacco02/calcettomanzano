@@ -76,7 +76,18 @@ function onFormSubmit(e) {
       }
     }
 
-    const blogHtml = buildBlogHtml({ title, author, dateIt, body, coverPath, hasCustomCover });
+    const siteBase = SITE_BASE_URL.replace(/\/$/, '');
+    const articleUrl = `${siteBase}/${blogPath}`;
+    const blogHtml = buildBlogHtml({
+      title,
+      author,
+      dateIt,
+      body,
+      coverPath,
+      hasCustomCover,
+      articleUrl,
+      shareImageUrl: `${siteBase}/${coverPath}`
+    });
     githubPutText(blogPath, blogHtml, `[bot] publish blog: ${title}`);
 
     const newsFile = githubGetFile('news-2025.html');
@@ -163,26 +174,40 @@ function applyInlineMarkup(text) {
     .replace(/_(.+?)_/g, '<em>$1</em>');
 }
 
-function buildBlogHtml({ title, author, dateIt, body, coverPath, hasCustomCover }) {
+function buildBlogHtml({ title, author, dateIt, body, coverPath, hasCustomCover, articleUrl, shareImageUrl }) {
   const esc = t => (t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const paragraphs = body
     .split(/\n\n+/)
     .map(p => `<p>${applyInlineMarkup(p).replace(/\n/g, '<br>')}</p>`)
     .join('\n    ');
+  const descriptionRaw = (body.split(/\n\n+/)[0] || title).replace(/[\*\_]/g, '');
+  const description = esc(descriptionRaw.replace(/\n/g, ' ').slice(0, 200));
   const cover = hasCustomCover ? `    <img src="../${coverPath}" alt="${esc(title)}" />\n` : '';
+
   return `<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="utf-8">
   <title>${esc(title)}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="${description}">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="${esc(title)}">
+  <meta property="og:description" content="${description}">
+  <meta property="og:image" content="${esc(shareImageUrl)}">
+  <meta property="og:url" content="${esc(articleUrl)}">
+  <meta property="og:site_name" content="C5 Manzano 1988">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${esc(title)}">
+  <meta name="twitter:description" content="${description}">
+  <meta name="twitter:image" content="${esc(shareImageUrl)}">
+  <link rel="canonical" href="${esc(articleUrl)}">
   <style>
     :root { --c-primary:#0b3f91; --c-bg:#fff; --c-text:#0e0e0e; --c-muted:#6b7380; --c-border:#e5e7eb; --shadow:0 8px 24px rgba(0,0,0,.08); }
     *{box-sizing:border-box}
     body{margin:0 auto;padding:32px clamp(16px, 6vw, 24px);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--c-text);background:var(--c-bg);line-height:1.6;max-width:800px}
     h1{font-weight:800;font-size:clamp(28px,4vw,36px);text-transform:uppercase;letter-spacing:.03em;margin:0 0 16px;color:var(--c-primary)}
     .meta{color:var(--c-muted);margin:0 0 24px;font-size:.95rem;font-weight:500;padding:8px 0;border-bottom:2px solid var(--c-border)}
-    .content img{max-width:100%;height:auto;border-radius:12px;margin:16px 0;box-shadow:var(--shadow)}
     .content img{max-width:100%;max-height:420px;width:100%;height:auto;border-radius:12px;margin:16px 0;object-fit:cover;box-shadow:var(--shadow)}
     .content p{margin:var(--sp-4) 0;text-align:justify;}
   </style>
