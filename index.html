@@ -107,35 +107,31 @@
 					<div class="social-grid">
 						<!-- Facebook Page Plugin -->
 						<article class="card">
-							<div class="content">
-								<h3>Facebook</h3>
-								<a id="fb-latest-link" class="social-preview" href="https://www.facebook.com/manzano.calcetto.fans/" target="_blank" rel="noopener">
-									<img id="fb-latest-img" src="images/Manzanologo.png" alt="Ultimo post su Facebook" />
-									<div class="social-preview__overlay">
-										<div class="social-preview__text" id="fb-latest-text">Seguici su Facebook</div>
-										<div class="social-preview__meta">
-											<span id="fb-latest-time"></span>
-											<span class="social-preview__tag">Facebook</span>
-										</div>
-									</div>
-								</a>
-							</div>
+                        <div class="content">
+                            <h3>Facebook</h3>
+                            <div class="fb-static media">
+                                <a id="fb-latest-link" href="https://www.facebook.com/manzano.calcetto.fans/" target="_blank" rel="noopener">
+                                    <img id="fb-latest-img" src="images/Manzanologo.png" alt="Seguici su Facebook"/>
+                                    <div class="caption">
+                                        <div id="fb-latest-text">Seguici su Facebook</div>
+                                        <div class="meta" id="fb-latest-time"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
 						</article>
 
 						<!-- Instagram singolo post (sostituire il permalink con un contenuto del profilo) -->
 						<article class="card">
 							<div class="content">
 								<h3>Instagram</h3>
-								<a id="ig-latest-link" class="social-preview" href="https://www.instagram.com/c5manzano1988/" target="_blank" rel="noopener">
-									<img id="ig-latest-img" src="images/Manzanologo.png" alt="Ultimo post su Instagram" />
-									<div class="social-preview__overlay">
-										<div class="social-preview__text" id="ig-latest-text">Apri Instagram</div>
-										<div class="social-preview__meta">
-											<span id="ig-latest-time"></span>
-											<span class="social-preview__tag">Instagram</span>
-										</div>
-									</div>
-								</a>
+                        <div class="ig-embed" style="overflow:hidden;">
+                            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C1NBaIEtfHw/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:none; margin:0; padding:0; width:100%; min-width:100%;"></blockquote>
+                            <div class="ig-fallback">
+                                <p>Anteprima non disponibile. Apri il profilo per vedere i post.</p>
+                                <a class="btn btn-secondary" href="https://www.instagram.com/c5manzano1988/" target="_blank" rel="noopener">Apri Instagram</a>
+                            </div>
+                        </div>
 							</div>
 						</article>
 					</div>
@@ -256,93 +252,22 @@
 					</footer>
 		
 		<script src="scripts-2025.js" defer></script>
+        <!-- Instagram embed per il permalink fornito -->
+        <script async src="https://www.instagram.com/embed.js"></script>
         <script>
-        // Social: carica ultimo post Facebook/Instagram dai JSON generati dai workflow
         document.addEventListener('DOMContentLoaded', function(){
-            const facebookCard = {
-                linkId: 'fb-latest-link',
-                imgId: 'fb-latest-img',
-                textId: 'fb-latest-text',
-                timeId: 'fb-latest-time',
-                fallback: {
-                    href: 'https://www.facebook.com/manzano.calcetto.fans/',
-                    image: 'images/Manzanologo.png',
-                    text: 'Seguici su Facebook',
-                    time: '',
-                    label: 'Facebook'
+            function checkIG(){
+                const box = document.querySelector('.ig-embed');
+                if(!box) return;
+                const iframe = box.querySelector('iframe');
+                if(iframe){
+                    const fb = box.querySelector('.ig-fallback');
+                    if(fb) fb.style.display = 'none';
+                } else {
+                    setTimeout(checkIG, 1200);
                 }
-            };
-            const instagramCard = {
-                linkId: 'ig-latest-link',
-                imgId: 'ig-latest-img',
-                textId: 'ig-latest-text',
-                timeId: 'ig-latest-time',
-                fallback: {
-                    href: 'https://www.instagram.com/c5manzano1988/',
-                    image: 'images/Manzanologo.png',
-                    text: 'Apri Instagram',
-                    time: '',
-                    label: 'Instagram'
-                }
-            };
-
-            const formatSocialDate = (value) => {
-                if(!value) return '';
-                const d = new Date(value);
-                if (Number.isNaN(d.getTime())) return '';
-                return d.toLocaleDateString('it-IT', { day: '2-digit', month: 'short' });
-            };
-
-            const applySocialCard = (config, data) => {
-                const link = document.getElementById(config.linkId);
-                const img = document.getElementById(config.imgId);
-                const textEl = document.getElementById(config.textId);
-                const timeEl = document.getElementById(config.timeId);
-                if (!link || !img || !textEl || !timeEl) return;
-
-                const rawText = (data.text || '').trim();
-                const resolvedText = rawText || config.fallback.text;
-                const truncated = resolvedText.length > 140 ? resolvedText.slice(0, 140) + '…' : resolvedText;
-                link.href = data.href || config.fallback.href;
-                link.setAttribute('aria-label', `${config.fallback.label}: ${truncated}`);
-                img.src = data.image || config.fallback.image;
-                img.alt = `${config.fallback.label}: ${truncated}`;
-                textEl.textContent = truncated;
-                const formatted = formatSocialDate(data.time || config.fallback.time);
-                timeEl.textContent = formatted;
-            };
-
-            (async function(){
-                try {
-                    const res = await fetch('social/facebook.json?ts=' + Date.now());
-                    if(!res.ok) throw new Error('no json');
-                    const data = await res.json();
-                    applySocialCard(facebookCard, {
-                        href: data.url,
-                        image: data.image,
-                        text: data.text,
-                        time: data.time
-                    });
-                } catch (e) {
-                    applySocialCard(facebookCard, {});
-                }
-            })();
-
-            (async function(){
-                try {
-                    const res = await fetch('social/instagram.json?ts=' + Date.now());
-                    if(!res.ok) throw new Error('no json');
-                    const data = await res.json();
-                    applySocialCard(instagramCard, {
-                        href: data.url,
-                        image: data.image,
-                        text: data.text,
-                        time: data.time
-                    });
-                } catch (e) {
-                    applySocialCard(instagramCard, {});
-                }
-            })();
+            }
+            checkIG();
         });
         </script>
         
