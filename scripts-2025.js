@@ -16,7 +16,7 @@
 				case 'under-2025.html': return /under-2025\.html$/i.test(path);
 				case 'sponsor-2025.html': return /sponsor-2025\.html$/i.test(path);
 				case 'trasparenza-2025.html': return /trasparenza-2025\.html$/i.test(path);
-				case 'safeguarding-2025.html': return /safeguarding-2025\.html$/i.test(path);
+				case 'galleria-2025.html': return /galleria-2025\.html$/i.test(path);
 				default: return false;
 			}
 		}
@@ -29,7 +29,7 @@
 			{href: 'under-2025.html', label: 'Under 21/19'},
 			{href: 'sponsor-2025.html', label: 'Sponsor'},
 			{href: 'trasparenza-2025.html', label: 'Trasparenza'},
-			{href: 'safeguarding-2025.html', label: 'Safeguarding'}
+			{href: 'galleria-2025.html', label: 'Galleria'}
 		];
 
 		const desktopNav = links.map(l => `<a href="${base}${l.href}"${isActive(l.href)?' class="active"':''}>${l.label}</a>`).join('');
