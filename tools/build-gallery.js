@@ -8,6 +8,8 @@ const INDEX_FILE = path.join(ROOT, 'index.html');
 const GALLERY_PAGE = path.join(ROOT, 'galleria-2025.html');
 
 const VALID_EXT = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif'];
+const PLACEHOLDER =
+  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
 
 function listImages() {
   const files = fs.readdirSync(GALLERY_DIR)
@@ -33,7 +35,13 @@ function toAlt(name) {
 function buildItem(image, indent = '\t\t\t\t\t') {
   const encoded = encodeURIComponent(image.name);
   const alt = escapeHtml(toAlt(image.name));
-  return `${indent}<div class="gallery-item"><div class="media"><img loading="lazy" src="gallery/${encoded}" alt="${alt}" /></div></div>`;
+  return [
+    `${indent}<div class="gallery-item" data-full="gallery/${encoded}">`,
+    `${indent}\t<div class="media">`,
+    `${indent}\t\t<img class="gallery-photo" loading="lazy" decoding="async" src="${PLACEHOLDER}" data-src="gallery/${encoded}" data-full="gallery/${encoded}" alt="${alt}" />`,
+    `${indent}\t</div>`,
+    `${indent}</div>`
+  ].join('\n');
 }
 
 function escapeHtml(str) {

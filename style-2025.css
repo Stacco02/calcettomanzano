@@ -125,9 +125,28 @@ small, .muted { color: var(--c-muted); }
 
 /* Galleria */
 .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-4); }
-.gallery-item { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--c-border); background: #fff; }
-.gallery-item .media { aspect-ratio: 4 / 3; }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+.gallery-item { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--c-border); background: #fff; transition: transform .2s ease; }
+.gallery-item .media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+.gallery-photo { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; background: #f1f5f9; transition: transform .3s ease, opacity .25s ease; cursor: zoom-in; }
+.gallery-photo.is-loaded { opacity: 1; }
+.gallery-item:hover .gallery-photo { transform: scale(1.03); }
+.gallery-item.is-hidden { display: none; }
+.gallery-load-more-wrapper { margin-top: var(--sp-5); display: flex; justify-content: center; }
+.gallery-load-more { background: var(--c-primary); color: #fff; border: none; border-radius: var(--radius); padding: 12px 24px; font-weight: 600; box-shadow: var(--shadow); cursor: pointer; transition: transform .16s ease, box-shadow .16s ease, filter .16s ease; }
+.gallery-load-more:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(11, 63, 145, .22); }
+.gallery-lightbox { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(15, 23, 42, .9); z-index: 3000; padding: var(--sp-5); }
+.gallery-lightbox.open { display: flex; }
+.gallery-lightbox__backdrop { position: absolute; inset: 0; cursor: zoom-out; }
+.gallery-lightbox__content { position: relative; z-index: 1; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--sp-4); max-width: min(1200px, 100%); width: 100%; }
+.gallery-lightbox__figure { margin: 0; grid-column: 2; text-align: center; }
+.gallery-lightbox__img { max-height: 80vh; max-width: 100%; width: auto; border-radius: var(--radius); box-shadow: 0 24px 64px rgba(0, 0, 0, .45); background: #0f172a; }
+.gallery-lightbox__caption { margin-top: var(--sp-3); color: #f8fafc; font-size: .95rem; font-weight: 500; text-shadow: 0 0 12px rgba(15, 23, 42, .6); }
+.gallery-lightbox__close { position: absolute; top: 12px; right: 12px; background: transparent; border: none; color: #fff; font-size: 38px; line-height: 1; cursor: pointer; padding: 0 6px; }
+.gallery-lightbox__nav { border: none; background: rgba(30, 41, 59, .7); color: #fff; width: 54px; height: 54px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; transition: background .2s ease, transform .2s ease, opacity .2s ease; }
+.gallery-lightbox__nav:hover { background: rgba(59, 130, 246, .85); transform: scale(1.05); }
+.gallery-lightbox__nav:disabled { opacity: .4; cursor: default; transform: none; }
+.gallery-lightbox__prev { grid-column: 1; }
+.gallery-lightbox__next { grid-column: 3; }
 
 .players-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
 .players-grid .player-card { height: 100%; }
@@ -192,7 +211,17 @@ body.menu-open { overflow: hidden; }
   .footer .links a { justify-content: center; }
   .footer .social { justify-content: center; }
   .footer .copyright { text-align: center; }
+
+  .gallery-lightbox { padding: var(--sp-4); }
+  .gallery-lightbox__content { grid-template-columns: 1fr; }
+  .gallery-lightbox__prev,
+  .gallery-lightbox__next { position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; }
+  .gallery-lightbox__prev { left: 12px; }
+  .gallery-lightbox__next { right: 12px; }
+  .gallery-lightbox__caption { font-size: .9rem; }
 }
+
+body.lightbox-open { overflow: hidden; }
 
 /* Home: sezione widget (mappa + risultati + classifica) */
 .home-widgets { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-5); align-items: start; --homeWidgetH: 360px; }
