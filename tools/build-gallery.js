@@ -74,7 +74,7 @@ function main() {
     return;
   }
 
-  const latest = images.slice(0, 3).map(img => buildItem(img));
+  const latest = images.slice(0, 4).map(img => buildItem(img));
   const full = images.map(img => buildItem(img));
 
   inject(INDEX_FILE, '<!-- gallery-latest:start -->', '<!-- gallery-latest:end -->', latest, '\t\t\t\t\t');
