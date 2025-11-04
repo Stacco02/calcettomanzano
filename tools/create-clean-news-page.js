@@ -155,7 +155,7 @@ const newsPageContent = `<!DOCTYPE html>
 					<a href="https://www.instagram.com/c5manzano1988/" aria-label="Instagram">Ig</a>
 					<a href="https://www.youtube.com/channel/UCQZQZQZQZQZQZQZQZQZQZQ" aria-label="YouTube">Yt</a>
 				</div>
-				<p class="copyright">© 2003–2025 A.D.S. C5 MANZANO 1988 – Tutti i diritti riservati • <a href="mailto:robertopit@inwind.it">Contatta webmaster</a></p>
+				<p class="copyright">© 2003–2025 A.D.S. C5 MANZANO 1988 – Tutti i diritti riservati • <a href="mailto:stacco.andrea02@gmail.com">Contatta webmaster (Andrea Stacco)</a></p>
 			</div>
 		</footer>
 

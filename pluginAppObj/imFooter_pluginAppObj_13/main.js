@@ -38,8 +38,8 @@ function hoverbutton_imFooter_pluginAppObj_13() {
         var button = $('#imFooter_pluginAppObj_13 .imFooter_pluginAppObj_13-button');
     
     x5engine.boot.push(function(){
-        if("Contatta Webmaster&lt;br /&gt;robertopit@inwind.it" != ""){
-            $("#imFooter_pluginAppObj_13 .div-txt").html(br("Contatta Webmaster&lt;br /&gt;robertopit@inwind.it"));
+        if("Contatta Webmaster&lt;br /&gt;stacco.andrea02@gmail.com" != ""){
+            $("#imFooter_pluginAppObj_13 .div-txt").html(br("Contatta Webmaster&lt;br /&gt;stacco.andrea02@gmail.com"));
         }
   
         var isMobile = x5engine.responsive.isMobileDevice !== 'undefined' && typeof x5engine.responsive.isMobileDevice === "function";
