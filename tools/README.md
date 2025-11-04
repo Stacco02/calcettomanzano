@@ -24,7 +24,31 @@ Rigenera la galleria foto prendendo tutte le immagini presenti nella cartella `g
 node tools/build-gallery.js
 ```
 
-- Aggiorna automaticamente le ultime 3 foto mostrate in home (`index.html`).
+- Aggiorna automaticamente le ultime 4 foto mostrate in home (`index.html`).
 - Ricrea la galleria completa in `galleria-2025.html`.
 - Le immagini vengono ordinate per data di modifica (le più recenti prima).
 - Dopo aver aggiunto o rimosso foto in `gallery/`, riesegui lo script e verifica le pagine aggiornate.
+
+### fetch-facebook-latest.mjs
+
+Scarica l’ultimo post pubblico della pagina Facebook tramite la Graph API.
+
+```
+FB_PAGE_ID=<id_pag> FB_ACCESS_TOKEN=<token> node tools/fetch-facebook-latest.mjs
+```
+
+- Serve un token con permessi `pages_read_engagement`.
+- Salva l’immagine in `social/facebook-latest.jpg` e aggiorna `social/facebook.json`.
+- Il file JSON viene letto dalla home per mostrare l’anteprima del post.
+
+### fetch-instagram-latest.mjs
+
+Recupera l’ultimo contenuto pubblicato sul profilo Instagram collegato (via Instagram Graph API).
+
+```
+IG_USER_ID=<id_ig> IG_ACCESS_TOKEN=<token> node tools/fetch-instagram-latest.mjs
+```
+
+- L’access token deve avere il permesso `instagram_basic`.
+- Il comando salva la cover del post in `social/instagram-latest.jpg` e aggiorna `social/instagram.json`.
+- Senza eseguire questo script verrà mostrato il fallback statico nella home.
