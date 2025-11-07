@@ -38,7 +38,7 @@ const GITHUB = {
   branch: SP.getProperty('BRANCH') || 'main',
 };
 const DEFAULT_COVER_PATH = SP.getProperty('DEFAULT_COVER_PATH') || 'images/ArticoloNofoto.jpeg';
-const SITE_BASE_URL = SP.getProperty('SITE_BASE_URL') || 'https://calcettomanzano.staccoa.it';
+const SITE_BASE_URL = SP.getProperty('SITE_BASE_URL') || 'https://calcettomanzano.it';
 
 function onFormSubmit(e) {
   try {
@@ -337,7 +337,7 @@ In Apps Script → **Impostazioni progetto → Proprietà script** inserisci:
 | `REPO_NAME`           | `calcettomanzano`                            |
 | `BRANCH`              | `main`                                       |
 | `DEFAULT_COVER_PATH`  | `images/ArticoloNofoto.jpeg`                 |
-| `SITE_BASE_URL`       | `https://calcettomanzano.staccoa.it`         |
+| `SITE_BASE_URL`       | `https://calcettomanzano.it`         |
 
 ---
 

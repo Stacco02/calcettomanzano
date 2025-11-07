@@ -1,6 +1,6 @@
 # Sito C5 Manzano 1988 – Guida rapida
 
-Dominio: https://calcettomanzano.staccoa.it
+Dominio: https://calcettomanzano.it
 Repository: https://github.com/Stacco02/calcettomanzano
 
 ## Struttura cartelle
@@ -27,7 +27,7 @@ Percorsi tipici:
   - Aggiungi/rimuovi `<div class="sponsor">...</div>` e aggiorna `src`
 
 ## Pubblicazione (GitHub Pages)
-- Ogni commit su `main` pubblica automaticamente su `calcettomanzano.staccoa.it`.
+- Ogni commit su `main` pubblica automaticamente su `calcettomanzano.it`.
 - File utili: `CNAME`, `robots.txt`, `sitemap.xml`.
 
 ## Modifiche rapide dal browser
