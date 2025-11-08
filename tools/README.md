@@ -28,3 +28,15 @@ node tools/build-gallery.js
 - Ricrea la galleria completa in `galleria-2025.html`.
 - Le immagini vengono ordinate per data di modifica (le più recenti prima).
 - Dopo aver aggiunto o rimosso foto in `gallery/`, riesegui lo script e verifica le pagine aggiornate.
+
+### optimize-images.js
+
+Ridimensiona/comprime le foto di `gallery/` generando le versioni leggere usate da home e pagina galleria.
+
+```
+npm run optimize:gallery
+```
+
+- Salva i file ottimizzati in `gallery/optimized/` (max 1600px lato lungo) e le anteprime in `gallery/thumbs/` (max 800px).
+- Dopo aver aggiunto nuove immagini originali, esegui lo script e poi `node tools/build-gallery.js` per aggiornare l’HTML.
+- Richiede dipendenze `sharp` e `globby` (già installate tramite `npm install`).

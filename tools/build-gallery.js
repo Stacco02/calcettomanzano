@@ -10,6 +10,8 @@ const GALLERY_PAGE = path.join(ROOT, 'galleria-2025.html');
 const VALID_EXT = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif'];
 const PLACEHOLDER =
   'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+const OPTIMIZED_DIR = path.join(GALLERY_DIR, 'optimized');
+const THUMBS_DIR = path.join(GALLERY_DIR, 'thumbs');
 
 function listImages() {
   const files = fs.readdirSync(GALLERY_DIR)
@@ -35,13 +37,36 @@ function toAlt(name) {
 function buildItem(image, indent = '\t\t\t\t\t') {
   const encoded = encodeURIComponent(image.name);
   const alt = escapeHtml(toAlt(image.name));
+  const fallback = `gallery/${encoded}`;
+  const assets = getAssetPaths(image.name, fallback);
+  const thumb = escapeHtml(assets.thumb);
+  const full = escapeHtml(assets.full);
   return [
-    `${indent}<div class="gallery-item" data-full="gallery/${encoded}">`,
+    `${indent}<div class="gallery-item" data-full="${full}">`,
     `${indent}\t<div class="media">`,
-    `${indent}\t\t<img class="gallery-photo" loading="lazy" decoding="async" src="${PLACEHOLDER}" data-src="gallery/${encoded}" data-full="gallery/${encoded}" alt="${alt}" />`,
+    `${indent}\t\t<img class="gallery-photo" loading="lazy" decoding="async" src="${PLACEHOLDER}" data-src="${thumb}" data-full="${full}" alt="${alt}" />`,
     `${indent}\t</div>`,
     `${indent}</div>`
   ].join('\n');
+}
+
+function toSafeBase(name) {
+  return (name || '')
+    .replace(/\.[^.]+$/, '')
+    .replace(/[^a-z0-9_-]+/gi, '_') || 'foto';
+}
+
+function getAssetPaths(originalName, fallback) {
+  const base = toSafeBase(originalName);
+  const fileName = `${base}.webp`;
+  const optimizedDisk = path.join(OPTIMIZED_DIR, fileName);
+  const thumbDisk = path.join(THUMBS_DIR, fileName);
+  const optimizedRel = `gallery/optimized/${fileName}`;
+  const thumbRel = `gallery/thumbs/${fileName}`;
+  return {
+    full: fs.existsSync(optimizedDisk) ? optimizedRel : fallback,
+    thumb: fs.existsSync(thumbDisk) ? thumbRel : fallback,
+  };
 }
 
 function escapeHtml(str) {

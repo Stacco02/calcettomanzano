@@ -1,0 +1,25 @@
+{
+  "name": "calcettomanzano",
+  "version": "1.0.0",
+  "description": "Dominio: https://calcettomanzano.it Repository: https://github.com/Stacco02/calcettomanzano",
+  "main": "scripts-2025.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "optimize:gallery": "node tools/optimize-images.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stacco02/calcettomanzano.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stacco02/calcettomanzano/issues"
+  },
+  "homepage": "https://github.com/Stacco02/calcettomanzano#readme",
+  "dependencies": {
+    "globby": "^15.0.0",
+    "sharp": "^0.34.5"
+  }
+}
