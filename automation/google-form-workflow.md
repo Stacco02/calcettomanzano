@@ -39,6 +39,7 @@ const GITHUB = {
 };
 const DEFAULT_COVER_PATH = SP.getProperty('DEFAULT_COVER_PATH') || 'images/ArticoloNofoto.jpeg';
 const SITE_BASE_URL = SP.getProperty('SITE_BASE_URL') || 'https://calcettomanzano.it';
+const COVER_MAX_DIMENSION = Number(SP.getProperty('COVER_MAX_DIMENSION')) || 1600;
 
 function onFormSubmit(e) {
   try {
@@ -69,15 +70,16 @@ function onFormSubmit(e) {
       const fileId = extractDriveFileId(coverValue);
       if (fileId) {
         const file = DriveApp.getFileById(fileId);
-        const ext = getSafeImageExt(file.getName());
-        coverPath = `images/covers/${slug}.${ext}`;
-        githubPutBinary(coverPath, file.getBlob(), `[bot] add cover for ${slug}`);
+        const optimizedBlob = optimizeCoverBlob(file.getBlob(), `${slug}.jpg`);
+        coverPath = `images/covers/${slug}.jpg`;
+        githubPutBinary(coverPath, optimizedBlob, `[bot] add cover for ${slug}`);
         hasCustomCover = true;
       }
     }
 
     const siteBase = SITE_BASE_URL.replace(/\/$/, '');
     const articleUrl = `${siteBase}/${blogPath}`;
+    const shareImageUrl = `${siteBase}/${coverPath}?v=${bust}`;
     const blogHtml = buildBlogHtml({
       title,
       author,
@@ -86,7 +88,7 @@ function onFormSubmit(e) {
       coverPath,
       hasCustomCover,
       articleUrl,
-      shareImageUrl: `${siteBase}/${coverPath}`
+      shareImageUrl
     });
     githubPutText(blogPath, blogHtml, `[bot] publish blog: ${title}`);
 
@@ -146,10 +148,29 @@ function extractDriveFileId(url) {
   const m2 = url.match(/[?&]id=([A-Za-z0-9_-]{10,})/);
   return m2 ? m2[1] : null;
 }
-function getSafeImageExt(name) {
-  const m = (name || '').toLowerCase().match(/\.(png|jpe?g|webp)$/);
-  if (!m) return 'jpg';
-  return m[1] === 'jpeg' ? 'jpg' : m[1];
+function optimizeCoverBlob(blob, filename) {
+  try {
+    const image = ImagesService.openImage(blob);
+    const width = image.getWidth();
+    const height = image.getHeight();
+    const largestSide = Math.max(width, height);
+    let optimized = image;
+    if (largestSide > COVER_MAX_DIMENSION) {
+      const ratio = COVER_MAX_DIMENSION / largestSide;
+      const targetWidth = Math.max(1, Math.round(width * ratio));
+      const targetHeight = Math.max(1, Math.round(height * ratio));
+      optimized = optimized.resize(targetWidth, targetHeight);
+    }
+    const jpegBlob = optimized.getBlob().getAs('image/jpeg');
+    jpegBlob.setName(filename || 'cover.jpg');
+    return jpegBlob;
+  } catch (err) {
+    console.warn('Optimize cover failed', err.message);
+    if (filename) {
+      blob.setName(filename);
+    }
+    return blob;
+  }
 }
 function formatItalianLongDate(date) {
   const months = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
