@@ -239,6 +239,7 @@ function buildBlogHtml({ title, author, dateIt, body, coverPath, hasCustomCover,
   <div class="content">
 ${cover}${paragraphs}
   </div>
+  <script src="/scripts/blog-share.js" defer></script>
 </body>
 </html>`;
 }
