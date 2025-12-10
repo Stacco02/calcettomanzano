@@ -1949,6 +1949,16 @@
                                 console.log('Date degli articoli aggiornate');
                         });
                 </script>
+                <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                                document.querySelectorAll('.news-image img').forEach(img => {
+                                        img.onerror = () => {
+                                                img.onerror = null;
+                                                img.src = 'images/ArticoloNoFoto2.jpeg';
+                                        };
+                                });
+                        });
+                </script>
 
 		</body>
 </html>

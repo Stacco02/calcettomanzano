@@ -294,7 +294,7 @@
 				const card = document.createElement('article');
 				card.className = 'card';
 				card.innerHTML = `
-					<div class="media"><img loading="lazy" src="${image}" alt="${title.replace(/"/g,'&quot;')}" /></div>
+					<div class="media"><img loading="lazy" src="${image}" alt="${title.replace(/\"/g,'&quot;')}" onerror="this.onerror=null;this.src='images/ArticoloNoFoto2.jpeg';" /></div>
 					<div class="content">
 						<h3><a href="${href}" style="text-decoration:none;color:inherit">${title}</a></h3>
 						<p class="meta">${author} — ${dateText}</p>
