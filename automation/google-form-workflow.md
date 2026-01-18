@@ -39,7 +39,7 @@ const GITHUB = {
 };
 const DEFAULT_COVER_PATH = SP.getProperty('DEFAULT_COVER_PATH') || 'images/ArticoloNofoto.jpeg';
 const SITE_BASE_URL = SP.getProperty('SITE_BASE_URL') || 'https://calcettomanzano.it';
-const COVER_MAX_DIMENSION = Number(SP.getProperty('COVER_MAX_DIMENSION')) || 1600;
+const COVER_MAX_DIMENSION = Number(SP.getProperty('COVER_MAX_DIMENSION')) || 1200;
 
 function onFormSubmit(e) {
   try {
@@ -150,7 +150,12 @@ function extractDriveFileId(url) {
 }
 function optimizeCoverBlob(blob, filename) {
   try {
-    const image = ImagesService.openImage(blob);
+    const jpegSource = normalizeImageBlob(blob);
+    if (typeof ImagesService === 'undefined') {
+      if (filename) jpegSource.setName(filename);
+      return jpegSource;
+    }
+    const image = ImagesService.openImage(jpegSource);
     const width = image.getWidth();
     const height = image.getHeight();
     const largestSide = Math.max(width, height);
@@ -166,9 +171,19 @@ function optimizeCoverBlob(blob, filename) {
     return jpegBlob;
   } catch (err) {
     console.warn('Optimize cover failed', err.message);
-    if (filename) {
-      blob.setName(filename);
+    const fallback = normalizeImageBlob(blob);
+    if (filename) fallback.setName(filename);
+    return fallback;
+  }
+}
+
+function normalizeImageBlob(blob) {
+  try {
+    if ((blob.getContentType() || '').toLowerCase() === 'image/jpeg') {
+      return blob;
     }
+    return blob.getAs('image/jpeg');
+  } catch (err) {
     return blob;
   }
 }
