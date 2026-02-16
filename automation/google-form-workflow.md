@@ -37,7 +37,7 @@ const GITHUB = {
   repo: SP.getProperty('REPO_NAME') || 'calcettomanzano',
   branch: SP.getProperty('BRANCH') || 'main',
 };
-const DEFAULT_COVER_PATH = SP.getProperty('DEFAULT_COVER_PATH') || 'images/ArticoloNofoto.jpeg';
+const DEFAULT_COVER_PATH = SP.getProperty('DEFAULT_COVER_PATH') || 'images/ArticoloNoFoto2.jpeg';
 const SITE_BASE_URL = SP.getProperty('SITE_BASE_URL') || 'https://calcettomanzano.it';
 const COVER_MAX_DIMENSION = Number(SP.getProperty('COVER_MAX_DIMENSION')) || 1200;
 
@@ -373,7 +373,7 @@ In Apps Script → **Impostazioni progetto → Proprietà script** inserisci:
 | `REPO_OWNER`          | `Stacco02`                                   |
 | `REPO_NAME`           | `calcettomanzano`                            |
 | `BRANCH`              | `main`                                       |
-| `DEFAULT_COVER_PATH`  | `images/ArticoloNofoto.jpeg`                 |
+| `DEFAULT_COVER_PATH`  | `images/ArticoloNoFoto2.jpeg`                |
 | `SITE_BASE_URL`       | `https://calcettomanzano.it`         |
 
 ---
