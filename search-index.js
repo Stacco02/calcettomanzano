@@ -790,6 +790,15 @@ const searchIndex = [
   "fullText": "test articolo andrea stacco ahndakkeamsd;aokemdakm",
   "filename": "test-articolo-20260223141308.html"
 }
+,
+{
+  "id": "test-articolo-2-20260223141353",
+  "title": "Test articolo 2",
+  "meta": "Andrea Stacco — Lunedì 23 Feb 2026",
+  "content": "Test articolo due vediamo se va",
+  "fullText": "test articolo 2 andrea stacco test articolo due vediamo se va",
+  "filename": "test-articolo-2-20260223141353.html"
+}
 ];
 
 // Funzione per cercare negli articoli
