@@ -38,14 +38,16 @@ const GITHUB = {
   branch: SP.getProperty('BRANCH') || 'main',
 };
 const DEFAULT_COVER_PATH = SP.getProperty('DEFAULT_COVER_PATH') || 'images/ArticoloNoFoto2.jpeg';
-const SITE_BASE_URL = SP.getProperty('SITE_BASE_URL') || 'https://calcettomanzano.it';
+const SITE_BASE_URL = (SP.getProperty('SITE_BASE_URL') || 'https://calcettomanzano.it').replace(/\/$/, '');
 const COVER_MAX_DIMENSION = Number(SP.getProperty('COVER_MAX_DIMENSION')) || 1200;
 
 function onFormSubmit(e) {
   try {
-    const sheet = e.source.getActiveSheet();
+    const sheet = e && e.source
+      ? e.source.getActiveSheet()
+      : SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
-    const row = e.range.getRow();
+    const row = e && e.range ? e.range.getRow() : sheet.getLastRow();
     const values = sheet.getRange(row, 1, 1, sheet.getLastColumn()).getValues()[0];
     const record = mapRecord(headers, values);
 
@@ -77,9 +79,8 @@ function onFormSubmit(e) {
       }
     }
 
-    const siteBase = SITE_BASE_URL.replace(/\/$/, '');
-    const articleUrl = `${siteBase}/${blogPath}`;
-    const shareImageUrl = `${siteBase}/${coverPath}?v=${bust}`;
+    const articleUrl = `${SITE_BASE_URL}/${blogPath}`;
+    const shareImageUrl = `${SITE_BASE_URL}/${coverPath}?v=${bust}`;
     const blogHtml = buildBlogHtml({
       title,
       author,
@@ -94,9 +95,12 @@ function onFormSubmit(e) {
 
     const newsFile = githubGetFile('news-2025.html');
     let newsHtml = decodeFile(newsFile);
+    const existingNewsSlug = `blog/${slug}.html`;
     const cardHtml = buildNewsCardHtml({ title, author, dateIt, linkHref, imageSrc: coverPath });
-    newsHtml = insertNewsCard(newsHtml, cardHtml);
-    githubPutText('news-2025.html', newsHtml, `[bot] add news card: ${title}`, newsFile.sha);
+    if (newsHtml.indexOf(existingNewsSlug) === -1) {
+      newsHtml = insertNewsCard(newsHtml, cardHtml);
+      githubPutText('news-2025.html', newsHtml, `[bot] add news card: ${title}`, newsFile.sha);
+    }
 
     const siFile = githubGetFile('search-index.js');
     let siJs = decodeFile(siFile);
@@ -280,9 +284,11 @@ function buildNewsCardHtml({ title, author, dateIt, linkHref, imageSrc }) {
 </article>`.trim();
 }
 function insertNewsCard(html, card) {
-  const pattern = /<div\s+class="news-grid"\s+id="newsGrid"[^>]*>/i;
+  const pattern = /<div[^>]*id=["']newsGrid["'][^>]*>/i;
   const match = html.match(pattern);
-  if (!match) return html;
+  if (!match) {
+    throw new Error('Contenitore newsGrid non trovato in news-2025.html');
+  }
   const idx = match.index + match[0].length;
   return html.slice(0, idx) + '\n' + card + '\n' + html.slice(idx);
 }
@@ -298,6 +304,7 @@ function buildSearchIndexEntry({ slug, title, author, date, body }) {
   };
 }
 function insertSearchIndexEntry(jsText, entry) {
+  if (jsText.indexOf(`"id": "${entry.id}"`) !== -1) return jsText;
   const open = jsText.indexOf('const searchIndex = [');
   const close = jsText.lastIndexOf('];');
   if (open === -1 || close === -1) return jsText;
@@ -394,6 +401,7 @@ In Apps Script → **Impostazioni progetto → Proprietà script** inserisci:
 2. Il foglio ottiene una riga con `Status`, `URL`, `Filename`.
 3. Su GitHub compaiono i commit con messaggi `[bot] publish blog: …`, ecc.
 4. Dopo il deploy di GitHub Pages, l’articolo è online e appare tra le “Ultime News”.
+5. Se l’HTML dell’articolo viene creato ma non compare tra le news, controlla il log Apps Script: ora lo script segnala esplicitamente se non trova `newsGrid`.
 
 ### Formattazione rapida
 - `**testo**` o `__testo__` → grassetto.
@@ -424,4 +432,4 @@ node tools/delete-article.js <slug>
 
 ---
 
-Con questi passaggi i redattori possono pubblicare via form, mentre tu hai un modo rapido per rimuovere eventuali articoli. *** End Patch***```json
+Con questi passaggi i redattori possono pubblicare via form, mentre tu hai un modo rapido per rimuovere eventuali articoli.
