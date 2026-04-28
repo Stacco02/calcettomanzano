@@ -2,7 +2,7 @@
   "name": "calcettomanzano",
   "version": "1.0.0",
   "description": "Dominio: https://calcettomanzano.it Repository: https://github.com/Stacco02/calcettomanzano",
-  "main": "scripts-2025.js",
+  "main": "scripts.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "optimize:gallery": "node tools/optimize-images.js"

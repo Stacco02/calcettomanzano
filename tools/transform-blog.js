@@ -13,12 +13,12 @@ const header2025 = `		<header class="header" id="top">
 				<nav class="menu" aria-label="Navigazione principale">
 					<a href="../index.html">Home</a>
 					<a href="index.html" class="active">News</a>
-					<a href="../societa-2025.html">Società</a>
-					<a href="../prima-squadra-2025.html">1a Squadra</a>
-					<a href="../under-2025.html">Under 21</a>
-					<a href="../sponsor-2025.html">Sponsor</a>
-					<a href="../trasparenza-2025.html">Trasparenza</a>
-					<a href="../safeguarding-2025.html">Safeguarding</a>
+					<a href="../societa.html">Società</a>
+					<a href="../prima-squadra.html">1a Squadra</a>
+					<a href="../under.html">Under 21</a>
+					<a href="../sponsor.html">Sponsor</a>
+					<a href="../trasparenza.html">Trasparenza</a>
+					<a href="../safeguarding.html">Safeguarding</a>
 				</nav>
 				<button class="burger" id="burger" aria-label="Apri menu" aria-controls="mobile-panel" aria-expanded="false"><span></span></button>
 			</div>
@@ -27,12 +27,12 @@ const header2025 = `		<header class="header" id="top">
 					<nav class="mobile-menu" aria-label="Menu mobile">
 						<a href="../index.html">Home</a>
 						<a href="index.html" class="active">News</a>
-						<a href="../societa-2025.html">Società</a>
-						<a href="../prima-squadra-2025.html">1a Squadra</a>
-						<a href="../under-2025.html">Under 21</a>
-						<a href="../sponsor-2025.html">Sponsor</a>
-						<a href="../trasparenza-2025.html">Trasparenza</a>
-						<a href="../safeguarding-2025.html">Safeguarding</a>
+						<a href="../societa.html">Società</a>
+						<a href="../prima-squadra.html">1a Squadra</a>
+						<a href="../under.html">Under 21</a>
+						<a href="../sponsor.html">Sponsor</a>
+						<a href="../trasparenza.html">Trasparenza</a>
+						<a href="../safeguarding.html">Safeguarding</a>
 					</nav>
 				</div>
 			</div>
@@ -120,7 +120,7 @@ function createCleanArticle(originalHtml, articleData) {
 	<title>${title} - Notizie Calcetto Manzano</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="../style-2025.css" />
+	<link rel="stylesheet" href="../style.css" />
 	<style>
 		body { background: var(--c-bg); color: var(--c-text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
 		.article-container { max-width: 800px; margin: 0 auto; padding: var(--sp-6); background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); }
@@ -142,7 +142,7 @@ ${header2025}
 		</div>
 	</main>
 ${footer2025}
-	<script src="../scripts-2025.js" defer></script>
+	<script src="../scripts.js" defer></script>
 </body>
 </html>`;
 }

@@ -10,11 +10,10 @@
         <meta name="description" content="C5 Manzano 1988 – futsal, notizie, palmarès, sponsor e galleria." />
         <meta property="og:title" content="C5 Manzano 1988" />
         <meta property="og:description" content="Notizie, palmarès, sponsor e galleria del C5 Manzano 1988." />
-        <link rel="stylesheet" href="style-2025.css" />
+        <link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-        <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v24.0"></script>
+        <a class="skip-link" href="#main">Salta al contenuto</a>
 		<header class="header" id="top">
 			<div class="container nav">
 				<a class="brand" href="index.html" aria-label="C5 Manzano 1988">
@@ -24,12 +23,12 @@
 				<nav class="menu" aria-label="Navigazione principale">
 					<a href="index.html" class="active">Home</a>
 					<a href="news-2025.html">News</a>
-					<a href="societa-2025.html">Società</a>
-					<a href="prima-squadra-2025.html">1a Squadra</a>
-					<a href="under-2025.html">Under 21</a>
-					<a href="sponsor-2025.html">Sponsor</a>
-					<a href="trasparenza-2025.html">Trasparenza</a>
-					<a href="safeguarding-2025.html">Safeguarding</a>
+					<a href="societa.html">Società</a>
+					<a href="prima-squadra.html">1a Squadra</a>
+					<a href="under.html">Under 21</a>
+					<a href="sponsor.html">Sponsor</a>
+					<a href="trasparenza.html">Trasparenza</a>
+					<a href="safeguarding.html">Safeguarding</a>
 				</nav>
 				<button class="burger" id="burger" aria-label="Apri menu" aria-controls="mobile-panel" aria-expanded="false"><span></span></button>
 	</div>
@@ -38,24 +37,25 @@
 					<nav class="mobile-menu" aria-label="Menu mobile">
 						<a href="index.html">Home</a>
 						<a href="news-2025.html">News</a>
-						<a href="societa-2025.html">Società</a>
-						<a href="prima-squadra-2025.html">1a Squadra</a>
-						<a href="under-2025.html">Under 21</a>
-						<a href="sponsor-2025.html">Sponsor</a>
-						<a href="trasparenza-2025.html">Trasparenza</a>
-						<a href="safeguarding-2025.html">Safeguarding</a>
+						<a href="societa.html">Società</a>
+						<a href="prima-squadra.html">1a Squadra</a>
+						<a href="under.html">Under 21</a>
+						<a href="sponsor.html">Sponsor</a>
+						<a href="trasparenza.html">Trasparenza</a>
+						<a href="safeguarding.html">Safeguarding</a>
 					</nav>
 </div>
 </div>
 		</header>
 
-		<section class="hero hero-home" style="background-image: url('images/BackgroundHome.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat; position: relative;">
-			<div class="container" style="position: relative; z-index: 2;">
-				<h1 style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">C5 Manzano 1988</h1>
-				<p class="subtitle" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.7);">Passione futsal, territorio e giovani: notizie, risultati, sponsor e iniziative del club.</p>
-				<div style="margin-top: var(--sp-5);">
+		<section class="hero hero-home">
+			<div class="container hero-inner">
+				<p class="eyebrow">Dal 1988 sul parquet friulano</p>
+				<h1>C5 Manzano <span>1988</span></h1>
+				<p class="subtitle">Passione futsal, territorio e giovani: notizie, risultati, sponsor e iniziative del club.</p>
+				<div class="hero-actions">
 					<a class="btn btn-primary" href="news-2025.html">Ultime News</a>
-					<a class="btn btn-secondary" href="sponsor-2025.html" style="margin-left: var(--sp-3); background-color: rgba(255, 255, 255, 0.9); color: #0b3f91; border: 2px solid #0b3f91; text-shadow: none;">I nostri Sponsor</a>
+					<a class="btn btn-secondary btn-on-dark" href="sponsor.html">I nostri Sponsor</a>
 </div>
 </div>
 		</section>
@@ -66,11 +66,11 @@
 					<h2>In Campo</h2>
 					<div class="home-widgets">
 						<!-- Prossima partita -->
-						<article class="card" style="max-width: 520px; width: 100%; margin: 0 auto;">
+						<article class="card">
 							<div class="content">
 								<h3>Prossima partita</h3>
-								<div class="home-embed" style="display:flex; justify-content:center;">
-									<iframe title="Prossima partita – TuttoCampo" src="https://www.tuttocampo.it/WidgetV2/ProssimaPartita/c432fd03-2e16-4240-a8ff-7680fb1d37f7" width="500" height="350" scrolling="no" frameborder="0" loading="lazy" style="width:100%; height:350px; border:0; border-radius:12px; box-shadow:inset 0 0 0 1px rgba(15,23,42,.08);"></iframe>
+								<div class="home-embed">
+									<iframe title="Prossima partita – TuttoCampo" src="https://www.tuttocampo.it/WidgetV2/ProssimaPartita/c432fd03-2e16-4240-a8ff-7680fb1d37f7" width="500" height="350" scrolling="no" frameborder="0" loading="lazy"></iframe>
 								</div>
 							</div>
 						</article>
@@ -80,12 +80,12 @@
 							<div class="content">
 								<h3>Dove si gioca</h3>
                                 <div class="media" aria-label="Mappa Palazzetto dello Sport Manzano">
-                                    <a href="https://www.google.com/maps/dir/?api=1&destination=45.9848014,13.389653" target="_blank" rel="noopener" title="Apri indicazioni su Google Maps" style="position:absolute;inset:0;z-index:2;">
+                                    <a class="map-cover-link" href="https://www.google.com/maps/dir/?api=1&destination=45.9848014,13.389653" target="_blank" rel="noopener" title="Apri indicazioni su Google Maps">
                                         <span class="visually-hidden">Apri indicazioni su Google Maps</span>
                                     </a>
                                     <iframe title="Google Maps – Palazzetto dello Sport Manzano" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=45.9848014,13.389653&z=15&output=embed"></iframe>
                                 </div>
-								<p class="muted" style="margin-top: var(--sp-3);">Palazzetto dello Sport – Via A. Olivo, 33044 Manzano (UD)</p>
+								<p class="muted venue-address">Palazzetto dello Sport – Via A. Olivo, 33044 Manzano (UD)</p>
 							</div>
 						</article>
 
@@ -102,36 +102,38 @@
 				</div>
 			</section>
 
-			<!-- Social: I nostri social -->
+				<!-- Social: I nostri social -->
 			<section id="social" class="section">
 				<div class="container">
 					<h2>I nostri social</h2>
 					<div class="social-grid">
-						<!-- Facebook Page Plugin -->
-						<article class="card">
-							<div class="content">
-								<h3>Facebook</h3>
-                                <div class="media" style="height:520px;padding:0;background:#fff;border-radius:12px;overflow:hidden;display:flex;justify-content:flex-start;">
-                                    <iframe title="Facebook C5 Manzano 1988"
-                                        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fc5manzano1988.it&tabs=timeline&width=500&height=520&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true"
-                                        width="500" height="520" style="border:none;overflow:hidden;"
-                                        scrolling="no" frameborder="0" allowfullscreen="true"
-                                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                                </div>
+						<article class="social-card social-card--facebook">
+							<a class="social-cover" href="https://www.facebook.com/c5manzano1988.it" target="_blank" rel="noopener" aria-label="Apri la pagina Facebook del C5 Manzano 1988">
+								<img loading="lazy" src="images/covers/il-manzano-conclude-l-opera-7-campionato-in-bacheca-20260329140645.jpg" alt="Giocatori del C5 Manzano in campo" />
+							</a>
+							<div class="social-body">
+								<div>
+									<p class="social-platform">Facebook</p>
+									<h3>C5 Manzano 1988</h3>
+									<p class="social-handle">@c5manzano1988.it</p>
+								</div>
+								<p class="social-copy">Comunicati, convocazioni, risultati e aggiornamenti gara pubblicati dal club.</p>
+								<a class="btn btn-primary" href="https://www.facebook.com/c5manzano1988.it" target="_blank" rel="noopener">Apri Facebook</a>
 							</div>
 						</article>
 
-						<!-- Instagram singolo post (sostituire il permalink con un contenuto del profilo) -->
-						<article class="card">
-							<div class="content">
-								<h3>Instagram</h3>
-                        <div class="ig-embed" style="overflow:hidden;">
-                            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DQmRCWKDFRl/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:none; margin:0; padding:0; width:100%; min-width:100%;"></blockquote>
-                            <div class="ig-fallback">
-                                <p>Anteprima non disponibile. Apri il profilo per vedere i post.</p>
-                                <a class="btn btn-secondary" href="https://www.instagram.com/c5manzano1988/" target="_blank" rel="noopener">Apri Instagram</a>
-                            </div>
-                        </div>
+						<article class="social-card social-card--instagram">
+							<a class="social-cover" href="https://www.instagram.com/c5manzano1988/" target="_blank" rel="noopener" aria-label="Apri il profilo Instagram del C5 Manzano 1988">
+								<img loading="lazy" src="images/covers/manzano-che-passione-8-3-al-palma-nello-scontro-diretto-20260322110942.jpg" alt="Giocatori del C5 Manzano festeggiano una rete" />
+							</a>
+							<div class="social-body">
+								<div>
+									<p class="social-platform">Instagram</p>
+									<h3>c5manzano1988</h3>
+									<p class="social-handle">@c5manzano1988</p>
+								</div>
+								<p class="social-copy">Foto, reel, momenti dal parquet e contenuti rapidi dal gruppo squadra.</p>
+								<a class="btn btn-secondary" href="https://www.instagram.com/c5manzano1988/" target="_blank" rel="noopener">Apri Instagram</a>
 							</div>
 						</article>
 					</div>
@@ -235,7 +237,7 @@
 					<!-- gallery-latest:end -->
 				</div>
 				<div class="gallery-cta" style="margin-top: var(--sp-4); text-align: center;">
-					<a class="btn btn-primary" href="galleria-2025.html">Apri la galleria completa</a>
+					<a class="btn btn-primary" href="galleria.html">Apri la galleria completa</a>
 				</div>
 			</div>
 		</section>
@@ -243,37 +245,26 @@
 
 		<footer class="footer">
 			<div class="container">
-				<div class="links">
-					<a href="https://www.divisionecalcioa5.it/" target="_blank" rel="noopener"><img class="link-logo" src="images/logo_div_C5_alt_100.png" alt=""/>Divisione Calcio a 5</a>
-					<a href="http://www.regione.fvg.it/rafvg/cms/RAFVG/" target="_blank" rel="noopener"><img class="link-logo" src="images/logo_FVG.png" alt=""/>Regione Friuli Venezia Giulia</a>
-					<a href="https://friuliveneziagiulia.lnd.it/it/" target="_blank" rel="noopener"><img class="link-logo" src="images/logo_LND-FVG_alt_100.png" alt=""/>LND – Friuli Venezia Giulia</a>
-					<a href="https://www.calcettomanzano.it/www.comune.manzano.ud.it/hh/index.php?jvs=0&amp;acc=1" target="_blank" rel="noopener"><img class="link-logo" src="images/logo_comune_manzano_alt_100.jpg" alt=""/>Comune di Manzano (UD)</a>
+				<div class="footer-main">
+					<div class="footer-brand">
+						<img src="images/Manzanologo.png" alt="Logo C5 Manzano 1988" />
+						<div>
+							<p class="footer-kicker">C5 Manzano 1988</p>
+						</div>
+					</div>
+					<nav class="links" aria-label="Enti e riferimenti sportivi">
+						<a href="https://www.divisionecalcioa5.it/" target="_blank" rel="noopener"><img class="link-logo" src="images/logo_div_C5_alt_100.png" alt=""/>Divisione Calcio a 5</a>
+						<a href="http://www.regione.fvg.it/rafvg/cms/RAFVG/" target="_blank" rel="noopener"><img class="link-logo" src="images/logo_FVG.png" alt=""/>Regione Friuli Venezia Giulia</a>
+						<a href="https://friuliveneziagiulia.lnd.it/it/" target="_blank" rel="noopener"><img class="link-logo" src="images/logo_LND-FVG_alt_100.png" alt=""/>LND – Friuli Venezia Giulia</a>
+						<a href="https://www.calcettomanzano.it/www.comune.manzano.ud.it/hh/index.php?jvs=0&amp;acc=1" target="_blank" rel="noopener"><img class="link-logo" src="images/logo_comune_manzano_alt_100.jpg" alt=""/>Comune di Manzano (UD)</a>
+					</nav>
 				</div>
 				
 				<p class="copyright">© 2003–2025 A.D.S. C5 MANZANO 1988 – Tutti i diritti riservati • <a href="mailto:stacco.andrea02@gmail.com">Contatta webmaster</a></p>
             </div>
 					</footer>
 		
-		<script src="scripts-2025.js" defer></script>
-        <!-- Instagram embed per il permalink fornito -->
-        <script async src="https://www.instagram.com/embed.js"></script>
-        <script>
-        document.addEventListener('DOMContentLoaded', function(){
-            function checkIG(){
-                const box = document.querySelector('.ig-embed');
-                if(!box) return;
-                const iframe = box.querySelector('iframe');
-                if(iframe){
-                    const fb = box.querySelector('.ig-fallback');
-                    if(fb) fb.style.display = 'none';
-                } else {
-                    setTimeout(checkIG, 1200);
-                }
-            }
-            checkIG();
-        });
-        </script>
-        
+		<script src="scripts.js" defer></script>
 		<script>
 		// Popola in home le ultime 3 news reali prese dalla pagina news
 		(function(){

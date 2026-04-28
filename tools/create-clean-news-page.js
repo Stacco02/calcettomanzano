@@ -70,7 +70,7 @@ const newsPageContent = `<!DOCTYPE html>
 		<meta name="description" content="Tutte le news del C5 Manzano 1988." />
 		<meta property="og:title" content="C5 Manzano 1988 – News" />
 		<meta property="og:description" content="Leggi tutte le notizie e gli articoli dal nostro blog." />
-		<link rel="stylesheet" href="style-2025.css" />
+		<link rel="stylesheet" href="style.css" />
 		<style>
 			/* Stili per la pagina news */
 			.news-card:hover { transform: translateY(-2px); }
@@ -88,12 +88,12 @@ const newsPageContent = `<!DOCTYPE html>
 				<nav class="menu" aria-label="Navigazione principale">
 					<a href="index.html">Home</a>
 					<a href="news-2025.html" class="active">News</a>
-					<a href="societa-2025.html">Società</a>
-					<a href="prima-squadra-2025.html">1a Squadra</a>
-					<a href="under-2025.html">Under 21</a>
-					<a href="sponsor-2025.html">Sponsor</a>
-					<a href="trasparenza-2025.html">Trasparenza</a>
-					<a href="safeguarding-2025.html">Safeguarding</a>
+					<a href="societa.html">Società</a>
+					<a href="prima-squadra.html">1a Squadra</a>
+					<a href="under.html">Under 21</a>
+					<a href="sponsor.html">Sponsor</a>
+					<a href="trasparenza.html">Trasparenza</a>
+					<a href="safeguarding.html">Safeguarding</a>
 				</nav>
 				<button class="burger" id="burger" aria-label="Apri menu" aria-controls="mobile-panel" aria-expanded="false"><span></span></button>
 			</div>
@@ -102,12 +102,12 @@ const newsPageContent = `<!DOCTYPE html>
 					<nav class="mobile-menu" aria-label="Menu mobile">
 						<a href="index.html">Home</a>
 						<a href="news-2025.html" class="active">News</a>
-						<a href="societa-2025.html">Società</a>
-						<a href="prima-squadra-2025.html">1a Squadra</a>
-						<a href="under-2025.html">Under 21</a>
-						<a href="sponsor-2025.html">Sponsor</a>
-						<a href="trasparenza-2025.html">Trasparenza</a>
-						<a href="safeguarding-2025.html">Safeguarding</a>
+						<a href="societa.html">Società</a>
+						<a href="prima-squadra.html">1a Squadra</a>
+						<a href="under.html">Under 21</a>
+						<a href="sponsor.html">Sponsor</a>
+						<a href="trasparenza.html">Trasparenza</a>
+						<a href="safeguarding.html">Safeguarding</a>
 					</nav>
 				</div>
 			</div>
@@ -154,7 +154,7 @@ const newsPageContent = `<!DOCTYPE html>
 			</div>
 		</footer>
 
-		<script src="scripts-2025.js" defer></script>
+		<script src="scripts.js" defer></script>
 		<script>
 			document.addEventListener('DOMContentLoaded', function() {
 				const searchInput = document.getElementById('searchInput');

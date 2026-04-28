@@ -5,7 +5,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const GALLERY_DIR = path.join(ROOT, 'gallery');
 const INDEX_FILE = path.join(ROOT, 'index.html');
-const GALLERY_PAGE = path.join(ROOT, 'galleria-2025.html');
+const GALLERY_PAGE = path.join(ROOT, 'galleria.html');
 
 const VALID_EXT = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif'];
 const PLACEHOLDER =

@@ -1,6 +1,17 @@
 # Reindirizza le richieste del blog alla nuova pagina news
 RewriteEngine On
 
+# Compatibilita con i vecchi URL delle pagine 2025
+RewriteRule ^societa-2025\.html$ societa.html [R=301,L]
+RewriteRule ^prima-squadra-2025\.html$ prima-squadra.html [R=301,L]
+RewriteRule ^under-2025\.html$ under.html [R=301,L]
+RewriteRule ^sponsor-2025\.html$ sponsor.html [R=301,L]
+RewriteRule ^trasparenza-2025\.html$ trasparenza.html [R=301,L]
+RewriteRule ^safeguarding-2025\.html$ safeguarding.html [R=301,L]
+RewriteRule ^galleria-2025\.html$ galleria.html [R=301,L]
+RewriteRule ^style-2025\.css$ style.css [R=301,L]
+RewriteRule ^scripts-2025\.js$ scripts.js [R=301,L]
+
 # Reindirizza /blog/ alla pagina news
 RewriteRule ^blog/?$ news-2025.html [R=301,L]
 

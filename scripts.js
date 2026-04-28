@@ -11,12 +11,12 @@
 			switch(slug){
 				case 'index.html': return path === '' || /index\.html$/i.test(path);
 				case 'news-2025.html': return /news-2025\.html$/i.test(path) || inBlog;
-				case 'societa-2025.html': return /societa-2025\.html$/i.test(path);
-				case 'prima-squadra-2025.html': return /prima-squadra-2025\.html$/i.test(path);
-				case 'under-2025.html': return /under-2025\.html$/i.test(path);
-				case 'sponsor-2025.html': return /sponsor-2025\.html$/i.test(path);
-				case 'trasparenza-2025.html': return /trasparenza-2025\.html$/i.test(path);
-				case 'galleria-2025.html': return /galleria-2025\.html$/i.test(path);
+				case 'societa.html': return /societa\.html$/i.test(path);
+				case 'prima-squadra.html': return /prima-squadra\.html$/i.test(path);
+				case 'under.html': return /under\.html$/i.test(path);
+				case 'sponsor.html': return /sponsor\.html$/i.test(path);
+				case 'trasparenza.html': return /trasparenza\.html$/i.test(path);
+				case 'galleria.html': return /galleria\.html$/i.test(path);
 				default: return false;
 			}
 		}
@@ -24,12 +24,12 @@
 		const links = [
 			{href: 'index.html', label: 'Home'},
 			{href: 'news-2025.html', label: 'News'},
-			{href: 'societa-2025.html', label: 'Società'},
-			{href: 'prima-squadra-2025.html', label: '1a Squadra'},
-			{href: 'under-2025.html', label: 'Under 21'},
-			{href: 'sponsor-2025.html', label: 'Sponsor'},
-			{href: 'trasparenza-2025.html', label: 'Trasparenza'},
-			{href: 'galleria-2025.html', label: 'Galleria'}
+			{href: 'societa.html', label: 'Società'},
+			{href: 'prima-squadra.html', label: '1a Squadra'},
+			{href: 'under.html', label: 'Under 21'},
+			{href: 'sponsor.html', label: 'Sponsor'},
+			{href: 'trasparenza.html', label: 'Trasparenza'},
+			{href: 'galleria.html', label: 'Galleria'}
 		];
 
 		const desktopNav = links.map(l => `<a href="${base}${l.href}"${isActive(l.href)?' class="active"':''}>${l.label}</a>`).join('');
@@ -92,7 +92,7 @@
 	}
 
 	function initGalleryLoadMore(){
-		if (!/galleria-2025\.html$/i.test(location.pathname)) return;
+		if (!/galleria\.html$/i.test(location.pathname)) return;
 		const grid = document.querySelector('.gallery-grid');
 		if (!grid) return;
 		const items = Array.from(grid.querySelectorAll('.gallery-item'));
@@ -439,11 +439,23 @@
 				}
 			});
 			legal.appendChild(manage);
-			const copyright = container.querySelector('.copyright');
+			let footerMeta = container.querySelector('.footer-meta');
+			if (!footerMeta) {
+				footerMeta = document.createElement('div');
+				footerMeta.className = 'footer-meta';
+				const copyright = container.querySelector('.copyright');
+				if (copyright) {
+					container.insertBefore(footerMeta, copyright);
+					footerMeta.appendChild(copyright);
+				} else {
+					container.appendChild(footerMeta);
+				}
+			}
+			const copyright = footerMeta.querySelector('.copyright');
 			if (copyright) {
-				container.insertBefore(legal, copyright);
+				footerMeta.insertBefore(legal, copyright);
 			} else {
-				container.appendChild(legal);
+				footerMeta.appendChild(legal);
 			}
 		});
 	}

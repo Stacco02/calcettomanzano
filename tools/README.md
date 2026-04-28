@@ -25,7 +25,7 @@ node tools/build-gallery.js
 ```
 
 - Aggiorna automaticamente le ultime 4 foto mostrate in home (`index.html`).
-- Ricrea la galleria completa in `galleria-2025.html`.
+- Ricrea la galleria completa in `galleria.html`.
 - Le immagini vengono ordinate per data di modifica (le più recenti prima).
 - Dopo aver aggiunto o rimosso foto in `gallery/`, riesegui lo script e verifica le pagine aggiornate.
 

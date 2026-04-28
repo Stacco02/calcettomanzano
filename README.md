@@ -6,8 +6,8 @@ Repository: https://github.com/Stacco02/calcettomanzano
 ## Struttura cartelle
 - `images/` – loghi sponsor, icone, elementi grafici
 - `gallery/` – foto giocatori, news e galleria
-- Pagine: `index.html`, `societa-2025.html`, `prima-squadra-2025.html`, `under-2025.html`, `sponsor-2025.html`, `trasparenza-2025.html`, `safeguarding-2025.html`
-- Stili/Script: `style-2025.css`, `scripts-2025.js`
+- Pagine: `index.html`, `societa.html`, `prima-squadra.html`, `under.html`, `sponsor.html`, `trasparenza.html`, `safeguarding.html`
+- Stili/Script: `style.css`, `scripts.js`
 
 ## Aggiornare immagini
 1) Carica i file su GitHub (Add file → Upload files) oppure in locale e poi `git push`.
@@ -21,9 +21,9 @@ Percorsi tipici:
 ## Modificare contenuti
 - Home (news e galleria): `index.html`
   - Duplica un blocco `<article class="card">...</article>` per una nuova news
-- 1a Squadra (rosa + risultati/classifica): `prima-squadra-2025.html`
+- 1a Squadra (rosa + risultati/classifica): `prima-squadra.html`
   - Aggiungi una card giocatore duplicando `<div class="gallery-item">...</div>`
-- Sponsor: `sponsor-2025.html`
+- Sponsor: `sponsor.html`
   - Aggiungi/rimuovi `<div class="sponsor">...</div>` e aggiorna `src`
 
 ## Pubblicazione (GitHub Pages)
