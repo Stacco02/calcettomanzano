@@ -11,6 +11,12 @@ RewriteRule ^safeguarding-2025\.html$ safeguarding.html [R=301,L]
 RewriteRule ^galleria-2025\.html$ galleria.html [R=301,L]
 RewriteRule ^style-2025\.css$ style.css [R=301,L]
 RewriteRule ^scripts-2025\.js$ scripts.js [R=301,L]
+RewriteRule ^privacy\.html$ privacy-policy.html [R=301,L]
+RewriteRule ^privacy-policy\.htm$ privacy-policy.html [R=301,L]
+RewriteRule ^termini-e-condizioni\.html$ termini-condizioni.html [R=301,L]
+RewriteRule ^termini\.html$ termini-condizioni.html [R=301,L]
+RewriteRule ^terms\.html$ termini-condizioni.html [R=301,L]
+RewriteRule ^terms-and-conditions\.html$ termini-condizioni.html [R=301,L]
 
 # Reindirizza /blog/ alla pagina news
 RewriteRule ^blog/?$ news-2025.html [R=301,L]

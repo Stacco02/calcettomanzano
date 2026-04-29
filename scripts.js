@@ -419,26 +419,40 @@
 	function ensureLegalLinks(cookieApi){
 		const containers = document.querySelectorAll('.footer .container');
 		containers.forEach(container => {
-			if (container.querySelector('.legal-links')) return;
-			const legal = document.createElement('div');
-			legal.className = 'legal-links';
-			const policy = document.createElement('a');
-			policy.href = 'cookie-policy.html';
-			policy.textContent = 'Cookie policy';
-			legal.appendChild(policy);
-			const manage = document.createElement('button');
-			manage.type = 'button';
-			manage.className = 'cookie-settings-link';
-			manage.textContent = 'Gestisci preferenze cookie';
-			manage.addEventListener('click', (event) => {
-				event.preventDefault();
-				if (cookieApi && typeof cookieApi.openPreferences === 'function') {
-					cookieApi.openPreferences();
-				} else if (typeof window.openCookieSettings === 'function') {
-					window.openCookieSettings();
-				}
-			});
-			legal.appendChild(manage);
+			let legal = container.querySelector('.legal-links');
+			if (!legal) {
+				legal = document.createElement('div');
+				legal.className = 'legal-links';
+				const privacy = document.createElement('a');
+				privacy.href = 'privacy-policy.html';
+				privacy.textContent = 'Privacy policy';
+				legal.appendChild(privacy);
+				const policy = document.createElement('a');
+				policy.href = 'cookie-policy.html';
+				policy.textContent = 'Cookie policy';
+				legal.appendChild(policy);
+				const terms = document.createElement('a');
+				terms.href = 'termini-condizioni.html';
+				terms.textContent = 'Termini e condizioni';
+				legal.appendChild(terms);
+				const manage = document.createElement('button');
+				manage.type = 'button';
+				manage.className = 'cookie-settings-link';
+				manage.textContent = 'Gestisci preferenze cookie';
+				legal.appendChild(manage);
+			}
+			const manage = legal.querySelector('.cookie-settings-link');
+			if (manage && !manage.dataset.cookieSettingsBound) {
+				manage.dataset.cookieSettingsBound = 'true';
+				manage.addEventListener('click', (event) => {
+					event.preventDefault();
+					if (cookieApi && typeof cookieApi.openPreferences === 'function') {
+						cookieApi.openPreferences();
+					} else if (typeof window.openCookieSettings === 'function') {
+						window.openCookieSettings();
+					}
+				});
+			}
 			let footerMeta = container.querySelector('.footer-meta');
 			if (!footerMeta) {
 				footerMeta = document.createElement('div');
