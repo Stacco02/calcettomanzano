@@ -36,7 +36,7 @@ function logoslider_pluginAppObj_3_985(param) {
             return;    
         }
             
-        var imagesPath = ['pluginAppObj/pluginAppObj_3_985/logo_BANCA_360_FVG.png','pluginAppObj/pluginAppObj_3_985/logo_ediciano_design.png','pluginAppObj/pluginAppObj_3_985/logo_DEBER.png','pluginAppObj/pluginAppObj_3_985/logo_BERNARDIS.png'];
+        var imagesPath = ['pluginAppObj/pluginAppObj_3_985/logo_BANCA_360_FVG.png','pluginAppObj/pluginAppObj_3_985/logo_ediciano_design.png','pluginAppObj/pluginAppObj_3_985/logo_BERNARDIS.png'];
              
         $('#pluginAppObj_3_985 .logo-slide-img').each(function(i, obj) {
             var path = x5engine.settings.currentPath + imagesPath[i];
