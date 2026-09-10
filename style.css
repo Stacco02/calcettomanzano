@@ -144,6 +144,8 @@ p { text-wrap: pretty; }
 .sponsor { background: rgba(255, 253, 247, .88); border: 1px solid rgba(7, 58, 130, .10); border-radius: var(--radius-sm); padding: var(--sp-5); min-height: 112px; display: grid; place-items: center; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; box-shadow: 0 1px 0 rgba(255,255,255,.7) inset; }
 .sponsor:hover { transform: translateY(-3px); background: #fff; box-shadow: var(--shadow-soft); }
 .sponsor img { width: 100%; height: 60px; object-fit: contain; }
+.sponsor img[src="images/iosonofvg.png"] { width: 48px; max-width: none; transform: translateY(11px) scale(2.7); clip-path: inset(20% 20% 35%); }
+.sponsor img[src="images/Ediltech.png"] { width: 90px; max-width: none; transform: translateY(5px) scale(2.5); clip-path: inset(25% 18% 30%); }
 
 /* Galleria */
 .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-4); }
