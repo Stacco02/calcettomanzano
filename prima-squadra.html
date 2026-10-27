@@ -8,196 +8,146 @@
         <link rel="shortcut icon" href="images/Manzanologo.png" type="image/png"/>
         <link rel="apple-touch-icon" href="images/Manzanologo.png"/>
 		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="prima-squadra.css" />
 	</head>
 	<body>
 		<header class="header"><div class="container nav"><a class="brand" href="index.html"><img src="images/Manzanologo.png" alt="Logo" /><span>C5 Manzano 1988</span></a><nav class="menu"><a href="index.html">Home</a><a href="news-2025.html">News</a><a href="societa.html">Società</a><a class="active" href="prima-squadra.html">1a Squadra</a><a href="under.html">Under 21</a><a href="sponsor.html">Sponsor</a><a href="trasparenza.html">Trasparenza</a><a href="galleria.html">Galleria</a></nav><button class="burger" id="burger"><span></span></button></div><div class="mobile-panel" id="mobile-panel"><div class="mobile-drawer"><nav class="mobile-menu"><a href="index.html">Home</a><a href="news-2025.html">News</a><a href="societa.html">Società</a><a class="active" href="prima-squadra.html">1a Squadra</a><a href="under.html">Under 21</a><a href="sponsor.html">Sponsor</a><a href="trasparenza.html">Trasparenza</a><a href="galleria.html">Galleria</a></nav></div></div></header>
 		<section class="hero"><div class="container"><h1>1a Squadra</h1><p class="subtitle">Rosa, staff e comunicati ufficiali.</p></div></section>
-		<main class="section"><div class="container">
-			<h2>Rosa Prima Squadra</h2>
-			
-			<!-- Portieri -->
-			<div class="position-section" style="margin-bottom: 3rem;">
-				<h3 style="color: #1e40af; margin-bottom: 2rem; text-align: center; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Portieri</h3>
-			<div class="players-grid">
-					<div class="player-card" style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.2s;">
-						<div class="player-photo" style="width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid #1e40af;">
-							<img src="images/Fotosquadra/primasquadra/Pozza.png" alt="Luca Pozzatello" style="width: 100%; height: 100%; object-fit: cover;" />
+		<main>
+			<section class="squad-roster section" aria-labelledby="roster-title">
+				<div class="container squad-container">
+					<h2 id="roster-title" class="squad-sr-only">Rosa prima squadra</h2>
+					<nav class="squad-filters" aria-label="Filtra i giocatori per ruolo">
+						<button type="button" data-roster-filter="all" aria-pressed="true">Tutti</button>
+						<button type="button" data-roster-filter="portieri" aria-pressed="false">Portieri</button>
+						<button type="button" data-roster-filter="centrali" aria-pressed="false">Centrali</button>
+						<button type="button" data-roster-filter="laterali" aria-pressed="false">Laterali</button>
+						<button type="button" data-roster-filter="pivot" aria-pressed="false">Pivot</button>
+					</nav>
+					<p class="squad-sr-only" data-roster-status aria-live="polite" aria-atomic="true">18 giocatori nella rosa.</p>
+					<section class="squad-group" data-roster-group="portieri" aria-labelledby="role-portieri">
+						<div class="squad-group-heading"><h3 id="role-portieri">Portieri</h3><span aria-label="3 giocatori">3</span></div>
+						<div class="squad-grid">
+							<article class="squad-player" aria-labelledby="player-luca-pozzatello">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">14</span><img src="images/rosa/luca-pozzatello.png" alt="Ritratto di Luca Pozzatello" width="1080" height="1350" loading="eager" decoding="async" style="--portrait-width:104.51613%;--portrait-left:13.70968%;--portrait-offset:-3.18519%" /></div>
+								<h4 id="player-luca-pozzatello"><span class="squad-first-name">Luca</span> <span class="squad-last-name">Pozzatello</span><span class="squad-sr-only">, numero 14</span></h4>
+								<p class="squad-role">Portiere</p>
+							</article>
+							<article class="squad-player" aria-labelledby="player-cristian-saro">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">12</span><img src="images/rosa/cristian-saro.png" alt="Ritratto di Cristian Saro" width="1080" height="1350" loading="eager" decoding="async" style="--portrait-width:141.63934%;--portrait-left:-5.73770%;--portrait-offset:-12.51852%" /></div>
+								<h4 id="player-cristian-saro"><span class="squad-first-name">Cristian</span> <span class="squad-last-name">Saro</span><span class="squad-sr-only">, numero 12</span></h4>
+								<p class="squad-role">Portiere</p>
+							</article>
+							<article class="squad-player" aria-labelledby="player-mattia-calligaro">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">1</span><img src="images/rosa/mattia-calligaro.png" alt="Ritratto di Mattia Calligaro" width="1080" height="1350" loading="eager" decoding="async" style="--portrait-width:116.23318%;--portrait-left:3.29148%;--portrait-offset:-6.14815%" /></div>
+								<h4 id="player-mattia-calligaro"><span class="squad-first-name">Mattia</span> <span class="squad-last-name">Calligaro</span><span class="squad-sr-only">, numero 1</span></h4>
+								<p class="squad-role">Portiere</p>
+							</article>
 						</div>
-						<h4 style="color: #1e40af; margin: 0 0 0.5rem; font-size: 1.1rem;">Luca Pozzatello</h4>
-						<p style="color: #f59e0b; font-weight: 700; margin: 0; font-size: 1.2rem;">#14</p>
-					</div>
-					<div class="player-card" style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.2s;">
-						<div class="player-photo" style="width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid #1e40af;">
-							<img src="images/Nofotodirettivo.png" alt="Cristian Saro" style="width: 100%; height: 100%; object-fit: cover;" />
+					</section>
+					<section class="squad-group" data-roster-group="centrali" aria-labelledby="role-centrali">
+						<div class="squad-group-heading"><h3 id="role-centrali">Centrali</h3><span aria-label="3 giocatori">3</span></div>
+						<div class="squad-grid">
+							<article class="squad-player" aria-labelledby="player-simone-genna">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">6</span><img src="images/rosa/simone-genna.png" alt="Ritratto di Simone Genna" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:147.27273%;--portrait-left:-12.79545%;--portrait-offset:-3.11111%" /></div>
+								<h4 id="player-simone-genna"><span class="squad-first-name">Simone</span> <span class="squad-last-name">Genna</span><span class="squad-sr-only">, numero 6</span></h4>
+								<p class="squad-role">Centrale</p>
+							</article>
+							<article class="squad-player" aria-labelledby="player-tadej-tancos">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">13</span><img src="images/rosa/tadej-tancos.png" alt="Ritratto di Tadej Tancos" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:132.92308%;--portrait-left:-3.35385%;--portrait-offset:-2.07407%" /></div>
+								<h4 id="player-tadej-tancos"><span class="squad-first-name">Tadej</span> <span class="squad-last-name">Tancos</span><span class="squad-sr-only">, numero 13</span></h4>
+								<p class="squad-role">Centrale</p>
+							</article>
+							<article class="squad-player" aria-labelledby="player-salahedinne-oukhrib">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">5</span><img src="images/rosa/salahedinne-oukhrib.png" alt="Ritratto di Salahedinne Oukhrib" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:181.25874%;--portrait-left:-28.04196%;--portrait-offset:-8.81481%" /></div>
+								<h4 id="player-salahedinne-oukhrib"><span class="squad-first-name">Salahedinne</span> <span class="squad-last-name">Oukhrib</span><span class="squad-sr-only">, numero 5</span></h4>
+								<p class="squad-role">Centrale</p>
+							</article>
 						</div>
-						<h4 style="color: #1e40af; margin: 0 0 0.5rem; font-size: 1.1rem;">Cristian Saro</h4>
-						<p style="color: #f59e0b; font-weight: 700; margin: 0; font-size: 1.2rem;">#12</p>
-					</div>
-					<div class="player-card" style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.2s;">
-						<div class="player-photo" style="width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid #1e40af;">
-							<img src="images/Fotosquadra/primasquadra/Calli.png" alt="Mattia Calligaro" style="width: 100%; height: 100%; object-fit: cover;" />
+					</section>
+					<section class="squad-group" data-roster-group="laterali" aria-labelledby="role-laterali">
+						<div class="squad-group-heading"><h3 id="role-laterali">Laterali</h3><span aria-label="7 giocatori">7</span></div>
+						<div class="squad-grid">
+							<article class="squad-player" aria-labelledby="player-francesco-polidori">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">2</span><img src="images/rosa/francesco-polidori.png" alt="Ritratto di Francesco Polidori" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:158.04878%;--portrait-left:-16.14634%;--portrait-offset:-5.92593%" /></div>
+								<h4 id="player-francesco-polidori"><span class="squad-first-name">Francesco</span> <span class="squad-last-name">Polidori</span><span class="squad-sr-only">, numero 2</span></h4>
+								<p class="squad-role">Laterale</p>
+							</article>
+							<article class="squad-player" aria-labelledby="player-luca-avitabile">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">3</span><img src="images/rosa/luca-avitabile.png" alt="Ritratto di Luca Avitabile" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:137.87234%;--portrait-left:-7.63830%;--portrait-offset:-11.18519%" /></div>
+								<h4 id="player-luca-avitabile"><span class="squad-first-name">Luca</span> <span class="squad-last-name">Avitabile</span><span class="squad-sr-only">, numero 3</span></h4>
+								<p class="squad-role">Laterale</p>
+							</article>
+							<article class="squad-player" aria-labelledby="player-andrea-stacco">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">4</span><img src="images/rosa/andrea-stacco.png" alt="Ritratto di Andrea Stacco" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:114.18502%;--portrait-left:6.86344%;--portrait-offset:-2.51852%" /></div>
+								<h4 id="player-andrea-stacco"><span class="squad-first-name">Andrea</span> <span class="squad-last-name">Stacco</span><span class="squad-sr-only">, numero 4</span></h4>
+								<p class="squad-role">Laterale</p>
+							</article>
+							<article class="squad-player" aria-labelledby="player-youssef-kabine">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">22</span><img src="images/rosa/youssef-kabine.png" alt="Ritratto di Youssef Kabine" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:158.04878%;--portrait-left:-14.09756%;--portrait-offset:-5.03704%" /></div>
+								<h4 id="player-youssef-kabine"><span class="squad-first-name">Youssef</span> <span class="squad-last-name">Kabine</span><span class="squad-sr-only">, numero 22</span></h4>
+								<p class="squad-role">Laterale</p>
+							</article>
+							<article class="squad-player" aria-labelledby="player-leonardo-de-giorgio">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">7</span><img src="images/rosa/leonardo-de-giorgio.png" alt="Ritratto di Leonardo De Giorgio" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:154.28571%;--portrait-left:-16.14286%;--portrait-offset:-8.07407%" /></div>
+								<h4 id="player-leonardo-de-giorgio"><span class="squad-first-name">Leonardo</span> <span class="squad-last-name">De Giorgio</span><span class="squad-sr-only">, numero 7</span></h4>
+								<p class="squad-role">Laterale</p>
+							</article>
+							<article class="squad-player" aria-labelledby="player-roberto-de-bernardo">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">8</span><img src="images/rosa/roberto-de-bernardo.png" alt="Ritratto di Roberto De Bernardo" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:153.37278%;--portrait-left:-15.04142%;--portrait-offset:-1.03704%" /></div>
+								<h4 id="player-roberto-de-bernardo"><span class="squad-first-name">Roberto</span> <span class="squad-last-name">De Bernardo</span><span class="squad-sr-only">, numero 8</span></h4>
+								<p class="squad-role">Laterale</p>
+							</article>
+							<article class="squad-player" aria-labelledby="player-emanuele-iurlaro">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">10</span><img src="images/rosa/emanuele-iurlaro.png" alt="Ritratto di Emanuele Iurlaro" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:124.61538%;--portrait-left:1.07692%;--portrait-offset:-8.59259%" /></div>
+								<h4 id="player-emanuele-iurlaro"><span class="squad-first-name">Emanuele</span> <span class="squad-last-name">Iurlaro</span><span class="squad-sr-only">, numero 10</span></h4>
+								<p class="squad-role">Laterale</p>
+							</article>
 						</div>
-						<h4 style="color: #1e40af; margin: 0 0 0.5rem; font-size: 1.1rem;">Mattia Calligaro</h4>
-						<p style="color: #f59e0b; font-weight: 700; margin: 0; font-size: 1.2rem;">#1</p>
-					</div>
+					</section>
+					<section class="squad-group" data-roster-group="pivot" aria-labelledby="role-pivot">
+						<div class="squad-group-heading"><h3 id="role-pivot">Pivot</h3><span aria-label="5 giocatori">5</span></div>
+						<div class="squad-grid">
+							<article class="squad-player" aria-labelledby="player-jacopo-fusco">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">9</span><img src="images/rosa/jacopo-fusco.png" alt="Ritratto di Jacopo Fusco" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:147.27273%;--portrait-left:-11.36364%;--portrait-offset:-3.85185%" /></div>
+								<h4 id="player-jacopo-fusco"><span class="squad-first-name">Jacopo</span> <span class="squad-last-name">Fusco</span><span class="squad-sr-only">, numero 9</span></h4>
+								<p class="squad-role">Pivot</p>
+							</article>
+							<article class="squad-player" aria-labelledby="player-lorenzo-de-giorgio">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">11</span><img src="images/rosa/lorenzo-de-giorgio.png" alt="Ritratto di Lorenzo De Giorgio" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:162.00000%;--portrait-left:-16.45000%;--portrait-offset:-1.40741%" /></div>
+								<h4 id="player-lorenzo-de-giorgio"><span class="squad-first-name">Lorenzo</span> <span class="squad-last-name">De Giorgio</span><span class="squad-sr-only">, numero 11</span></h4>
+								<p class="squad-role">Pivot</p>
+							</article>
+							<article class="squad-player" aria-labelledby="player-matteo-valentinuzzi">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">20</span><img src="images/rosa/matteo-valentinuzzi.png" alt="Ritratto di Matteo Valentinuzzi" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:149.82659%;--portrait-left:-15.68786%;--portrait-offset:-2.51852%" /></div>
+								<h4 id="player-matteo-valentinuzzi"><span class="squad-first-name">Matteo</span> <span class="squad-last-name">Valentinuzzi</span><span class="squad-sr-only">, numero 20</span></h4>
+								<p class="squad-role">Pivot</p>
+							</article>
+							<article class="squad-player" aria-labelledby="player-kleijdi-zharri">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">21</span><img src="images/rosa/kleijdi-zharri.png" alt="Ritratto di Kleijdi Zharri" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:143.20442%;--portrait-left:-8.60773%;--portrait-offset:-6.29630%" /></div>
+								<h4 id="player-kleijdi-zharri"><span class="squad-first-name">Kleijdi</span> <span class="squad-last-name">Zharri</span><span class="squad-sr-only">, numero 21</span></h4>
+								<p class="squad-role">Pivot</p>
+							</article>
+							<article class="squad-player" aria-labelledby="player-luca-dorigo">
+								<div class="squad-portrait"><span class="squad-number" aria-hidden="true">37</span><img src="images/rosa/luca-dorigo.png" alt="Ritratto di Luca Dorigo" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:164.05063%;--portrait-left:-16.98734%;--portrait-offset:-4.81481%" /></div>
+								<h4 id="player-luca-dorigo"><span class="squad-first-name">Luca</span> <span class="squad-last-name">Dorigo</span><span class="squad-sr-only">, numero 37</span></h4>
+								<p class="squad-role">Pivot</p>
+							</article>
+						</div>
+					</section>
+					<section class="squad-staff" aria-labelledby="staff-title">
+						<h2 id="staff-title">Staff tecnico</h2>
+						<div class="squad-staff-grid">
+<article class="squad-player squad-staff-card"><div class="squad-portrait"><img src="images/rosa/staff-movio.png" alt="Ritratto di Alessandro Movio" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:135.00000%;--portrait-left:-2.81250%;--portrait-offset:-5.92593%" /></div><h3><span class="squad-first-name">Alessandro</span> <span class="squad-last-name">Movio</span></h3><p class="squad-role">Allenatore</p></article>
+<article class="squad-player squad-staff-card"><div class="squad-portrait"><img src="images/rosa/staff-sironi.png" alt="Ritratto di Andrea Sironi" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:138.60963%;--portrait-left:-4.35294%;--portrait-offset:-5.62963%" /></div><h3><span class="squad-first-name">Andrea</span> <span class="squad-last-name">Sironi</span></h3><p class="squad-role">Direttore tecnico</p></article>
+<article class="squad-player squad-staff-card"><div class="squad-portrait"><img src="images/rosa/staff-lavaroni.png" alt="Ritratto di Patrick Lavaroni" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:115.71429%;--portrait-left:2.80357%;--portrait-offset:-2.51852%" /></div><h3><span class="squad-first-name">Patrick</span> <span class="squad-last-name">Lavaroni</span></h3><p class="squad-role">Dirigente accompagnatore</p></article>
+<article class="squad-player squad-staff-card"><div class="squad-portrait"><img src="images/rosa/staff-nadalutti.png" alt="Ritratto di Dino Nadalutti" width="1080" height="1350" loading="lazy" decoding="async" style="--portrait-width:116.75676%;--portrait-left:4.81081%;--portrait-offset:-6.29630%" /></div><h3><span class="squad-first-name">Dino</span> <span class="squad-last-name">Nadalutti</span></h3><p class="squad-role">Dirigente addetto arbitri</p></article>
+						</div>
+					</section>
 				</div>
-			</div>
-
-			<!-- Centrali -->
-			<div class="position-section" style="margin-bottom: 3rem;">
-				<h3 style="color: #1e40af; margin-bottom: 2rem; text-align: center; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Centrali</h3>
-			<div class="players-grid">
-					<div class="player-card" style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.2s;">
-						<div class="player-photo" style="width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid #1e40af;">
-							<img src="images/Fotosquadra/primasquadra/Genna.png" alt="Simone Genna" style="width: 100%; height: 100%; object-fit: cover;" />
-						</div>
-						<h4 style="color: #1e40af; margin: 0 0 0.5rem; font-size: 1.1rem;">Simone Genna</h4>
-						<p style="color: #f59e0b; font-weight: 700; margin: 0; font-size: 1.2rem;">#6</p>
-					</div>
-					<div class="player-card" style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.2s;">
-						<div class="player-photo" style="width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid #1e40af;">
-							<img src="images/Fotosquadra/primasquadra/Tancos.png" alt="Tadej Tancos" style="width: 100%; height: 100%; object-fit: cover;" />
-						</div>
-						<h4 style="color: #1e40af; margin: 0 0 0.5rem; font-size: 1.1rem;">Tadej Tancos</h4>
-						<p style="color: #f59e0b; font-weight: 700; margin: 0; font-size: 1.2rem;">#13</p>
-					</div>
-					<div class="player-card" style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.2s;">
-						<div class="player-photo" style="width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid #1e40af;">
-							<img src="images/Fotosquadra/primasquadra/Antonio.png" alt="Antonio Pascale" style="width: 100%; height: 100%; object-fit: cover;" />
-						</div>
-						<h4 style="color: #1e40af; margin: 0 0 0.5rem; font-size: 1.1rem;">Antonio Pascale</h4>
-						<p style="color: #f59e0b; font-weight: 700; margin: 0; font-size: 1.2rem;">#22</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- Laterali -->
-			<div class="position-section" style="margin-bottom: 3rem;">
-				<h3 style="color: #1e40af; margin-bottom: 2rem; text-align: center; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Laterali</h3>
-			<div class="players-grid">
-					<div class="player-card" style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.2s;">
-						<div class="player-photo" style="width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid #1e40af;">
-							<img src="images/Nofotodirettivo.png" alt="Francesco Polidori" style="width: 100%; height: 100%; object-fit: cover;" />
-						</div>
-						<h4 style="color: #1e40af; margin: 0 0 0.5rem; font-size: 1.1rem;">Francesco Polidori</h4>
-						<p style="color: #f59e0b; font-weight: 700; margin: 0; font-size: 1.2rem;">#2</p>
-					</div>
-					<div class="player-card" style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.2s;">
-						<div class="player-photo" style="width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid #1e40af;">
-							<img src="images/Fotosquadra/primasquadra/Vito.png" alt="Luca Avitabile" style="width: 100%; height: 100%; object-fit: cover;" />
-						</div>
-						<h4 style="color: #1e40af; margin: 0 0 0.5rem; font-size: 1.1rem;">Luca Avitabile</h4>
-						<p style="color: #f59e0b; font-weight: 700; margin: 0; font-size: 1.2rem;">#3</p>
-					</div>
-					<div class="player-card" style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.2s;">
-						<div class="player-photo" style="width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid #1e40af;">
-							<img src="images/Fotosquadra/primasquadra/Stacco.png" alt="Andrea Stacco" style="width: 100%; height: 100%; object-fit: cover;" />
-						</div>
-						<h4 style="color: #1e40af; margin: 0 0 0.5rem; font-size: 1.1rem;">Andrea Stacco</h4>
-						<p style="color: #f59e0b; font-weight: 700; margin: 0; font-size: 1.2rem;">#4</p>
-					</div>
-					<div class="player-card" style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.2s;">
-						<div class="player-photo" style="width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid #1e40af;">
-							<img src="images/Nofotodirettivo.png" alt="Erijon Zharri" style="width: 100%; height: 100%; object-fit: cover;" />
-						</div>
-						<h4 style="color: #1e40af; margin: 0 0 0.5rem; font-size: 1.1rem;">Erijon Zharri</h4>
-						<p style="color: #f59e0b; font-weight: 700; margin: 0; font-size: 1.2rem;">#5</p>
-					</div>
-					<div class="player-card" style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.2s;">
-						<div class="player-photo" style="width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid #1e40af;">
-							<img src="images/Fotosquadra/primasquadra/DegioLeo.png" alt="Leonardo De Giorgio" style="width: 100%; height: 100%; object-fit: cover;" />
-						</div>
-						<h4 style="color: #1e40af; margin: 0 0 0.5rem; font-size: 1.1rem;">Leonardo De Giorgio</h4>
-						<p style="color: #f59e0b; font-weight: 700; margin: 0; font-size: 1.2rem;">#7</p>
-					</div>
-					<div class="player-card" style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.2s;">
-						<div class="player-photo" style="width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid #1e40af;">
-							<img src="images/Fotosquadra/primasquadra/Debe.png" alt="Roberto De Bernardo" style="width: 100%; height: 100%; object-fit: cover;" />
-						</div>
-						<h4 style="color: #1e40af; margin: 0 0 0.5rem; font-size: 1.1rem;">Roberto De Bernardo</h4>
-						<p style="color: #f59e0b; font-weight: 700; margin: 0; font-size: 1.2rem;">#8</p>
-					</div>
-					<div class="player-card" style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.2s;">
-						<div class="player-photo" style="width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid #1e40af;">
-							<img src="images/Fotosquadra/primasquadra/Manu.png" alt="Emanuele Iurlaro" style="width: 100%; height: 100%; object-fit: cover;" />
-						</div>
-						<h4 style="color: #1e40af; margin: 0 0 0.5rem; font-size: 1.1rem;">Emanuele Iurlaro</h4>
-						<p style="color: #f59e0b; font-weight: 700; margin: 0; font-size: 1.2rem;">#10</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- Pivot -->
-			<div class="position-section" style="margin-bottom: 3rem;">
-				<h3 style="color: #1e40af; margin-bottom: 2rem; text-align: center; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Pivot</h3>
-			<div class="players-grid">
-					<div class="player-card" style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.2s;">
-						<div class="player-photo" style="width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid #1e40af;">
-							<img src="images/Fotosquadra/primasquadra/Fusco.png" alt="Jacopo Fusco" style="width: 100%; height: 100%; object-fit: cover;" />
-						</div>
-						<h4 style="color: #1e40af; margin: 0 0 0.5rem; font-size: 1.1rem;">Jacopo Fusco</h4>
-						<p style="color: #f59e0b; font-weight: 700; margin: 0; font-size: 1.2rem;">#9</p>
-					</div>
-					<div class="player-card" style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.2s;">
-						<div class="player-photo" style="width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid #1e40af;">
-							<img src="images/Fotosquadra/primasquadra/DegioLore.png" alt="Lorenzo De Giorgio" style="width: 100%; height: 100%; object-fit: cover;" />
-						</div>
-						<h4 style="color: #1e40af; margin: 0 0 0.5rem; font-size: 1.1rem;">Lorenzo De Giorgio</h4>
-						<p style="color: #f59e0b; font-weight: 700; margin: 0; font-size: 1.2rem;">#11</p>
-					</div>
-					<div class="player-card" style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.2s;">
-						<div class="player-photo" style="width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid #1e40af;">
-							<img src="images/Fotosquadra/primasquadra/Vale.png" alt="Matteo Valentinuzzi" style="width: 100%; height: 100%; object-fit: cover;" />
-						</div>
-						<h4 style="color: #1e40af; margin: 0 0 0.5rem; font-size: 1.1rem;">Matteo Valentinuzzi</h4>
-						<p style="color: #f59e0b; font-weight: 700; margin: 0; font-size: 1.2rem;">#20</p>
-					</div>
-					<div class="player-card" style="background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); text-align: center; transition: transform 0.2s;">
-						<div class="player-photo" style="width: 120px; height: 120px; margin: 0 auto 1rem; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 3px solid #1e40af;">
-							<img src="images/Nofotodirettivo.png" alt="Kleijdi Zharri" style="width: 100%; height: 100%; object-fit: cover;" />
-						</div>
-						<h4 style="color: #1e40af; margin: 0 0 0.5rem; font-size: 1.1rem;">Kleijdi Zharri</h4>
-						<p style="color: #f59e0b; font-weight: 700; margin: 0; font-size: 1.2rem;">#21</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- Staff -->
-			<h2 style="margin-top:4rem">Staff tecnico</h2>
-			<div class="position-section" style="margin-bottom: 3rem;">
-				<div class="players-grid">
-					<div class="player-card" style="background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);text-align:center;">
-						<div class="player-photo" style="width:120px;height:120px;margin:0 auto 1rem;border-radius:50%;background:#f3f4f6;display:flex;align-items:center;justify-content:center;overflow:hidden;border:3px solid #1e40af;">
-							<img src="images/Nofotodirettivo.png" alt="Alessandro Movio" style="width:100%;height:100%;object-fit:cover;">
-						</div>
-						<p style="color:#f59e0b;font-weight:700;margin:0 0 .25rem;">Mister</p>
-						<h4 style="color:#1e40af;margin:0;font-size:1.1rem;">Alessandro Movio</h4>
-					</div>
-					<div class="player-card" style="background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);text-align:center;">
-						<div class="player-photo" style="width:120px;height:120px;margin:0 auto 1rem;border-radius:50%;background:#f3f4f6;display:flex;align-items:center;justify-content:center;overflow:hidden;border:3px solid #1e40af;">
-							<img src="images/Nofotodirettivo.png" alt="Andrea Sironi" style="width:100%;height:100%;object-fit:cover;">
-						</div>
-						<p style="color:#f59e0b;font-weight:700;margin:0 0 .25rem;">Direttore tecnico</p>
-						<h4 style="color:#1e40af;margin:0;font-size:1.1rem;">Andrea Sironi</h4>
-					</div>
-					<div class="player-card" style="background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);text-align:center;">
-						<div class="player-photo" style="width:120px;height:120px;margin:0 auto 1rem;border-radius:50%;background:#f3f4f6;display:flex;align-items:center;justify-content:center;overflow:hidden;border:3px solid #1e40af;">
-							<img src="images/Nofotodirettivo.png" alt="Patrick Lavaroni" style="width:100%;height:100%;object-fit:cover;">
-						</div>
-						<p style="color:#f59e0b;font-weight:700;margin:0 0 .25rem;">Dirigente accompagnatore</p>
-						<h4 style="color:#1e40af;margin:0;font-size:1.1rem;">Patrick Lavaroni</h4>
-					</div>
-					<div class="player-card" style="background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);text-align:center;">
-						<div class="player-photo" style="width:120px;height:120px;margin:0 auto 1rem;border-radius:50%;background:#f3f4f6;display:flex;align-items:center;justify-content:center;overflow:hidden;border:3px solid #1e40af;">
-							<img src="images/Fotosquadra/primasquadra/Dino.png" alt="Dino Nadalutti" style="width:100%;height:100%;object-fit:cover;">
-						</div>
-						<p style="color:#f59e0b;font-weight:700;margin:0 0 .25rem;">Dirigente addetto arbitri</p>
-						<h4 style="color:#1e40af;margin:0;font-size:1.1rem;">Dino Nadalutti</h4>
-					</div>
-				</div>
-			</div>
-
-			<h2 style="margin-top:var(--sp-6)">Comunicati</h2>
+			</section>
+			<section class="section" aria-labelledby="communications-title"><div class="container">
+			<h2 id="communications-title" style="margin-top:var(--sp-6)">Comunicati</h2>
 			<div class="news-grid">
 				<article class="card" style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onclick="window.location.href='news-2025.html'">
 					<div class="content">
@@ -234,9 +184,10 @@
 					</div>
 				</article>
 			</div>
-		</div></main>
+		</div></section></main>
 		<footer class="footer"><div class="container"><div class="links"><a href="https://www.divisionecalcioa5.it/" target="_blank" rel="noopener"><img class="link-logo" src="images/logo_div_C5_alt_100.png" alt=""/>Divisione Calcio a 5</a><a href="http://www.regione.fvg.it/rafvg/cms/RAFVG/" target="_blank" rel="noopener"><img class="link-logo" src="images/logo_FVG.png" alt=""/>Regione FVG</a><a href="https://friuliveneziagiulia.lnd.it/it/" target="_blank" rel="noopener"><img class="link-logo" src="images/logo_LND-FVG_alt_100.png" alt=""/>LND FVG</a><a href="https://www.calcettomanzano.it/www.comune.manzano.ud.it/hh/index.php?jvs=0&amp;acc=1" target="_blank" rel="noopener"><img class="link-logo" src="images/logo_comune_manzano_alt_100.jpg" alt=""/>Comune di Manzano</a></div><div class="legal-links"><a href="privacy-policy.html">Privacy policy</a><a href="cookie-policy.html">Cookie policy</a><a href="termini-condizioni.html">Termini e condizioni</a><button type="button" class="cookie-settings-link">Gestisci preferenze cookie</button></div><p class="copyright">© 2003–2025 A.D.S. C5 MANZANO 1988</p></div></footer>
 		<script src="scripts.js" defer></script>
+		<script src="prima-squadra.js" defer></script>
 		<script>
 			// Gestione fallback per iframe TuttoCampo
 			document.addEventListener('DOMContentLoaded', function() {
@@ -270,3 +221,4 @@
 		</style>
 	</body>
 </html>
+
