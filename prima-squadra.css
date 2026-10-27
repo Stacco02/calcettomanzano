@@ -1,0 +1,151 @@
+/* Page-scoped roster: the site's header, hero and shared stylesheet stay intact. */
+@font-face {
+  font-family: 'Squad Display';
+  src: local('DIN Condensed Bold'), local('DIN Condensed'), url('fonts/barlow-condensed-bold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+.squad-roster {
+  --squad-bg: #09182c;
+  --squad-text: #f3f1e8;
+  --squad-muted: #aab6c7;
+  --squad-gold: #d2b650;
+  padding: 0 0 clamp(56px, 7vw, 96px);
+  color: var(--squad-text);
+  background: var(--squad-bg);
+}
+.squad-roster .squad-container { width: min(1296px, calc(100% - 48px)); }
+.squad-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+.squad-roster .squad-sr-only::before { display: none; }
+.squad-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px clamp(16px, 4vw, 60px);
+  align-items: center;
+  padding: 20px 0;
+  margin-bottom: 48px;
+  border-bottom: 1px solid #28364a;
+}
+.squad-filters button {
+  position: relative;
+  padding: 12px 0;
+  color: var(--squad-muted);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  transition: color 160ms ease;
+}
+.squad-filters button::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--squad-gold);
+  content: '';
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 160ms ease;
+}
+.squad-filters button[aria-pressed='true'], .squad-filters button:hover { color: var(--squad-gold); }
+.squad-filters button[aria-pressed='true']::after { transform: scaleX(1); }
+.squad-filters button:focus-visible { outline: 2px solid var(--squad-gold); outline-offset: 6px; }
+.squad-group { margin-bottom: clamp(48px, 6vw, 80px); scroll-margin-top: 100px; }
+.squad-group[hidden] { display: none; }
+.squad-group-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+.squad-roster .squad-group-heading h3,
+.squad-roster .squad-staff > h2 {
+  display: block;
+  margin: 0;
+  color: var(--squad-text);
+  font-family: 'Squad Display', 'Arial Narrow', sans-serif;
+  font-size: clamp(32px, 3.5vw, 46px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.squad-group-heading > span { color: var(--squad-gold); font-size: 12px; font-variant-numeric: tabular-nums; }
+.squad-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 52px 36px; }
+.squad-player { min-width: 0; container-type: inline-size; }
+.squad-portrait {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 408 / 430;
+  overflow: hidden;
+  border-bottom: 1px solid #354258;
+}
+.squad-number {
+  position: absolute;
+  z-index: -1;
+  top: 10%;
+  left: 0;
+  color: #536780;
+  font-family: 'Squad Display', 'Arial Narrow', sans-serif;
+  font-size: 265px;
+  font-size: 65cqw;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.025em;
+  user-select: none;
+}
+.squad-portrait img {
+  position: absolute;
+  top: 12px;
+  left: var(--portrait-left);
+  display: block;
+  width: var(--portrait-width);
+  max-width: none;
+  height: auto;
+  margin: 0;
+  transform: translateY(var(--portrait-offset));
+}
+.squad-roster .squad-player h4,
+.squad-roster .squad-staff-card h3 {
+  display: block;
+  margin: 16px 0 0;
+  color: var(--squad-text);
+  text-transform: none;
+}
+.squad-first-name { display: block; margin-bottom: 6px; color: var(--squad-muted); font-family: Outfit, sans-serif; font-size: 12px; font-weight: 400; line-height: 1.4; letter-spacing: .015em; text-transform: uppercase; }
+.squad-last-name { display: block; font-family: 'Squad Display', 'Arial Narrow', sans-serif; font-size: clamp(26px, 9.3cqw, 38px); font-weight: 700; line-height: 1.12; letter-spacing: 0; text-transform: uppercase; overflow-wrap: anywhere; }
+.squad-roster .squad-role { margin: 8px 0 0; color: var(--squad-gold); font-size: 12px; line-height: 1.5; }
+.squad-staff { padding-top: 48px; border-top: 1px solid #28364a; }
+.squad-roster .squad-staff > h2 { margin-bottom: 32px; }
+.squad-roster .squad-staff > h2::before { display: none; }
+.squad-staff-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
+.squad-staff-card .squad-portrait { aspect-ratio: 1; }
+.squad-staff-card .squad-last-name { font-size: clamp(24px, 10cqw, 32px); }
+@media (max-width: 900px) {
+  .squad-grid { gap: 44px 24px; }
+  .squad-staff-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 24px; }
+}
+@media (max-width: 600px) {
+  .squad-roster .squad-container { width: calc(100% - 40px); }
+  .squad-filters { justify-content: space-between; gap: 8px; padding: 14px 0; margin-bottom: 36px; }
+  .squad-filters button { min-height: 44px; padding: 12px 0; font-size: 12px; }
+  .squad-group-heading { margin-bottom: 20px; }
+  .squad-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 16px; }
+  .squad-portrait { aspect-ratio: 167 / 245; }
+  .squad-number { top: 9%; font-size: 87cqw; }
+  .squad-first-name { margin-bottom: 6px; font-size: 10px; }
+  .squad-last-name { font-size: clamp(22px, 15cqw, 28px); }
+  .squad-roster .squad-role { font-size: 10px; }
+  .squad-staff-grid { gap: 36px 16px; }
+  .squad-staff-card .squad-portrait { aspect-ratio: 167 / 210; }
+  .squad-staff-card .squad-last-name { font-size: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .squad-filters button, .squad-filters button::after { transition: none; }
+}
