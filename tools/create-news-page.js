@@ -15,7 +15,7 @@ const header2025 = `		<header class="header" id="top">
 					<a href="index.html" class="active">News</a>
 					<a href="../societa.html">Società</a>
 					<a href="../prima-squadra.html">1a Squadra</a>
-					<a href="../under.html">Under 21</a>
+					<a href="../under.html">Under 19</a>
 					<a href="../sponsor.html">Sponsor</a>
 					<a href="../trasparenza.html">Trasparenza</a>
 					<a href="../safeguarding.html">Safeguarding</a>
@@ -29,7 +29,7 @@ const header2025 = `		<header class="header" id="top">
 						<a href="index.html" class="active">News</a>
 						<a href="../societa.html">Società</a>
 						<a href="../prima-squadra.html">1a Squadra</a>
-						<a href="../under.html">Under 21</a>
+						<a href="../under.html">Under 19</a>
 						<a href="../sponsor.html">Sponsor</a>
 						<a href="../trasparenza.html">Trasparenza</a>
 						<a href="../safeguarding.html">Safeguarding</a>

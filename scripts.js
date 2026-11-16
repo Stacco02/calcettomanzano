@@ -26,7 +26,7 @@
 			{href: 'news-2025.html', label: 'News'},
 			{href: 'societa.html', label: 'Società'},
 			{href: 'prima-squadra.html', label: '1a Squadra'},
-			{href: 'under.html', label: 'Under 21'},
+			{href: 'under.html', label: 'Under 19'},
 			{href: 'sponsor.html', label: 'Sponsor'},
 			{href: 'trasparenza.html', label: 'Trasparenza'},
 			{href: 'galleria.html', label: 'Galleria'}
