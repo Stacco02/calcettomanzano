@@ -154,7 +154,7 @@ const newsPageContent = `<!DOCTYPE html>
 			</div>
 		</footer>
 
-		<script src="scripts.js" defer></script>
+		<script src="scripts.js?v=20261116-under19" defer></script>
 		<script>
 			document.addEventListener('DOMContentLoaded', function() {
 				const searchInput = document.getElementById('searchInput');

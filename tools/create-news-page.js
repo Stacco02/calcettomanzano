@@ -198,7 +198,7 @@ ${header2025}
 		</div>
 	</main>
 ${footer2025}
-	<script src="../scripts.js" defer></script>
+	<script src="../scripts.js?v=20261116-under19" defer></script>
 	<script>
 		// Search functionality
 		document.getElementById('searchInput').addEventListener('input', function(e) {
