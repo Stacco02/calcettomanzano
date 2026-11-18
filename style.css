@@ -407,3 +407,6 @@ body.cookie-modal-open { overflow: hidden; }
   .social-cover img { min-height: 220px; max-height: 280px; }
   .social-card .btn { width: 100%; }
 }
+
+/* Local preview: leave room for all nine shared navigation links. */
+@media (min-width:901px) and (max-width:1280px) { .header .menu { display:none; } .header .burger { display:block; justify-self:end; } .header .nav { grid-template-columns:1fr auto; } }

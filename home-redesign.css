@@ -1,0 +1,201 @@
+/* Local home proposal. Unslop by Damir Sokolovsky — https://github.com/heydamir/unslop — CC BY 4.0. */
+.home-redesign { background: #f7f4ee; color: #172131; }
+.home-redesign .container { width: min(1280px, calc(100% - 64px)); }
+.home-redesign h1,.home-redesign h2,.home-redesign h3 { font-weight: 500; letter-spacing: 0; }
+.home-redesign h2,.home-redesign h3 { text-transform: none; }
+.home-redesign .section { padding: 64px 0; }
+.home-redesign .section h2 { font-size: clamp(32px,3vw,44px); gap: 16px; margin-bottom: 32px; }
+.home-redesign .section h2::before { width: 24px; height: 4px; border-radius: 0; }
+.home-redesign .header { background: #081b32; backdrop-filter: none; box-shadow: none; }
+.home-redesign .nav { padding: 16px 0; column-gap: 24px; }
+.home-redesign .brand { font-weight: 600; letter-spacing: 0; font-size: 16px; }
+.home-redesign .brand img { width: 40px; height: 40px; filter: none; }
+.home-redesign .menu { gap: 4px; justify-content: flex-end; padding: 0; }
+.home-redesign .menu a { font-weight: 500; font-size: 14px; padding: 8px; border-radius: 4px; }
+.home-redesign .menu a.active { color: #f3c64d; background: transparent; box-shadow: inset 0 -2px #f3c64d; }
+.home-redesign .hero-home { min-height: 560px; padding: 80px 0; align-items: center; background-color: #081b32; background-image: linear-gradient(90deg, #081b32 0%,rgba(8,27,50,.95) 28%,rgba(8,27,50,.55) 52%,rgba(8,27,50,.06) 100%),url('images/covers/il-manzano-conclude-l-opera-7-campionato-in-bacheca-20260329140645.jpg'); background-position: center, right 40%; background-size: cover, 78% auto; }
+.home-redesign .hero::before { background: linear-gradient(0deg,rgba(8,27,50,.3),transparent 36%); }
+.home-redesign .hero::after { width: 112px; height: 12px; bottom: 32px; right: 32px; transform: skewX(-18deg); opacity: 1; }
+.home-redesign .hero .eyebrow { color: #e7d49b; text-transform: none; letter-spacing: 0; font-size: 15px; font-weight: 400; margin-bottom: 24px; }
+.home-redesign .hero-home h1 { color: #fff9e9; font-size: clamp(64px,6.5vw,88px); line-height: 1.02; max-width: 660px; margin: 0 0 24px; }
+.home-redesign .hero-home h1 span { color: #f3c64d; display: block; }
+.home-redesign .hero .subtitle { max-width: 36ch; font-size: 20px; line-height: 1.5; color: #e0e5ec; }
+.home-redesign .hero-actions { gap: 12px; margin-top: 32px; }
+.home-redesign .btn { min-height: 48px; padding: 12px 20px; border-radius: 6px; font-weight: 500; box-shadow: none; transition: background .16s ease,color .16s ease,border-color .16s ease; }
+.home-redesign .btn:hover { transform: none; box-shadow: none; }
+.home-redesign .btn-primary { background: #f3c64d; border-color: #f3c64d; color: #081b32; }
+.home-redesign .btn-primary:hover { background: #ffdb79; }
+.home-redesign .btn-on-dark { border-color: #7d8a9a; background: transparent; color: #fff9e9; }
+.home-redesign .btn-on-dark:hover { background: #23354b; }
+.home-redesign .card { border: 1px solid #e1dfd8; border-radius: 12px; background: #fffdf8; box-shadow: none; overflow: hidden; }
+.home-redesign .card:hover { transform: none; box-shadow: none; }
+.home-redesign .card .content { padding: 24px; }
+.home-redesign .home-widgets { grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); grid-template-areas: 'match standings' 'venue standings'; gap: 24px; align-items: stretch; }
+.home-redesign .match-card { grid-area: match; }
+.home-redesign .venue-card { grid-area: venue; }
+.home-redesign .standings-card { grid-area: standings; }
+.home-redesign .home-widgets .card .content { display: flex; flex-direction: column; height: 100%; min-height: 0; gap: 16px; }
+.home-redesign .home-widgets .card h3 { margin: 0; min-height: 0; display: block; font-size: 28px; }
+.home-redesign .section-note { color: #5e6875; margin: 0 0 -8px; font-size: 14px; }
+.home-redesign .home-embed { height: auto; border: 0; border-radius: 4px; box-shadow: none; background: transparent; overflow: visible; }
+.home-redesign .home-embed iframe { border-radius: 4px; }
+.home-redesign .match-card iframe { height: 350px; }
+.home-redesign .standings-card iframe { height: 800px; }
+.home-redesign .venue-card .media { height: 224px; width: 100%; margin: 0; border-radius: 4px; flex: 1 0 224px; }
+.home-redesign .venue-address { font-weight: 400; min-height: 0; font-size: 15px; margin: 0; line-height: 1.5; }
+.home-redesign .text-link { align-self: flex-start; display: inline-flex; align-items: center; gap: 12px; font-weight: 500; font-size: 15px; color: #073a82; padding: 8px 0; text-decoration: underline; text-underline-offset: 5px; }
+.home-redesign .text-link:hover { color: #0b2650; }
+.home-redesign .standings-card .text-link { margin-top: auto; }
+.home-redesign #social { background: #ede9e1; }
+.home-redesign .social-grid { gap: 24px; }
+.home-redesign .social-card { min-height: 248px; grid-template-columns: 40% minmax(0,1fr); border-radius: 8px; border: 0; background: transparent; box-shadow: none; }
+.home-redesign .social-card:hover { transform: none; box-shadow: none; }
+.home-redesign .social-cover { min-height: 248px; border-radius: 8px; }
+.home-redesign .social-cover::after { display: none; }
+.home-redesign .social-cover img { min-height: 248px; height: 100%; object-fit: cover; transform: none; filter: none; transition: none; }
+.home-redesign .social-card:hover .social-cover img { transform: none; filter: none; }
+.home-redesign .social-body { gap: 16px; padding: 16px 0 16px 24px; justify-content: center; }
+.home-redesign .social-platform { color: #535e6d; font-size: 14px; text-transform: none; letter-spacing: 0; font-weight: 400; margin-bottom: 8px; }
+.home-redesign .social-body h3 { font-family: Outfit, sans-serif; font-size: clamp(16px,1.6vw,22px); font-weight: 500; overflow-wrap: anywhere; }
+.home-redesign .social-copy { color: #535e6d; line-height: 1.5; font-size: 15px; margin: 0; }
+.home-redesign .social-card .btn { padding: 8px 0; min-height: 40px; background: transparent; border: 0; color: #073a82; text-decoration: underline; text-underline-offset: 5px; }
+.home-redesign #homeNewsGrid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+.home-redesign .news-story { display: block; align-items: start; background: transparent; border: 0; border-radius: 0; }
+.home-redesign .news-story:first-child { grid-row: auto; }
+.home-redesign .news-story .media { aspect-ratio: 3/2; border-radius: 8px; overflow: hidden; height: auto; }
+.home-redesign .news-story:first-child .media { aspect-ratio: 3/2; }
+.home-redesign .news-story .media img { width: 100%; height: 100%; object-fit: cover; transform: none; transition: none; }
+.home-redesign .news-story .content { padding: 0 0 0 24px; }
+.home-redesign .news-story:first-child .content { padding: 24px 0 0; }
+.home-redesign .news-story h3 { font-size: 28px; line-height: 1.15; margin: 12px 0; }
+.home-redesign .news-story:first-child h3 { font-size: 32px; }
+.home-redesign .news-story h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.home-redesign .news-story .meta,.home-redesign .news-author { color: #5e6875; font-size: 14px; line-height: 1.5; margin: 0; font-weight: 400; }
+.home-redesign .news-all { margin-top: 24px; }
+.home-redesign #trophy { border-top: 1px solid #e1dfd8; border-bottom: 1px solid #e1dfd8; }
+.home-redesign .trophy { border: 0; border-radius: 0; padding: 0; gap: 24px; background: transparent; box-shadow: none; }
+.home-redesign .trophy img { width: 48px; height: 56px; object-fit: contain; }
+.home-redesign .trophy h3 { font-size: 28px; margin-bottom: 16px; }
+.home-redesign .trophy .muted { color: #5e6875; line-height: 1.8; max-width: 42ch; margin: 0; font-variant-numeric: tabular-nums; }
+.home-redesign .sponsor-grid { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; }
+.home-redesign .sponsor { min-height: 144px; padding: 24px; background: #fff; border: 1px solid #e1dfd8; border-radius: 4px; box-shadow: none; transition: border-color .16s ease; }
+.home-redesign .sponsor:hover { transform: none; box-shadow: none; border-color: #8794a3; }
+.home-redesign .sponsor img { width: auto; max-width: 100%; height: auto; max-height: 88px; object-fit: contain; transform: none; clip-path: none; }
+.home-redesign .sponsor img[src="images/iosonofvg.png"],.home-redesign .sponsor img[src="images/Ediltech.png"] { width: auto; max-width: 100%; transform: none; clip-path: none; }
+.home-redesign .gallery-item { border-radius: 8px; box-shadow: none; }
+.home-redesign .gallery-item:hover { transform: none; box-shadow: none; }
+.home-redesign .gallery-item:hover .gallery-photo { transform: none; }
+.home-redesign .footer { background: #081b32; box-shadow: none; margin-top: 0; padding: 48px 0 32px; }
+.home-redesign .footer::before { display: none; }
+.home-redesign .footer-brand img { filter: none; }
+.home-redesign .footer-main { grid-template-columns: 1fr; gap: 32px; }
+.home-redesign .footer .links a { font-weight: 400; background: transparent; box-shadow: none; border: 0; padding: 8px 0; min-height: 48px; }
+.home-redesign .footer .links a:hover { transform: none; text-decoration: underline; }
+.home-redesign .footer .links img { filter: none; }
+.home-redesign .footer-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; margin-top: 32px; padding-top: 24px; }
+.home-redesign .footer .legal-links { gap: 16px; }
+.home-redesign .footer .legal-links a,.home-redesign .cookie-settings-link { border: 0; background: transparent; font-weight: 400; padding: 8px 0; }
+.home-redesign .footer .copyright { max-width: 64ch; text-align: left; font-size: 13px; }
+.home-redesign :focus-visible { outline: 3px solid #b17b00; outline-offset: 4px; }
+.home-redesign .header :focus-visible,.home-redesign .hero :focus-visible,.home-redesign .footer :focus-visible { outline-color: #f3c64d; }
+@media (max-width:1200px) { .home-redesign .menu { display: none; } .home-redesign .burger { display: block; justify-self: end; } .home-redesign .nav { grid-template-columns: 1fr auto; } }
+@media (max-width:960px) { .home-redesign .home-widgets { grid-template-columns: 1fr 1fr; } .home-redesign .social-card { grid-template-columns: 1fr; } .home-redesign .social-cover,.home-redesign .social-cover img { height: 240px; min-height: 0; } .home-redesign .social-body { padding: 24px 0 0; } .home-redesign #homeNewsGrid { grid-template-columns: 1fr 1fr; } .home-redesign .news-story { display: block; } .home-redesign .news-story:first-child { grid-column: auto; grid-row: auto; } .home-redesign .news-story .content { padding: 16px 0 0; } .home-redesign .sponsor-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+@media (max-width:680px) {
+ .home-redesign .container { width: calc(100% - 40px); }
+ .home-redesign .section { padding: 48px 0; }
+ .home-redesign .section h2 { margin-bottom: 24px; font-size: 32px; }
+ .home-redesign .hero-home { padding: 56px 0; min-height: 560px; align-items: flex-end; background-image: linear-gradient(0deg,#081b32 0%,rgba(8,27,50,.90) 32%,rgba(8,27,50,.18) 100%),url('images/covers/il-manzano-conclude-l-opera-7-campionato-in-bacheca-20260329140645.jpg'); background-size: cover,auto 100%; background-position: center, 56% top; }
+ .home-redesign .hero-home h1 { font-size: 52px; max-width: 100%; }
+ .home-redesign .hero-home h1 span { display: inline; }
+ .home-redesign .hero .eyebrow { margin-bottom: 16px; font-size: 14px; }
+ .home-redesign .hero .subtitle { font-size: 18px; max-width: 30ch; width: auto; }
+ .home-redesign .hero-actions { margin-top: 24px; width: 100%; }
+ .home-redesign .hero .btn { width: auto; margin: 0; }
+ .home-redesign .hero::after { width: 72px; height: 8px; bottom: 16px; right: 24px; }
+ .home-redesign .home-widgets { grid-template-columns: minmax(0,1fr); grid-template-areas: 'match' 'venue' 'standings'; gap: 16px; }
+ .home-redesign .home-widgets .card .content { padding: 20px; }
+ .home-redesign .match-card iframe { height: 350px; }
+ .home-redesign .standings-card iframe { height: 800px; }
+ .home-redesign .venue-card .media { height: 200px; flex-basis: 200px; }
+ .home-redesign .social-grid { grid-template-columns: 1fr; gap: 32px; }
+ .home-redesign .social-card { grid-template-columns: 36% minmax(0,1fr); gap: 20px; min-height: 208px; }
+ .home-redesign .social-cover,.home-redesign .social-cover img { height: 100%; min-height: 208px; }
+ .home-redesign .social-body { padding: 0; gap: 12px; }
+ .home-redesign .social-body h3 { font-size: 17px; }
+ .home-redesign .social-card .btn { width: auto; align-self: flex-start; }
+ .home-redesign #homeNewsGrid { grid-template-columns: 1fr; gap: 32px; }
+ .home-redesign .news-story { grid-column: auto; display: block; }
+ .home-redesign .news-story:first-child { display: block; }
+ .home-redesign .news-story .content { padding: 0 0 0 20px; }
+ .home-redesign .news-story:first-child .content { padding: 20px 0 0; }
+ .home-redesign .news-story h3 { font-size: 24px; margin: 8px 0; }
+ .home-redesign .news-story:first-child h3 { font-size: 32px; }
+ .home-redesign .trophy-grid { grid-template-columns: 1fr; gap: 32px; }
+ .home-redesign .sponsor-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+ .home-redesign .sponsor { min-height: 112px; padding: 16px; }
+ .home-redesign .sponsor img { max-height: 72px; }
+ .home-redesign .footer-brand { align-items: flex-start; flex-direction: row; text-align: left; margin: 0; }
+ .home-redesign .footer .links { grid-template-columns: 1fr 1fr; justify-items: start; gap: 16px; }
+ .home-redesign .footer .links a { justify-content: flex-start; text-align: left; font-size: 14px; }
+ .home-redesign .footer .links img.link-logo { width: 24px; height: 24px; }
+ .home-redesign .footer .legal-links { flex-direction: row; align-items: center; justify-content: flex-start; text-align: left; font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) { .home-redesign *, .home-redesign *::before,.home-redesign *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+/* Keep linked news media in flow; the original image rules assume a block wrapper. */
+.home-redesign .news-story .media { display: block; position: relative; width: 100%; background: #e7e2d8; }
+.home-redesign .news-story .media img { position: absolute; inset: 0; }
+.home-redesign .hero-home h1 { text-shadow: none; }
+@media (min-width:961px) { .home-redesign .match-card iframe { height: 280px; } .home-redesign .standings-card iframe { height: 600px; } }
+/* User direction: restore the club's bold type, raised cards and responsive motion. */
+.home-redesign .hero-home { min-height: 640px; background-image: linear-gradient(90deg,#081b32 0%,#081b32 40%,rgba(8,27,50,.96) 42%,rgba(8,27,50,.55) 58%,rgba(8,27,50,.18) 75%,rgba(8,27,50,.12) 100%),url('images/squadra-2026-2027.jpeg'); background-size: cover,auto 100%; background-position: center,right center; }
+.home-redesign .hero-home h1 { font-size: clamp(72px,7.2vw,104px); font-weight: 700; color: #f3c64d; line-height: .98; text-shadow: 0 12px 28px rgba(0,0,0,.22); }
+.home-redesign .hero .eyebrow { text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }
+.home-redesign .hero .subtitle { font-size: 22px; }
+.home-redesign h2,.home-redesign h3 { text-transform: uppercase; font-weight: 600; }
+.home-redesign .section h2 { font-size: clamp(36px,3.7vw,52px); }
+.home-redesign .section h2::before { width: 40px; }
+.home-redesign .home-widgets .card h3,.home-redesign .trophy h3 { font-size: 32px; }
+.home-redesign .card,.home-redesign .social-card,.home-redesign .sponsor,.home-redesign .trophy,.home-redesign .gallery-item { box-shadow: 0 10px 28px rgba(6,29,61,.10),0 2px 4px rgba(6,29,61,.04); transition: transform .22s ease,box-shadow .22s ease,border-color .22s ease; }
+.home-redesign .card:hover,.home-redesign .social-card:hover,.home-redesign .sponsor:hover,.home-redesign .trophy:hover,.home-redesign .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(6,29,61,.16),0 4px 8px rgba(6,29,61,.05); }
+.home-redesign .social-card { background: #fffdf8; border: 1px solid #e1dfd8; border-radius: 12px; }
+.home-redesign .social-cover { border-radius: 0; }
+.home-redesign .social-body { padding: 24px; }
+.home-redesign .social-body h3 { font-size: clamp(20px,1.7vw,26px); text-transform: none; font-weight: 600; }
+.home-redesign .social-copy { font-size: 17px; }
+.home-redesign .social-card .btn { font-size: 17px; font-weight: 600; }
+.home-redesign .news-story { background: #fffdf8; border-radius: 12px; border: 1px solid #e1dfd8; }
+.home-redesign .news-story .media { border-radius: 0; }
+.home-redesign .news-story .content { padding: 24px; }
+.home-redesign .news-story:first-child .content { padding: 24px; }
+.home-redesign .news-story h3 { font-size: 32px; }
+.home-redesign .news-story:first-child h3 { font-size: 32px; }
+.home-redesign .news-story .meta,.home-redesign .news-author { font-size: 15px; }
+.home-redesign .trophy { padding: 24px; border: 1px solid #e1dfd8; border-radius: 12px; background: #fffdf8; }
+.home-redesign .trophy .muted { font-size: 17px; }
+.home-redesign .sponsor { border-radius: 10px; }
+.home-redesign .btn { font-size: 17px; font-weight: 600; transition: transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease; }
+.home-redesign .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(6,29,61,.16); }
+.home-redesign .social-card .btn:hover { box-shadow: none; }
+.home-redesign .news-story .media img,.home-redesign .social-cover img,.home-redesign .gallery-photo { transition: transform .3s ease; }
+.home-redesign .news-story:hover .media img,.home-redesign .social-card:hover .social-cover img,.home-redesign .gallery-item:hover .gallery-photo { transform: scale(1.025); }
+.home-redesign .hero-inner { animation: manzano-enter .55s ease-out both; }
+@keyframes manzano-enter { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+@media (max-width:960px) { .home-redesign .social-body { padding: 24px; } }
+@media (max-width:680px) {
+ .home-redesign .hero-home { min-height: 680px; padding: 40px 0; background-image: linear-gradient(0deg,#081b32 0%,#081b32 46%,rgba(8,27,50,.8) 54%,rgba(8,27,50,.08) 75%,rgba(8,27,50,.08) 100%),url('images/squadra-2026-2027.jpeg'); background-size: cover,auto 340px; background-position: center,center top; }
+ .home-redesign .hero-home h1 { font-size: 56px; }
+ .home-redesign .hero .subtitle { font-size: 19px; }
+ .home-redesign .hero .eyebrow { font-size: 12px; }
+ .home-redesign .section h2 { font-size: 38px; }
+ .home-redesign .home-widgets .card h3,.home-redesign .trophy h3 { font-size: 28px; }
+ .home-redesign .social-card { grid-template-columns: 32% minmax(0,1fr); gap: 0; }
+ .home-redesign .social-body { padding: 20px; }
+ .home-redesign .social-body h3 { font-size: 18px; }
+ .home-redesign .social-copy { font-size: 16px; }
+ .home-redesign .news-story .content { padding: 24px; }
+ .home-redesign .news-story:first-child .content { padding: 24px; }
+ .home-redesign .news-story h3 { font-size: 28px; }
+ .home-redesign .news-story:first-child h3 { font-size: 28px; }
+ .home-redesign .news-story .meta,.home-redesign .news-author { font-size: 14px; }
+}
+@media (prefers-reduced-motion:reduce) { .home-redesign *, .home-redesign *::before,.home-redesign *::after { animation:none !important; transition:none !important; } .home-redesign .card:hover,.home-redesign .social-card:hover,.home-redesign .sponsor:hover,.home-redesign .trophy:hover,.home-redesign .gallery-item:hover,.home-redesign .btn:hover,.home-redesign .news-story:hover .media img,.home-redesign .social-card:hover .social-cover img,.home-redesign .gallery-item:hover .gallery-photo { transform:none; } }

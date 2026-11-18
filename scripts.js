@@ -17,6 +17,7 @@
 				case 'sponsor.html': return /sponsor\.html$/i.test(path);
 				case 'trasparenza.html': return /trasparenza\.html$/i.test(path);
 				case 'galleria.html': return /galleria\.html$/i.test(path);
+				case 'safeguarding.html': return /safeguarding\.html$/i.test(path);
 				default: return false;
 			}
 		}
@@ -29,11 +30,12 @@
 			{href: 'under.html', label: 'Under 19'},
 			{href: 'sponsor.html', label: 'Sponsor'},
 			{href: 'trasparenza.html', label: 'Trasparenza'},
-			{href: 'galleria.html', label: 'Galleria'}
+			{href: 'galleria.html', label: 'Galleria'},
+			{href: 'safeguarding.html', label: 'Safeguarding'}
 		];
 
-		const desktopNav = links.map(l => `<a href="${base}${l.href}"${isActive(l.href)?' class="active"':''}>${l.label}</a>`).join('');
-		const mobileNav = links.map(l => `<a href="${base}${l.href}"${isActive(l.href)?' class="active"':''}>${l.label}</a>`).join('');
+		const desktopNav = links.map(l => `<a href="${base}${l.href}"${isActive(l.href)?' class="active" aria-current="page"':''}>${l.label}</a>`).join('');
+		const mobileNav = links.map(l => `<a href="${base}${l.href}"${isActive(l.href)?' class="active" aria-current="page"':''}>${l.label}</a>`).join('');
 
 		header.innerHTML = `
 			<div class="container nav">
@@ -487,3 +489,4 @@
 		ensureLegalLinks(consentApi);
 	});
 })();
+

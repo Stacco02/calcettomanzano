@@ -3,16 +3,17 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>C5 Manzano 1988 – Home 2025</title>
+        <title>C5 Manzano 1988 – Futsal dal 1988</title>
         <link rel="icon" href="images/Manzanologo.png" type="image/png"/>
         <link rel="shortcut icon" href="images/Manzanologo.png" type="image/png"/>
         <link rel="apple-touch-icon" href="images/Manzanologo.png"/>
         <meta name="description" content="C5 Manzano 1988 – futsal, notizie, palmarès, sponsor e galleria." />
         <meta property="og:title" content="C5 Manzano 1988" />
         <meta property="og:description" content="Notizie, palmarès, sponsor e galleria del C5 Manzano 1988." />
-        <link rel="stylesheet" href="style.css" />
-	</head>
-	<body>
+        <link rel="stylesheet" href="style.css?v=20261118-redesign" />
+        <link rel="stylesheet" href="home-redesign.css?v=20261118-redesign" />
+	<link rel="stylesheet" href="/site-redesign.css?v=20261118-redesign" /></head>
+	<body class="home-redesign">
         <a class="skip-link" href="#main">Salta al contenuto</a>
 		<header class="header" id="top">
 			<div class="container nav">
@@ -52,10 +53,10 @@
 			<div class="container hero-inner">
 				<p class="eyebrow">Dal 1988 sul parquet friulano</p>
 				<h1>C5 Manzano <span>1988</span></h1>
-				<p class="subtitle">Passione futsal, territorio e giovani: notizie, risultati, sponsor e iniziative del club.</p>
+				<p class="subtitle">La nostra squadra, il nostro territorio. Il futsal a Manzano dal 1988.</p>
 				<div class="hero-actions">
-					<a class="btn btn-primary" href="news-2025.html">Ultime News</a>
-					<a class="btn btn-secondary btn-on-dark" href="sponsor.html">I nostri Sponsor</a>
+					<a class="btn btn-primary" href="news-2025.html">Ultime notizie</a>
+					<a class="btn btn-secondary btn-on-dark" href="sponsor.html">I nostri sponsor</a>
 </div>
 </div>
 		</section>
@@ -63,22 +64,23 @@
 		<main id="main" class="main">
 			<section class="section">
 				<div class="container">
-					<h2>In Campo</h2>
+					<h2>In campo</h2>
 					<div class="home-widgets">
 						<!-- Prossima partita -->
-						<article class="card">
+						<article class="card match-card">
 							<div class="content">
-								<h3>Prossima partita</h3>
+								<p class="section-note">Prima squadra</p><h3>Prossima partita</h3>
 								<div class="home-embed">
 									<iframe title="Prossima partita – TuttoCampo" src="https://www.tuttocampo.it/WidgetV2/ProssimaPartita/a36e219f-de2e-491c-94b5-35612fc1c0af" width="500" height="350" scrolling="no" frameborder="0" loading="lazy"></iframe>
 								</div>
+                                <a class="text-link" href="prima-squadra.html#results-title">Calendario e risultati <span aria-hidden="true">↗</span></a>
 							</div>
 						</article>
 
-						<!-- Dove si gioca (mappa) -->
-						<article class="card">
+						<!-- Il palazzetto del club -->
+						<article class="card venue-card">
 							<div class="content">
-								<h3>Dove si gioca</h3>
+								<h3>Il nostro palazzetto</h3>
                                 <div class="media" aria-label="Mappa Palazzetto dello Sport Manzano">
                                     <a class="map-cover-link" href="https://www.google.com/maps/dir/?api=1&destination=45.9848014,13.389653" target="_blank" rel="noopener" title="Apri indicazioni su Google Maps">
                                         <span class="visually-hidden">Apri indicazioni su Google Maps</span>
@@ -89,13 +91,14 @@
 							</div>
 						</article>
 
-						<!-- Classifica (widget, compattato con toggle) -->
-						<article class="card">
+						<!-- Classifica completa -->
+						<article class="card standings-card">
 							<div class="content">
 								<h3>Classifica</h3>
                                 <div class="home-embed">
-                                    <iframe title="Classifica – TuttoCampo" src="https://www.tuttocampo.it/WidgetV2/Classifica/a36e219f-de2e-491c-94b5-35612fc1c0af" loading="lazy" scrolling="no" onerror="this.closest('.home-embed').style.display='none';"></iframe>
+                                    <iframe title="Classifica – TuttoCampo" src="https://www.tuttocampo.it/WidgetV2/Classifica/a36e219f-de2e-491c-94b5-35612fc1c0af" loading="lazy" scrolling="auto" ></iframe>
                                 </div>
+                                <a class="text-link" href="https://www.tuttocampo.it/WidgetV2/Classifica/a36e219f-de2e-491c-94b5-35612fc1c0af" target="_blank" rel="noopener">Apri classifica completa <span aria-hidden="true">↗</span></a>
 							</div>
 						</article>
 					</div>
@@ -114,10 +117,9 @@
 							<div class="social-body">
 								<div>
 									<p class="social-platform">Facebook</p>
-									<h3>C5 Manzano 1988</h3>
-									<p class="social-handle">@c5manzano1988.it</p>
+									<h3>@c5manzano1988.it</h3>
 								</div>
-								<p class="social-copy">Comunicati, convocazioni, risultati e aggiornamenti gara pubblicati dal club.</p>
+								<p class="social-copy">Convocazioni, risultati e notizie del club</p>
 								<a class="btn btn-primary" href="https://www.facebook.com/c5manzano1988.it" target="_blank" rel="noopener">Apri Facebook</a>
 							</div>
 						</article>
@@ -129,10 +131,9 @@
 							<div class="social-body">
 								<div>
 									<p class="social-platform">Instagram</p>
-									<h3>c5manzano1988</h3>
-									<p class="social-handle">@c5manzano1988</p>
+									<h3>@c5manzano1988</h3>
 								</div>
-								<p class="social-copy">Foto, reel, momenti dal parquet e contenuti rapidi dal gruppo squadra.</p>
+								<p class="social-copy">Foto, reel e momenti dal parquet</p>
 								<a class="btn btn-secondary" href="https://www.instagram.com/c5manzano1988/" target="_blank" rel="noopener">Apri Instagram</a>
 							</div>
 						</article>
@@ -141,31 +142,8 @@
 			</section>
 			<section id="news" class="section">
 				<div class="container">
-					<h2>Ultime News</h2>
-					<div class="news-grid" id="homeNewsGrid">
-						<article class="card">
-							<div class="media"><img loading="lazy" src="gallery/cristian_saro_FB.png" alt="Cristian Saro" /></div>
-							<div class="content">
-								<h3>Under 21 – Squadre iscritte</h3>
-								<p class="meta">Ufficio Stampa – 16 Ago 2025</p>
-                </div>
-						</article>
-						<article class="card">
-							<div class="media"><img loading="lazy" src="gallery/Piani_allenatore21.jpg" alt="Nuovo allenatore Under 21 – Piani" /></div>
-							<div class="content">
-								<h3>Nuovo allenatore U21</h3>
-								<p class="meta">Ufficio Stampa – 15 Ago 2025</p>
-            </div>
-						</article>
-						<article class="card">
-							<div class="media"><img loading="lazy" src="images/Under_19.png" alt="Under 19 – comunicazione" /></div>
-							<div class="content">
-								<h3>Under 19 – Programma estivo</h3>
-								<p class="meta">Ufficio Stampa – 05 Lug 2025</p>
-						</div>
-						</article>
-		</div>
-	</div>
+					<h2>Ultime notizie</h2>
+					<div class="news-grid" id="homeNewsGrid"><article class="card news-story"><a class="media" href="blog/il-manzano-si-prende-tre-punti-vitali-20261116175752.html?v=1794851872016" tabindex="-1" aria-hidden="true"><img loading="lazy" decoding="async" src="images/covers/il-manzano-si-prende-tre-punti-vitali-20261116175752.jpg?v=1794851872016" alt="" width="960" height="640" /></a><div class="content"><p class="meta">16 novembre 2026</p><h3><a href="blog/il-manzano-si-prende-tre-punti-vitali-20261116175752.html?v=1794851872016">Il Manzano si prende tre punti vitali</a></h3><p class="news-author">Patrick Lavaroni</p></div></article><article class="card news-story"><a class="media" href="blog/manzano-sconfitto-anche-nel-derby-u19-20261101152109.html?v=1793546469634" tabindex="-1" aria-hidden="true"><img loading="lazy" decoding="async" src="images/covers/manzano-sconfitto-anche-nel-derby-u19-20261101152109.jpg?v=1793546469634" alt="" width="960" height="640" /></a><div class="content"><p class="meta">1 novembre 2026</p><h3><a href="blog/manzano-sconfitto-anche-nel-derby-u19-20261101152109.html?v=1793546469634">Manzano sconfitto anche nel derby U19</a></h3><p class="news-author">Patrick Lavaroni</p></div></article><article class="card news-story"><a class="media" href="blog/il-manzano-spaventa-le-eagles-ma-non-ha-la-meglio-20261101141848.html?v=1793542728771" tabindex="-1" aria-hidden="true"><img loading="lazy" decoding="async" src="images/covers/il-manzano-spaventa-le-eagles-ma-non-ha-la-meglio-20261101141848.jpg?v=1793542728771" alt="" width="960" height="640" /></a><div class="content"><p class="meta">1 novembre 2026</p><h3><a href="blog/il-manzano-spaventa-le-eagles-ma-non-ha-la-meglio-20261101141848.html?v=1793542728771">Il Manzano spaventa le Eagles, ma non ha la meglio</a></h3><p class="news-author">Patrick Lavaroni</p></div></article></div><a class="text-link news-all" href="news-2025.html">Tutte le notizie <span aria-hidden="true">↗</span></a></div>
 			</section>
 
 			<section id="trophy" class="section">
@@ -216,22 +194,22 @@
 					<!-- gallery-latest:start -->
 					<div class="gallery-item" data-full="gallery/optimized/DSC_0131_2025-11-02T14_18_25_782_.webp">
 						<div class="media">
-							<img class="gallery-photo" loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="gallery/thumbs/DSC_0131_2025-11-02T14_18_25_782_.webp" data-full="gallery/optimized/DSC_0131_2025-11-02T14_18_25_782_.webp" alt="DSC 0131 2025 11 02T14 18 25 782" />
+							<img class="gallery-photo" loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="gallery/thumbs/DSC_0131_2025-11-02T14_18_25_782_.webp" data-full="gallery/optimized/DSC_0131_2025-11-02T14_18_25_782_.webp" alt="Un giocatore del Manzano avanza con il pallone" />
 						</div>
 					</div>
 					<div class="gallery-item" data-full="gallery/optimized/DSC_0135_2025-11-02T14_18_38_347_.webp">
 						<div class="media">
-							<img class="gallery-photo" loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="gallery/thumbs/DSC_0135_2025-11-02T14_18_38_347_.webp" data-full="gallery/optimized/DSC_0135_2025-11-02T14_18_38_347_.webp" alt="DSC 0135 2025 11 02T14 18 38 347" />
+							<img class="gallery-photo" loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="gallery/thumbs/DSC_0135_2025-11-02T14_18_38_347_.webp" data-full="gallery/optimized/DSC_0135_2025-11-02T14_18_38_347_.webp" alt="Azione di gioco del Manzano vicino alla porta" />
 						</div>
 					</div>
 					<div class="gallery-item" data-full="gallery/optimized/DSC_0142_2025-11-02T14_18_47_318_.webp">
 						<div class="media">
-							<img class="gallery-photo" loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="gallery/thumbs/DSC_0142_2025-11-02T14_18_47_318_.webp" data-full="gallery/optimized/DSC_0142_2025-11-02T14_18_47_318_.webp" alt="DSC 0142 2025 11 02T14 18 47 318" />
+							<img class="gallery-photo" loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="gallery/thumbs/DSC_0142_2025-11-02T14_18_47_318_.webp" data-full="gallery/optimized/DSC_0142_2025-11-02T14_18_47_318_.webp" alt="Un giocatore del Manzano controlla il pallone" />
 						</div>
 					</div>
 					<div class="gallery-item" data-full="gallery/optimized/DSC_0150_2025-11-02T14_18_54_561_.webp">
 						<div class="media">
-							<img class="gallery-photo" loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="gallery/thumbs/DSC_0150_2025-11-02T14_18_54_561_.webp" data-full="gallery/optimized/DSC_0150_2025-11-02T14_18_54_561_.webp" alt="DSC 0150 2025 11 02T14 18 54 561" />
+							<img class="gallery-photo" loading="lazy" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="gallery/thumbs/DSC_0150_2025-11-02T14_18_54_561_.webp" data-full="gallery/optimized/DSC_0150_2025-11-02T14_18_54_561_.webp" alt="Un duello in campo durante una partita del Manzano" />
 						</div>
 					</div>
 					<!-- gallery-latest:end -->
@@ -256,81 +234,15 @@
 						<a href="https://www.divisionecalcioa5.it/" target="_blank" rel="noopener"><img class="link-logo" src="images/logo_div_C5_alt_100.png" alt=""/>Divisione Calcio a 5</a>
 						<a href="http://www.regione.fvg.it/rafvg/cms/RAFVG/" target="_blank" rel="noopener"><img class="link-logo" src="images/logo_FVG.png" alt=""/>Regione Friuli Venezia Giulia</a>
 						<a href="https://friuliveneziagiulia.lnd.it/it/" target="_blank" rel="noopener"><img class="link-logo" src="images/logo_LND-FVG_alt_100.png" alt=""/>LND – Friuli Venezia Giulia</a>
-						<a href="https://www.calcettomanzano.it/www.comune.manzano.ud.it/hh/index.php?jvs=0&amp;acc=1" target="_blank" rel="noopener"><img class="link-logo" src="images/logo_comune_manzano_alt_100.jpg" alt=""/>Comune di Manzano (UD)</a>
+						<a href="https://www.comune.manzano.ud.it/" target="_blank" rel="noopener"><img class="link-logo" src="images/logo_comune_manzano_alt_100.jpg" alt=""/>Comune di Manzano (UD)</a>
 					</nav>
 				</div>
 				
-				<div class="legal-links"><a href="privacy-policy.html">Privacy policy</a><a href="cookie-policy.html">Cookie policy</a><a href="termini-condizioni.html">Termini e condizioni</a><button type="button" class="cookie-settings-link">Gestisci preferenze cookie</button></div><p class="copyright">© 2003–2025 A.D.S. C5 MANZANO 1988 – Tutti i diritti riservati • <a href="mailto:stacco.andrea02@gmail.com">Contatta webmaster</a></p>
+				<div class="legal-links"><a href="privacy-policy.html">Privacy policy</a><a href="cookie-policy.html">Cookie policy</a><a href="termini-condizioni.html">Termini e condizioni</a><button type="button" class="cookie-settings-link">Gestisci preferenze cookie</button></div><p class="copyright">© 2003–2026 A.D.S. C5 MANZANO 1988 – Tutti i diritti riservati • <a href="mailto:stacco.andrea02@gmail.com">Contatta webmaster</a></p>
             </div>
 					</footer>
 		
-		<script src="scripts.js?v=20261116-under19" defer></script>
-		<script>
-		// Popola in home le ultime 3 news reali prese dalla pagina news
-		(function(){
-			const monthMap = {
-				'gennaio':0,'febbraio':1,'marzo':2,'aprile':3,'maggio':4,'giugno':5,'luglio':6,'agosto':7,'settembre':8,'ottobre':9,'novembre':10,'dicembre':11
-			};
-			function parseItalianDate(text){
-				// es. "14 giugno 2025"
-				const m = (text||'').toLowerCase().match(/(\d{1,2})\s+([a-zàéìòù]+)\s+(\d{4})/i);
-				if(!m) return null;
-				const d = parseInt(m[1],10);
-				const mon = monthMap[m[2]];
-				const y = parseInt(m[3],10);
-				if(mon==null) return null;
-				return new Date(y, mon, d);
-			}
-
-			function createCard({title, href, author, dateText, image}){
-				const card = document.createElement('article');
-				card.className = 'card';
-				card.innerHTML = `
-					<div class="media"><img loading="lazy" src="${image}" alt="${title.replace(/\"/g,'&quot;')}" onerror="this.onerror=null;this.src='images/ArticoloNoFoto2.jpeg';" /></div>
-					<div class="content">
-						<h3><a href="${href}" style="text-decoration:none;color:inherit">${title}</a></h3>
-						<p class="meta">${author} — ${dateText}</p>
-					</div>
-				`;
-				return card;
-			}
-
-			document.addEventListener('DOMContentLoaded', async () => {
-				const grid = document.getElementById('homeNewsGrid');
-				if(!grid) return;
-				try{
-					const res = await fetch('news-2025.html', {cache:'no-store'});
-					if(!res.ok) throw new Error('fetch news page failed');
-					const html = await res.text();
-					const doc = new DOMParser().parseFromString(html, 'text/html');
-					const cards = Array.from(doc.querySelectorAll('.news-grid .news-card'));
-					const entries = cards.map(card => {
-						const a = card.querySelector('.news-title a');
-						const href = a ? a.getAttribute('href') : '#';
-						const title = a ? a.textContent.trim() : 'Articolo';
-						const author = (card.querySelector('.news-author')||{}).textContent || 'Ufficio Stampa';
-						const dateText = (card.querySelector('.news-date')||{}).textContent || '';
-						const date = parseItalianDate(dateText) || new Date(2000,0,1);
-						
-						// Estrai l'immagine direttamente dalla card della pagina news
-						const imgEl = card.querySelector('.news-image img');
-						const image = imgEl ? imgEl.getAttribute('src') : 'images/ArticoloNofoto.jpeg';
-						
-						return {title, href, author, dateText, date, image};
-					}).sort((a,b)=> b.date - a.date).slice(0,3);
-
-					// Le immagini sono già estratte dalle card della pagina news
-					const enriched = entries;
-
-					// Sostituisci i contenuti esistenti con i 3 più recenti
-					grid.innerHTML = '';
-					enriched.forEach(e=> grid.appendChild(createCard(e)));
-				}catch(err){
-					// In caso di errore mantieni i 3 statici già presenti
-					console.warn('Impossibile caricare le ultime news dinamiche:', err);
-				}
-			});
-		})();
-		</script>
+		<script src="scripts.js?v=20261118-redesign" defer></script>
 	</body>
 </html>
+
