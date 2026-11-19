@@ -1,4 +1,48 @@
 (function(){
+	const links = [
+		{href: 'index.html', label: 'Home'},
+		{href: 'news-2025.html', label: 'News'},
+		{href: 'societa.html', label: 'Società'},
+		{href: 'prima-squadra.html', label: '1a Squadra'},
+		{href: 'under.html', label: 'Under 19'},
+		{href: 'sponsor.html', label: 'Sponsor'},
+		{href: 'trasparenza.html', label: 'Trasparenza'},
+		{href: 'galleria.html', label: 'Galleria'},
+		{href: 'safeguarding.html', label: 'Safeguarding'}
+	];
+
+	function navigationRank(url) {
+		let path;
+		try { path = new URL(url, location.href).pathname; } catch (_) { return -1; }
+		if (/\/blog\//.test(path)) return 1.5;
+		const slug = path.split('/').pop() || 'index.html';
+		return links.findIndex(link => link.href === slug);
+	}
+
+	function updateNavigationDirection() {
+		const activation = window.navigation && window.navigation.activation;
+		let from = activation && activation.from && activation.from.url;
+		if (!from) {
+			try { from = sessionStorage.getItem('c5m-navigation-from'); } catch (_) {}
+		}
+		from = from || document.referrer;
+		let backward = false;
+		if (from) {
+			const previous = navigationRank(from);
+			const current = navigationRank(location.href);
+			if (previous >= 0 && current >= 0 && previous !== current) backward = current < previous;
+			else if (activation && activation.from && activation.entry) backward = activation.entry.index < activation.from.index;
+		}
+		document.documentElement.style.setProperty('--nav-page-shift', backward ? '-100%' : '100%');
+	}
+
+	updateNavigationDirection();
+	window.addEventListener('pagereveal', updateNavigationDirection);
+	window.addEventListener('pageswap', () => {
+		try { sessionStorage.setItem('c5m-navigation-from', location.pathname); } catch (_) {}
+	});
+
+
 	function buildUnifiedHeader() {
 		const header = document.querySelector('.header');
 		if (!header) return;
@@ -22,17 +66,7 @@
 			}
 		}
 
-		const links = [
-			{href: 'index.html', label: 'Home'},
-			{href: 'news-2025.html', label: 'News'},
-			{href: 'societa.html', label: 'Società'},
-			{href: 'prima-squadra.html', label: '1a Squadra'},
-			{href: 'under.html', label: 'Under 19'},
-			{href: 'sponsor.html', label: 'Sponsor'},
-			{href: 'trasparenza.html', label: 'Trasparenza'},
-			{href: 'galleria.html', label: 'Galleria'},
-			{href: 'safeguarding.html', label: 'Safeguarding'}
-		];
+
 
 		const desktopNav = links.map(l => `<a href="${base}${l.href}"${isActive(l.href)?' class="active" aria-current="page"':''}>${l.label}</a>`).join('');
 		const mobileNav = links.map(l => `<a href="${base}${l.href}"${isActive(l.href)?' class="active" aria-current="page"':''}>${l.label}</a>`).join('');

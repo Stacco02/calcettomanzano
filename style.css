@@ -430,6 +430,6 @@ body.cookie-modal-open { overflow: hidden; }
 
  ::view-transition-old(root) { mix-blend-mode:normal; animation:nav-page-out .55s cubic-bezier(.4,0,.2,1) both; }
  ::view-transition-new(root) { mix-blend-mode:normal; animation:nav-page-in .55s cubic-bezier(.4,0,.2,1) both; }
- @keyframes nav-page-out { to { transform:translateX(-100%); } }
- @keyframes nav-page-in { from { transform:translateX(100%); } }
+ @keyframes nav-page-out { to { transform:translateX(calc(-1 * var(--nav-page-shift,100%))); } }
+ @keyframes nav-page-in { from { transform:translateX(var(--nav-page-shift,100%)); } }
 }
