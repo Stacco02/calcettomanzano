@@ -200,9 +200,9 @@
 }
 @media (prefers-reduced-motion:reduce) { .home-redesign *, .home-redesign *::before,.home-redesign *::after { animation:none !important; transition:none !important; } .home-redesign .card:hover,.home-redesign .social-card:hover,.home-redesign .sponsor:hover,.home-redesign .trophy:hover,.home-redesign .gallery-item:hover,.home-redesign .btn:hover,.home-redesign .news-story:hover .media img,.home-redesign .social-card:hover .social-cover img,.home-redesign .gallery-item:hover .gallery-photo { transform:none; } }
 
-/* Keep the team photo with the centered copy on wide screens and when zooming out. */
+/* Keep the photo beside the centered text and extend it to the viewport edge. */
 @media (min-width:1344px) {
- .home-redesign .hero-home { background-image: none; }
- .home-redesign .hero-home::before { left:50%; right:auto; width:1280px; transform:translateX(-50%); background-image:linear-gradient(90deg,#081b32 0%,#081b32 40%,rgba(8,27,50,.96) 42%,rgba(8,27,50,.55) 58%,rgba(8,27,50,.18) 75%,rgba(8,27,50,.12) 90%,#081b32 100%),url('images/squadra-2026-2027.jpeg'); background-size:cover,auto 100%; background-position:center,right center; background-repeat:no-repeat; }
- .home-redesign .hero-home::after { right:calc((100% - 1280px)/2); }
+ .home-redesign .hero-home { min-height:max(640px,calc(31.25vw + 150px)); background-image:none; }
+ .home-redesign .hero-home::before { left:calc(50% - 240px); right:0; width:auto; transform:none; background-image:linear-gradient(90deg,#081b32 0%,rgba(8,27,50,.96) 4%,rgba(8,27,50,.55) 28%,rgba(8,27,50,.12) 60%,rgba(8,27,50,.12) 100%),url('images/squadra-2026-2027.jpeg'); background-size:cover; background-position:center,right bottom; background-repeat:no-repeat; }
+ .home-redesign .hero-home::after { right:32px; }
 }
