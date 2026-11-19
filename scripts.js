@@ -93,6 +93,42 @@
 		}
 	}
 
+	function setupNavigationMotion() {
+		const menu = document.querySelector('.header .menu');
+		const active = menu && menu.querySelector('[aria-current="page"]');
+		if (!active) return;
+		const marker = document.createElement('span');
+		marker.className = 'menu-indicator';
+		marker.setAttribute('aria-hidden', 'true');
+		menu.appendChild(marker);
+		let target = active;
+		let pendingNavigation;
+		const update = () => {
+			menu.classList.toggle('has-indicator', menu.offsetWidth > 0);
+			marker.style.width = target.offsetWidth + 'px';
+			marker.style.transform = 'translateX(' + target.offsetLeft + 'px)';
+		};
+		update();
+		window.addEventListener('resize', update, { passive: true });
+		window.addEventListener('pageshow', () => { window.clearTimeout(pendingNavigation); menu.classList.remove('is-moving'); target = active; update(); });
+		if (document.fonts) document.fonts.ready.then(update);
+		menu.addEventListener('click', event => {
+			const link = event.target.closest('a');
+			if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
+			const url = new URL(link.href, location.href);
+			if (url.origin !== location.origin || link === active || (url.pathname === location.pathname && url.search === location.search)) return;
+			target = link;
+			// Native page transitions capture the current marker and move it to the next page's active item.
+			if (!('CSSViewTransitionRule' in window && 'onpageswap' in window) && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+				event.preventDefault();
+				menu.classList.add('is-moving');
+				update();
+				window.clearTimeout(pendingNavigation);
+				pendingNavigation = window.setTimeout(() => location.assign(url.href), 600);
+			}
+		});
+	}
+
 	function initGalleryLoadMore(){
 		if (!/galleria\.html$/i.test(location.pathname)) return;
 		const grid = document.querySelector('.gallery-grid');
@@ -479,6 +515,7 @@
 	document.addEventListener('DOMContentLoaded', function(){
 		buildUnifiedHeader();
 		setupHeaderBehaviors();
+		setupNavigationMotion();
 		initGalleryLoadMore();
 		initGalleryLazyLoad();
 		initGalleryLightbox();

@@ -410,3 +410,26 @@ body.cookie-modal-open { overflow: hidden; }
 
 /* Local preview: leave room for all nine shared navigation links. */
 @media (min-width:901px) and (max-width:1280px) { .header .menu { display:none; } .header .burger { display:block; justify-self:end; } .header .nav { grid-template-columns:1fr auto; } }
+
+/* One shared underline, so navigation moves rather than replacing separate borders. */
+.header .menu { position:relative; }
+.header .menu-indicator { display:none; position:absolute; left:0; bottom:0; height:3px; border-radius:0 0 8px 8px; background:#f3c64d; pointer-events:none; }
+.header .menu.has-indicator .menu-indicator { display:block; }
+.header .menu.has-indicator a { transform:none; }
+.header .menu.has-indicator a.active { box-shadow:none; background:transparent; }
+@media (prefers-reduced-motion:no-preference) {
+ @view-transition { navigation:auto; }
+ :root:active-view-transition :is(.hero-inner,.hero .container) { animation:none; }
+ .header { view-transition-name:site-header; }
+ .header .menu-indicator { view-transition-name:nav-indicator; }
+ .header .menu.is-moving .menu-indicator { transition:transform .6s cubic-bezier(.22,1,.36,1),width .6s cubic-bezier(.22,1,.36,1); }
+ ::view-transition-group(site-header) { z-index:2; animation-duration:.6s; }
+ ::view-transition-old(site-header),::view-transition-old(nav-indicator) { display:none; }
+ ::view-transition-new(site-header),::view-transition-new(nav-indicator) { animation:none; }
+ ::view-transition-group(nav-indicator) { z-index:3; animation-duration:.65s; animation-timing-function:cubic-bezier(.22,1,.36,1); }
+
+ ::view-transition-old(root) { mix-blend-mode:normal; animation:nav-page-out .55s cubic-bezier(.4,0,.2,1) both; }
+ ::view-transition-new(root) { mix-blend-mode:normal; animation:nav-page-in .55s cubic-bezier(.4,0,.2,1) both; }
+ @keyframes nav-page-out { to { transform:translateX(-100%); } }
+ @keyframes nav-page-in { from { transform:translateX(100%); } }
+}
